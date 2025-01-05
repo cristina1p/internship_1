@@ -3,11 +3,16 @@ import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 import { config } from './config'
-import { Database } from './models'
-import { register } from './route-handlers'
-import { login } from './route-handlers'
-import { getUsers } from './route-handlers'
-import { authenticateJwt } from './route-handlers'
+import { DatabaseSchema } from './models'
+import {
+  register,
+  login,
+  authenticateJwt,
+  getUsers,
+  getUserById,
+  updateUserById,
+  deleteUserById,
+} from './route-handlers'
 
 // Get the directory name of the current module file (for db.json path)
 const __filename = fileURLToPath(import.meta.url)
@@ -20,18 +25,20 @@ const server = jsonServer.create()
 server.use(jsonServer.bodyParser)
 
 // Assuming `router.db` is a Lowdb instance with a JSON backend
-const router = jsonServer.router<Database>(`${__dirname}${config.dbPath}`)
+const router = jsonServer.router<DatabaseSchema>(`${__dirname}${config.dbPath}`)
 // Use default middlewares (for CORS, logging, etc.)
 const middlewares = jsonServer.defaults()
 
 // Register a custom POST /register endpoint
 server.post('/register', register(router))
-
 // Set up a custom route for /login
 server.post('/login', login(router))
 
-// Protected route
+// Protected routes
 server.get('/users', authenticateJwt, getUsers(router))
+server.get('/users/:id', authenticateJwt, getUserById(router))
+server.put('/users/:id', authenticateJwt, updateUserById(router))
+server.delete('/users/:id', authenticateJwt, deleteUserById(router))
 
 // Set up middlewares and router
 server.use(middlewares)

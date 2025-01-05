@@ -2,7 +2,7 @@ import { Post } from 'src/models'
 
 import { DbUser } from './dbUser'
 
-export interface Database {
+export interface DatabaseSchema {
   users: DbUser[]
   posts: Post[]
 }

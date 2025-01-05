@@ -1,13 +1,19 @@
 import { NextFunction } from 'express'
 import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
-import { User } from 'src/models'
+import { Role } from 'src/models'
 
 import { config } from '../config'
 import { respondWithError } from '../helper'
 
 export interface RequestWithUser extends Request {
-  user: User
+  user: JwtUserPayload
+}
+
+export type JwtUserPayload = {
+  id: number
+  email: string
+  role: Role
 }
 
 export const authenticateJwt = (
@@ -28,7 +34,7 @@ export const authenticateJwt = (
       return respondWithError(res, 401, 'Invalid or expired token')
     }
 
-    ;(req as RequestWithUser).user = user as User // Attach the user information (payload) to the request object
+    ;(req as RequestWithUser).user = user as JwtUserPayload // Attach the user information (payload) to the request object
     next() // Call the next middleware or route handler
   })
 }
