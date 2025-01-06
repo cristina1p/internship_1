@@ -48,32 +48,25 @@ export const getUsers =
       return respondWithError(res, 400, 'Validation failed', errors)
     }
 
-    const {
-      search: searchQuery,
-      role: rolesQuery,
-      start: startQuery,
-      end: endQuery,
-    } = result.data
+    const { search, role, start, end } = result.data
 
     const users = router.db.get('users').value()
 
     const filteredUsers = users.filter((user) => {
-      const matchesStart = startQuery
-        ? new Date(user.createdAt) >= new Date(startQuery)
+      const matchesStart = start
+        ? new Date(user.createdAt) >= new Date(start)
         : true // If no start query, include all users
-      const matchesEnd = endQuery
-        ? new Date(user.createdAt) <= new Date(endQuery)
-        : true // If no end query, include all users
+      const matchesEnd = end ? new Date(user.createdAt) <= new Date(end) : true // If no end query, include all users
 
       const matchesSearch =
-        !searchQuery || // If no search query, include all users
-        user.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        user.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        user.email.toLowerCase().includes(searchQuery.toLowerCase())
+        !search || // If no search query, include all users
+        user.firstName.toLowerCase().includes(search.toLowerCase()) ||
+        user.lastName.toLowerCase().includes(search.toLowerCase()) ||
+        user.email.toLowerCase().includes(search.toLowerCase())
 
       const matchesRole =
-        !rolesQuery || // If no roles query, include all users
-        rolesQuery.includes(user.role)
+        !role || // If no roles query, include all users
+        role.includes(user.role)
 
       return matchesEnd && matchesStart && matchesSearch && matchesRole // All criteria must match
     })
