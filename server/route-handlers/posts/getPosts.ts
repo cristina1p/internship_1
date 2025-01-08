@@ -1,9 +1,9 @@
+import { respondWithError } from '@server/helper'
+import { DatabaseSchema } from '@server/models'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
 
-import { respondWithError } from '../../helper'
-import { DatabaseSchema } from '../../models'
 import { RequestWithUser } from '../authenticateJwt'
 
 // Zod schema for validating query parameters for getting posts

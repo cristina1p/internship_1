@@ -1,9 +1,9 @@
+import { respondWithError } from '@server/helper'
+import { DatabaseSchema, convertDbUserToUser } from '@server/models'
 import { Response, Request } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
 
-import { respondWithError } from '../../helper'
-import { DatabaseSchema, convertDbUserToUser } from '../../models'
 import { RequestWithUser } from '../authenticateJwt'
 
 const UpdateUserByIdRequestBodySchema = z.object({

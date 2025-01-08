@@ -1,12 +1,12 @@
+import { config } from '@server/config'
+import { respondWithError, findUserByEmail } from '@server/helper'
+import { DatabaseSchema } from '@server/models'
 import bcrypt from 'bcryptjs'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import jwt from 'jsonwebtoken'
 import { z } from 'zod'
 
-import { config } from '../config'
-import { respondWithError, findUserByEmail } from '../helper'
-import { DatabaseSchema } from '../models'
 import { JwtUserPayload } from './authenticateJwt'
 
 // Zod schema, validates the structure of the incoming request body

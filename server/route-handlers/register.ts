@@ -1,10 +1,9 @@
+import { respondWithError, findUserByEmail } from '@server/helper'
+import { DatabaseSchema, DbUser, convertDbUserToUser } from '@server/models'
 import bcrypt from 'bcryptjs'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
-
-import { respondWithError, findUserByEmail } from '../helper'
-import { DatabaseSchema, DbUser, convertDbUserToUser } from '../models'
 
 const RegisterRequestBodySchema = z
   .object({

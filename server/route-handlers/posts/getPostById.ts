@@ -1,9 +1,9 @@
+import { Post } from '@models/posts'
+import { respondWithError } from '@server/helper'
+import { DatabaseSchema } from '@server/models'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
-import { DatabaseSchema } from 'server/models'
-import { Post } from 'src/models'
 
-import { respondWithError } from '../../helper'
 import { RequestWithUser } from '../authenticateJwt'
 
 export const getPostById =

@@ -1,10 +1,10 @@
+import { respondWithError } from '@server/helper'
+import { DatabaseSchema } from '@server/models'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { Post } from 'src/models'
 import { z } from 'zod'
 
-import { respondWithError } from '../../helper'
-import { DatabaseSchema } from '../../models'
 import { RequestWithUser } from '../authenticateJwt'
 
 // Zod schema to validate the post creation request body
