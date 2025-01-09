@@ -9,8 +9,8 @@ export const deleteUserById =
   (router: jsonServer.JsonServerRouter<DatabaseSchema>) =>
   (req: Request, res: Response) => {
     // Extract the authenticated user from the request
-    const user = (req as RequestWithUser).user
-    const userId = parseInt(req.params.id) // Extract the user ID from the request URL
+    const { user, params } = req as RequestWithUser
+    const userId = parseInt(params.id) // Extract the user ID from the request URL
 
     if (user.role !== 'Admin') {
       return respondWithError(

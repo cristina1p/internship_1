@@ -1,9 +1,5 @@
 import { config } from '@server/config'
 import { DatabaseSchema } from '@server/models'
-import jsonServer from 'json-server'
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
-
 import {
   register,
   login,
@@ -12,7 +8,10 @@ import {
   getUserById,
   updateUserById,
   deleteUserById,
-} from './route-handlers'
+} from '@server/route-handlers'
+import jsonServer from 'json-server'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
 // Get the directory name of the current module file (for db.json path)
 const __filename = fileURLToPath(import.meta.url)

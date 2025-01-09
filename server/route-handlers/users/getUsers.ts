@@ -39,13 +39,13 @@ const GetUsersQuerySchema = z.object({
 export const getUsers =
   (router: jsonServer.JsonServerRouter<DatabaseSchema>) =>
   (req: Request, res: Response) => {
-    const user = (req as RequestWithUser).user
+    const { user, query } = req as RequestWithUser
 
     if (user.role !== 'Admin') {
       return respondWithError(res, 403, 'Forbidden')
     }
 
-    const result = GetUsersQuerySchema.safeParse(req.query)
+    const result = GetUsersQuerySchema.safeParse(query)
     if (!result.success) {
       // Handle validation error
       const errors = result.error.flatten().fieldErrors
