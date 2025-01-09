@@ -1,9 +1,9 @@
+import { respondWithError } from '@server/helper'
+import { DatabaseSchema, convertDbUserToUser } from '@server/models'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
 
-import { respondWithError } from '../../helper'
-import { DatabaseSchema, convertDbUserToUser } from '../../models'
 import { RequestWithUser } from '../authenticateJwt'
 
 const roleEnum = z.enum(['Admin', 'Moderator', 'User'], {

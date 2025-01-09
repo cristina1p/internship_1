@@ -1,9 +1,9 @@
+import { config } from '@server/config'
+import { DatabaseSchema } from '@server/models'
 import jsonServer from 'json-server'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
-import { config } from './config'
-import { DatabaseSchema } from './models'
 import {
   register,
   login,

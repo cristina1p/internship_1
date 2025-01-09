@@ -17,8 +17,15 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
     // "noUncheckedSideEffectImports": true
+
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@models/*": ["src/models/*"],
+      "@server/*": ["server/*"]
+    }
   },
   "include": ["vite.config.ts"]
 }

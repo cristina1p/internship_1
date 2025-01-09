@@ -1,4 +1,4 @@
-import { DbUser } from '../models'
+import { DbUser } from '@server/models'
 
 export const findUserByEmail = (
   dbUsers: DbUser[],

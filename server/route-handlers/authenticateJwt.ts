@@ -1,9 +1,8 @@
+import { Role } from '@models/users'
+import { config } from '@server/config'
+import { respondWithError } from '@server/helper'
 import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
-import { Role } from 'src/models'
-
-import { config } from '../config'
-import { respondWithError } from '../helper'
 
 export interface RequestWithUser extends Request {
   user: JwtUserPayload

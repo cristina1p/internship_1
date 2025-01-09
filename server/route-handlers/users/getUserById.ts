@@ -1,8 +1,8 @@
+import { respondWithError } from '@server/helper'
+import { DatabaseSchema, convertDbUserToUser } from '@server/models'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 
-import { respondWithError } from '../../helper'
-import { DatabaseSchema, convertDbUserToUser } from '../../models'
 import { RequestWithUser } from '../authenticateJwt'
 
 export const getUserById =

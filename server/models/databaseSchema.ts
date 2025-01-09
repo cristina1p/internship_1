@@ -1,4 +1,4 @@
-import { Post } from 'src/models'
+import { Post } from '@models/posts'
 
 import { DbUser } from './dbUser'
 
