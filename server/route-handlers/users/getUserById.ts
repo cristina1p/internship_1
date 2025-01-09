@@ -1,15 +1,15 @@
 import { respondWithError } from '@server/helper'
 import { DatabaseSchema, convertDbUserToUser } from '@server/models'
-import { Request, Response } from 'express'
+import { Response } from 'express'
 import jsonServer from 'json-server'
 
 import { RequestWithUser } from '../authenticateJwt'
 
 export const getUserById =
   (router: jsonServer.JsonServerRouter<DatabaseSchema>) =>
-  (req: Request, res: Response) => {
+  (req: RequestWithUser, res: Response) => {
     // Extract the authenticated user from the request
-    const user = (req as RequestWithUser).user
+    const user = req.user
     const userId = parseInt(req.params.id) // Extract the user ID from the request URL
 
     if (user.role !== 'Admin' && user.id !== userId) {
