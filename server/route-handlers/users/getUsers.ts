@@ -1,5 +1,9 @@
 import { respondWithError } from '@server/helper'
-import { DatabaseSchema, convertDbUserToUser } from '@server/models'
+import {
+  DatabaseSchema,
+  SearchableField,
+  convertDbUserToUser,
+} from '@server/models'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
@@ -49,20 +53,18 @@ export const getUsers =
     }
 
     const { search, role, start, end } = result.data
-
     const users = router.db.get('users').value()
 
     const filteredUsers = users.filter((user) => {
-      const matchesStart = start
-        ? new Date(user.createdAt) >= new Date(start)
-        : true // If no start query, include all users
-      const matchesEnd = end ? new Date(user.createdAt) <= new Date(end) : true // If no end query, include all users
+      // If no start/end query, include all users
+      const matchesStart = !start || new Date(user.createdAt) >= new Date(start)
+      const matchesEnd = !end || new Date(user.createdAt) <= new Date(end)
 
       const matchesSearch =
-        !search || // If no search query, include all users
-        user.firstName.toLowerCase().includes(search.toLowerCase()) ||
-        user.lastName.toLowerCase().includes(search.toLowerCase()) ||
-        user.email.toLowerCase().includes(search.toLowerCase())
+        !search ||
+        (['firstName', 'lastName', 'email'] as SearchableField[]).some(
+          (field) => user[field].toLowerCase().includes(search.toLowerCase()),
+        )
 
       const matchesRole =
         !role || // If no roles query, include all users
