@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:server": "tsx --watch ./server/server.ts",
+    "dev:server": "tsx --watch --tsconfig ./tsconfig.node.json ./server/server.ts",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

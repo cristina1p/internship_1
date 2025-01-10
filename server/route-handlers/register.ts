@@ -1,10 +1,9 @@
+import { findUserByEmail, respondWithError } from '@server/helper'
+import { DatabaseSchema, DbUser, convertDbUserToUser } from '@server/models'
 import bcrypt from 'bcryptjs'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
-
-import { respondWithError, findUserByEmail } from '../helper'
-import { Database, DbUser, convertDbUserToUser } from '../models'
 
 const RegisterRequestBodySchema = z
   .object({
@@ -25,7 +24,7 @@ const RegisterRequestBodySchema = z
   })
 
 export const register =
-  (router: jsonServer.JsonServerRouter<Database>) =>
+  (router: jsonServer.JsonServerRouter<DatabaseSchema>) =>
   (req: Request, res: Response) => {
     // Validate the incoming request body against the zod schema
     const result = RegisterRequestBodySchema.safeParse(req.body)
@@ -57,6 +56,7 @@ export const register =
       gender,
       role: 'User',
       password: hashedPassword,
+      createdAt: new Date().toISOString(),
     }
 
     // Save the new user to the "users" collection in the database

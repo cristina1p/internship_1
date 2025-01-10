@@ -1,26 +1,25 @@
+import { config } from '@server/config'
+import { findUserByEmail, respondWithError } from '@server/helper'
+import { DatabaseSchema } from '@server/models'
+import { JwtUserPayload } from '@server/route-handlers/authenticateJwt'
 import bcrypt from 'bcryptjs'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import jwt from 'jsonwebtoken'
 import { z } from 'zod'
 
-import { config } from '../config'
-import { respondWithError, findUserByEmail } from '../helper'
-import { Database } from '../models'
-
 // Zod schema, validates the structure of the incoming request body
-export const LoginRequestBodySchema = z.object({
+const LoginRequestBodySchema = z.object({
   email: z.string().email('Invalid email address'),
   password: z.string().min(6, 'Password must be at least 6 characters long'),
 })
+
 // If data does not match this format, zod will return error
 export const login =
-  (router: jsonServer.JsonServerRouter<Database>) =>
+  (router: jsonServer.JsonServerRouter<DatabaseSchema>) =>
   (req: Request, res: Response) => {
     // Use safeParse for validation
     const result = LoginRequestBodySchema.safeParse(req.body)
-
-    console.log('Hello')
 
     if (!result.success) {
       // Handle validation error
@@ -45,7 +44,11 @@ export const login =
 
     // Create a JWT token
     const token = jwt.sign(
-      { userId: dbUser.id, email: dbUser.email, role: dbUser.role },
+      {
+        id: dbUser.id,
+        email: dbUser.email,
+        role: dbUser.role,
+      } as JwtUserPayload,
       config.jwtSecretKey,
       {
         expiresIn: config.jwtExpirationTime,
