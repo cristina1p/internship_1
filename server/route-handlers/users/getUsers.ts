@@ -1,14 +1,13 @@
 import { respondWithError } from '@server/helper'
 import {
   DatabaseSchema,
-  SearchableField,
   convertDbUserToUser,
+  searchableFields,
 } from '@server/models'
 import { RequestWithUser } from '@server/route-handlers/authenticateJwt'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
-
 
 const roleEnum = z.enum(['Admin', 'Moderator', 'User'], {
   message: 'Invalid role',
@@ -62,8 +61,8 @@ export const getUsers =
 
       const matchesSearch =
         !search ||
-        (['firstName', 'lastName', 'email'] as SearchableField[]).some(
-          (field) => user[field].toLowerCase().includes(search.toLowerCase()),
+        searchableFields.some((field) =>
+          user[field].toLowerCase().includes(search.toLowerCase()),
         )
 
       const matchesRole =
