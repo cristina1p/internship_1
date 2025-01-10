@@ -52,25 +52,27 @@ export const getUsers =
     }
 
     const { search, role, start, end } = result.data
-    const users = router.db.get('users').value()
 
-    const filteredUsers = users.filter((user) => {
-      // If no start/end query, include all users
-      const matchesStart = !start || new Date(user.createdAt) >= new Date(start)
-      const matchesEnd = !end || new Date(user.createdAt) <= new Date(end)
+    const filteredUsers = router.db
+      .get('users')
+      .filter((user) => {
+        const matchesStart =
+          !start || new Date(user.createdAt) >= new Date(start)
+        const matchesEnd = !end || new Date(user.createdAt) <= new Date(end)
 
-      const matchesSearch =
-        !search ||
-        searchableFields.some((field) =>
-          user[field].toLowerCase().includes(search.toLowerCase()),
-        )
+        const matchesSearch =
+          !search ||
+          searchableFields.some((field) =>
+            user[field].toLowerCase().includes(search.toLowerCase()),
+          )
 
-      const matchesRole =
-        !role || // If no roles query, include all users
-        role.includes(user.role)
+        const matchesRole =
+          !role || // If no roles query, include all users
+          role.includes(user.role)
 
-      return matchesEnd && matchesStart && matchesSearch && matchesRole // All criteria must match
-    })
+        return matchesEnd && matchesStart && matchesSearch && matchesRole // All criteria must match
+      })
+      .value()
 
     res.status(200).json({ users: filteredUsers.map(convertDbUserToUser) })
   }
