@@ -1,13 +1,12 @@
 import { config } from '@server/config'
 import { findUserByEmail, respondWithError } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
+import { JwtUserPayload } from '@server/route-handlers/authenticateJwt'
 import bcrypt from 'bcryptjs'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import jwt from 'jsonwebtoken'
 import { z } from 'zod'
-
-import { JwtUserPayload } from './authenticateJwt'
 
 // Zod schema, validates the structure of the incoming request body
 const LoginRequestBodySchema = z.object({

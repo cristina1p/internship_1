@@ -4,11 +4,11 @@ import {
   SearchableField,
   convertDbUserToUser,
 } from '@server/models'
+import { RequestWithUser } from '@server/route-handlers/authenticateJwt'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
 
-import { RequestWithUser } from '../authenticateJwt'
 
 const roleEnum = z.enum(['Admin', 'Moderator', 'User'], {
   message: 'Invalid role',

@@ -1,9 +1,9 @@
 import { respondWithError } from '@server/helper'
 import { DatabaseSchema, convertDbUserToUser } from '@server/models'
+import { RequestWithUser } from '@server/route-handlers/authenticateJwt'
 import { Response, Request } from 'express'
 import jsonServer from 'json-server'
 
-import { RequestWithUser } from '../authenticateJwt'
 
 export const getUserById =
   (router: jsonServer.JsonServerRouter<DatabaseSchema>) =>
