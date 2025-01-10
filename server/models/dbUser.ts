@@ -5,6 +5,17 @@ export interface DbUser extends User {
   createdAt: string // filter users by join date
 }
 
+export type SearchableField = keyof Pick<
+  DbUser,
+  'firstName' | 'lastName' | 'email'
+>
+
+export const searchableFields: SearchableField[] = [
+  'firstName',
+  'lastName',
+  'email',
+]
+
 export function convertDbUserToUser(dbUser: DbUser): User {
   const { id, email, firstName, lastName, gender, role } = dbUser
 

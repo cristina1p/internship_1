@@ -1,10 +1,9 @@
 import { respondWithError } from '@server/helper'
 import { DatabaseSchema, convertDbUserToUser } from '@server/models'
+import { RequestWithUser } from '@server/route-handlers/authenticateJwt'
 import { Response, Request } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
-
-import { RequestWithUser } from '../authenticateJwt'
 
 const UpdateUserByIdRequestBodySchema = z.object({
   firstName: z.string().min(1, 'First name is required').optional(),
@@ -25,8 +24,8 @@ export const updateUserById =
   (router: jsonServer.JsonServerRouter<DatabaseSchema>) =>
   (req: Request, res: Response) => {
     // Extract the authenticated user from the request
-    const user = (req as RequestWithUser).user
-    const userId = parseInt(req.params.id) // Extract the user ID from the request URL
+    const { user, params } = req as RequestWithUser
+    const userId = parseInt(params.id) // Extract the user ID from the request URL
 
     if (user.role !== 'Admin' && user.id !== userId) {
       return respondWithError(res, 403, 'Forbidden')

@@ -8,11 +8,6 @@ import {
   getUserById,
   updateUserById,
   deleteUserById,
-  createPost,
-  deletePost,
-  updatePost,
-  getPosts,
-  getPostById,
 } from '@server/route-handlers'
 import jsonServer from 'json-server'
 import { dirname } from 'path'
@@ -43,12 +38,6 @@ server.get('/users', authenticateJwt, getUsers(router))
 server.get('/users/:id', authenticateJwt, getUserById(router))
 server.put('/users/:id', authenticateJwt, updateUserById(router))
 server.delete('/users/:id', authenticateJwt, deleteUserById(router))
-
-server.get('/posts', authenticateJwt, getPosts(router))
-server.get('/posts/:id', authenticateJwt, getPostById(router))
-server.post('/posts', authenticateJwt, createPost(router))
-server.put('/posts/:id', authenticateJwt, updatePost(router))
-server.delete('/posts/:id', authenticateJwt, deletePost(router))
 
 // Set up middlewares and router
 server.use(middlewares)

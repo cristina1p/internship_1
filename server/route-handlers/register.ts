@@ -1,4 +1,4 @@
-import { respondWithError, findUserByEmail } from '@server/helper'
+import { findUserByEmail, respondWithError } from '@server/helper'
 import { DatabaseSchema, DbUser, convertDbUserToUser } from '@server/models'
 import bcrypt from 'bcryptjs'
 import { Request, Response } from 'express'
