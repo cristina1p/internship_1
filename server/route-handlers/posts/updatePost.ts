@@ -1,11 +1,11 @@
 import { respondWithError } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
+import { RequestWithUser } from '@server/route-handlers'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { Post } from 'src/models'
 import { z } from 'zod'
 
-import { RequestWithUser } from '../authenticateJwt'
 
 // Zod schema for validating updates
 const UpdatePostRequestBodySchema = z.object({

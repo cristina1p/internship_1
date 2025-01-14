@@ -1,10 +1,11 @@
 import { respondWithError } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
+import { searchablePostFields } from '@server/models'
+import { RequestWithUser } from '@server/route-handlers'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
 
-import { RequestWithUser } from '../authenticateJwt'
 
 // Zod schema for validating query parameters for getting posts
 const GetPostsQuerySchema = z.object({
@@ -27,10 +28,13 @@ const GetPostsQuerySchema = z.object({
 export const getPosts =
   (router: jsonServer.JsonServerRouter<DatabaseSchema>) =>
   (req: Request, res: Response) => {
-    const { id: userId, role } = (req as RequestWithUser).user
+    const {
+      user: { id: userId, role },
+      query,
+    } = req as RequestWithUser
 
     // Parse and validate the query using the Zod schema
-    const result = GetPostsQuerySchema.safeParse(req.query)
+    const result = GetPostsQuerySchema.safeParse(query)
     if (!result.success) {
       // Handle validation error
       const errors = result.error.flatten().fieldErrors
@@ -40,27 +44,29 @@ export const getPosts =
     // Destructure validated query parameters
     const { search, start, end } = result.data
 
-    // Get all posts from the database
-    const dbPosts = router.db.get('posts').value()
+    // Apply a single .filter() to combine all conditions
+    const filteredPosts = router.db
+      .get('posts')
+      .filter((post) => {
+        // Role-based filtering
+        const matchesRole =
+          role === 'Admin' || role === 'Moderator' || post.userId === userId
 
-    // Filter posts based on query parameters
-    const filteredPosts = dbPosts.filter((post) => {
-      // Filter by date range (start and end)
-      const matchesStart = start ? new Date(post.date) >= new Date(start) : true
-      const matchesEnd = end ? new Date(post.date) <= new Date(end) : true
+        const matchesStart = !start || new Date(post.date) >= new Date(start)
 
-      // Filter by search query (search in title, description)
-      const matchesSearch =
-        !search ||
-        post.title.toLowerCase().includes(search.toLowerCase()) ||
-        post.description.toLowerCase().includes(search.toLowerCase())
+        const matchesEnd = !end || new Date(post.date) <= new Date(end)
 
-      const matchesRole =
-        role === 'Admin' || role === 'Moderator' || post.userId === userId
+        // Search filtering
+        const matchesSearch =
+          !search ||
+          searchablePostFields.some((field) =>
+            post[field].toLowerCase().includes(search.toLowerCase()),
+          )
 
-      // All filters must match for the post to be included
-      return matchesStart && matchesEnd && matchesSearch && matchesRole
-    })
+        // Combine all conditions
+        return matchesRole && matchesStart && matchesEnd && matchesSearch
+      })
+      .value()
 
     // Return the filtered posts in the response
     res.status(200).json({ posts: filteredPosts })

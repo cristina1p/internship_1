@@ -41,5 +41,38 @@
       "password": "$2a$10$Oso2eKgp54Cm7er3Z6KKM.DJAXKQWrCkWX0ABZ853EJrVxZTyeEUK"
     }
   ],
-  "posts": []
+  "posts": [
+    {
+      "id": 1,
+      "title": "10 Tips for Better Productivity",
+      "description": "Discover ten actionable tips to boost your productivity and manage your time more efficiently.",
+      "image": "https://via.placeholder.com/300x200?text=Productivity+Tips",
+      "date": "2025-01-01",
+      "userId": 1,
+      "viewCounter": 250,
+      "comments": ["Great tips, thanks!", "This really helped me!"]
+    },
+    {
+      "id": 2,
+      "title": "A Beginner's Guide to TypeScript",
+      "description": "Learn the basics of TypeScript and how it can improve your JavaScript projects.",
+      "image": "https://via.placeholder.com/300x200?text=TypeScript+Guide",
+      "date": "2025-01-13",
+      "userId": 2,
+      "viewCounter": 150,
+      "comments": ["Very informative.", "Loved the examples provided."]
+    },
+    {
+      "id": 3,
+      "title": "Top 5 SCSS Tricks for Developers",
+      "description": "Master SCSS with these top 5 tricks to make your stylesheets more powerful and maintainable.",
+      "image": "https://via.placeholder.com/300x200?text=SCSS+Tricks",
+      "date": "2025-01-12",
+      "userId": 3,
+      "comments": [
+        "This is exactly what I needed!",
+        "Can you share more examples?"
+      ]
+    }
+  ]
 }

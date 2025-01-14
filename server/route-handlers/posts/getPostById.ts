@@ -1,10 +1,10 @@
 import { Post } from '@models/posts'
 import { respondWithError } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
+import { RequestWithUser } from '@server/route-handlers'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 
-import { RequestWithUser } from '../authenticateJwt'
 
 export const getPostById =
   (router: jsonServer.JsonServerRouter<DatabaseSchema>) =>

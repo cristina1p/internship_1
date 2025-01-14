@@ -1,6 +1,6 @@
 import { respondWithError } from '@server/helper'
 import { DatabaseSchema, convertDbUserToUser } from '@server/models'
-import { RequestWithUser } from '@server/route-handlers/authenticateJwt'
+import { RequestWithUser } from '@server/route-handlers'
 import { Response, Request } from 'express'
 import jsonServer from 'json-server'
 

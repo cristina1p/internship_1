@@ -5,12 +5,12 @@ export interface DbUser extends User {
   createdAt: string // filter users by join date
 }
 
-export type SearchableField = keyof Pick<
+export type SearchableUserField = keyof Pick<
   DbUser,
   'firstName' | 'lastName' | 'email'
 >
 
-export const searchableFields: SearchableField[] = [
+export const searchableUserFields: SearchableUserField[] = [
   'firstName',
   'lastName',
   'email',
