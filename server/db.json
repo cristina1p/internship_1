@@ -11,7 +11,7 @@
       "password": "$2a$10$3gP.lB1hesTRVD2shNylNe.w0xDJb0Un/wB6TYApB6VZbiF67pJ8y"
     },
     {
-      "id": 3,
+      "id": 2,
       "createdAt": "2024-11-05T16:15:11.021Z",
       "firstName": "Mike",
       "lastName": "Kloe",
@@ -21,7 +21,7 @@
       "password": "$2a$10$Fc0lp1Ih0stYadukBJT8LulpzHkDbHBfEQE49sYIRGxeio6kO6BS."
     },
     {
-      "id": 4,
+      "id": 3,
       "createdAt": "2024-09-05T17:21:19.268Z",
       "firstName": "Luke",
       "lastName": "Adam",
@@ -46,7 +46,7 @@
       "id": 1,
       "title": "10 Tips for Better Productivity",
       "description": "Discover ten actionable tips to boost your productivity and manage your time more efficiently.",
-      "image": "https://via.placeholder.com/300x200?text=Productivity+Tips",
+      "image": "https://placeholder.pics/svg/300",
       "date": "2025-01-01",
       "userId": 1,
       "viewCounter": 250,
@@ -56,7 +56,7 @@
       "id": 2,
       "title": "A Beginner's Guide to TypeScript",
       "description": "Learn the basics of TypeScript and how it can improve your JavaScript projects.",
-      "image": "https://via.placeholder.com/300x200?text=TypeScript+Guide",
+      "image": "https://placeholder.pics/svg/300",
       "date": "2025-01-13",
       "userId": 2,
       "viewCounter": 150,
@@ -66,7 +66,7 @@
       "id": 3,
       "title": "Top 5 SCSS Tricks for Developers",
       "description": "Master SCSS with these top 5 tricks to make your stylesheets more powerful and maintainable.",
-      "image": "https://via.placeholder.com/300x200?text=SCSS+Tricks",
+      "image": "https://placeholder.pics/svg/300",
       "date": "2025-01-12",
       "userId": 3,
       "comments": [

@@ -1,10 +1,9 @@
-import { respondWithError } from '@server/helper'
+import { isAuthorized, respondWithError } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
 import { RequestWithUser } from '@server/route-handlers'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { Post } from 'src/models'
-
 
 export const deletePost = (
   router: jsonServer.JsonServerRouter<DatabaseSchema>,
@@ -14,14 +13,16 @@ export const deletePost = (
     const postId = parseInt(req.params.id) // Extract post ID from route parameter
 
     // Get the database and find the post
-    const dbPosts = router.db.get('posts')
-    const dbPost = dbPosts.find({ id: postId }).value() as Post | undefined
+    const existingPosts = router.db.get('posts')
+    const existingPost = existingPosts.find({ id: postId }).value() as
+      | Post
+      | undefined
 
-    if (!dbPost) {
+    if (!existingPost) {
       return respondWithError(res, 404, 'Post not found')
     }
 
-    if (role !== 'Admin' && role !== 'Moderator' && dbPost.userId !== userId) {
+    if (!isAuthorized(role, userId, existingPost.userId)) {
       return respondWithError(
         res,
         403,
@@ -30,7 +31,7 @@ export const deletePost = (
     }
 
     // Delete the post from the database
-    dbPosts.remove({ id: postId }).write()
+    existingPosts.remove({ id: postId }).write()
 
     // Respond with success message
     res.status(200).json({ message: 'Post deleted successfully' })

@@ -6,7 +6,6 @@ import jsonServer from 'json-server'
 import { Post } from 'src/models'
 import { z } from 'zod'
 
-
 // Zod schema to validate the post creation request body
 const CreatePostRequestBodySchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -27,11 +26,11 @@ export const createPost = (
       return respondWithError(res, 400, 'Validation failed', errors)
     }
 
-    const dbPosts = router.db.get('posts')
+    const existingPosts = router.db.get('posts')
     // Create the new post
     const newPost: Post = {
       ...result.data,
-      id: dbPosts.value().length + 1,
+      id: existingPosts.value().length + 1,
       userId, // Attach the userId of the authenticated user,
       date: new Date().toISOString(),
       viewCounter: 0,
@@ -39,7 +38,7 @@ export const createPost = (
     }
 
     // Add the new post to the database
-    dbPosts.push(newPost).write()
+    existingPosts.push(newPost).write()
 
     // Respond with the created post
     res.status(201).json(newPost)

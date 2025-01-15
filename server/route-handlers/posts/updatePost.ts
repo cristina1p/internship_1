@@ -1,11 +1,11 @@
 import { respondWithError } from '@server/helper'
+import { isAuthorized } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
 import { RequestWithUser } from '@server/route-handlers'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { Post } from 'src/models'
 import { z } from 'zod'
-
 
 // Zod schema for validating updates
 const UpdatePostRequestBodySchema = z.object({
@@ -29,15 +29,15 @@ export const updatePost = (
     }
 
     // Get the database and find the post
-    const dbPosts = router.db.get('posts')
-    const postQuery = dbPosts.find({ id: postId }) // Store the query result
-    const dbPost = postQuery.value() as Post | undefined
+    const existingPosts = router.db.get('posts')
+    const postQuery = existingPosts.find({ id: postId }) // Store the query result
+    const existingPost = postQuery.value() as Post | undefined
 
-    if (!dbPost) {
+    if (!existingPost) {
       return respondWithError(res, 404, 'Post not found')
     }
 
-    if (role !== 'Admin' && role !== 'Moderator' && dbPost.userId !== userId) {
+    if (!isAuthorized(role, userId, existingPost.userId)) {
       return respondWithError(
         res,
         403,
@@ -46,7 +46,9 @@ export const updatePost = (
     }
 
     // Update the post
-    const updatedPost = postQuery.assign({ ...dbPost, ...result.data }).write()
+    const updatedPost = postQuery
+      .assign({ ...existingPost, ...result.data })
+      .write()
 
     // Respond with the updated post
     res.status(200).json(updatedPost)

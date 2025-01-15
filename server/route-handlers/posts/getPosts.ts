@@ -1,11 +1,10 @@
-import { respondWithError } from '@server/helper'
+import { isAuthorized, respondWithError } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
 import { searchablePostFields } from '@server/models'
 import { RequestWithUser } from '@server/route-handlers'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
-
 
 // Zod schema for validating query parameters for getting posts
 const GetPostsQuerySchema = z.object({
@@ -49,8 +48,7 @@ export const getPosts =
       .get('posts')
       .filter((post) => {
         // Role-based filtering
-        const matchesRole =
-          role === 'Admin' || role === 'Moderator' || post.userId === userId
+        const matchesRole = !isAuthorized(role, userId, post.userId)
 
         const matchesStart = !start || new Date(post.date) >= new Date(start)
 
