@@ -2,9 +2,9 @@ import { respondWithError } from '@server/helper'
 import {
   DatabaseSchema,
   convertDbUserToUser,
-  searchableFields,
+  searchableUserFields,
 } from '@server/models'
-import { RequestWithUser } from '@server/route-handlers/authenticateJwt'
+import { RequestWithUser } from '@server/route-handlers'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
@@ -62,7 +62,7 @@ export const getUsers =
 
         const matchesSearch =
           !search ||
-          searchableFields.some((field) =>
+          searchableUserFields.some((field) =>
             user[field].toLowerCase().includes(search.toLowerCase()),
           )
 

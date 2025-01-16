@@ -1,7 +1,7 @@
 import { config } from '@server/config'
 import { findUserByEmail, respondWithError } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
-import { JwtUserPayload } from '@server/route-handlers/authenticateJwt'
+import { JwtUserPayload } from '@server/route-handlers'
 import bcrypt from 'bcryptjs'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'

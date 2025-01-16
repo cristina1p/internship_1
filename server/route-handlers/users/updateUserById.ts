@@ -1,10 +1,9 @@
 import { respondWithError } from '@server/helper'
 import { DatabaseSchema, convertDbUserToUser } from '@server/models'
-import { RequestWithUser } from '@server/route-handlers/authenticateJwt'
+import { RequestWithUser } from '@server/route-handlers'
 import { Response, Request } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
-
 
 const UpdateUserByIdRequestBodySchema = z.object({
   firstName: z.string().min(1, 'First name is required').optional(),

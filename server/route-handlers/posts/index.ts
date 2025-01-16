@@ -1,0 +1,5 @@
+export * from './getPosts'
+export * from './getPostById'
+export * from './createPost'
+export * from './updatePost'
+export * from './deletePost'
