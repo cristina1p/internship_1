@@ -1,27 +1,10 @@
-import { findUserByEmail, respondWithError } from '@server/helper'
+import { RegisterRequestBodySchema } from '@api/schemaValidations'
+import { RegisterResponse } from '@models/auth'
+import { respondWithError, findUserByEmail } from '@server/helper'
 import { DatabaseSchema, DbUser, convertDbUserToUser } from '@server/models'
 import bcrypt from 'bcryptjs'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
-import { z } from 'zod'
-
-const RegisterRequestBodySchema = z
-  .object({
-    firstName: z.string().min(1, 'First name is required'),
-    lastName: z.string().min(1, 'Last name is required'),
-    email: z.string().email('Invalid email address'),
-    password: z.string().min(6, 'Password must be at least 6 characters long'),
-    confirmPassword: z
-      .string()
-      .min(6, 'Confirm password must be at least 6 characters long'),
-    gender: z.enum(['Male', 'Female', 'Prefer Not to Say'], {
-      message: 'Invalid gender',
-    }),
-  })
-  .refine((data) => data.password == data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ['confirmPassword'], // Error will be attached to confirmPassword
-  })
 
 export const register =
   (router: jsonServer.JsonServerRouter<DatabaseSchema>) =>
@@ -65,5 +48,5 @@ export const register =
     res.status(201).json({
       message: 'User registered successfully',
       userDetails: convertDbUserToUser(newDbUser),
-    })
+    } as RegisterResponse)
   }

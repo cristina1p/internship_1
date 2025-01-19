@@ -1,3 +1,4 @@
+import { RoleOptions } from '@models/users'
 import { respondWithError } from '@server/helper'
 import {
   DatabaseSchema,
@@ -9,9 +10,7 @@ import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
 
-const roleEnum = z.enum(['Admin', 'Moderator', 'User'], {
-  message: 'Invalid role',
-})
+const roleEnum = z.enum(RoleOptions, { message: 'Invalid role' })
 
 const GetUsersQuerySchema = z.object({
   search: z.string().optional(),

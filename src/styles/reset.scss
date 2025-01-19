@@ -1,0 +1,94 @@
+@use '/src/styles/variables.scss' as *;
+
+/* Resetting default browser styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%; /* This allows rem units to be based on the browser default (usually 16px) */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  background-color: $background-color; /* White background for body */
+  color: #333; /* Default text color */
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  -webkit-font-smoothing: antialiased; /* Smooth fonts on macOS */
+  -moz-osx-font-smoothing: grayscale; /* Smooth fonts on Firefox/macOS */
+}
+
+/* Remove default styles for <a> links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Removing list-style and margin for ul and ol */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Button styles (remove default border and background) */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Images should be responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Forms Reset */
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  box-sizing: border-box;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Style for all form controls (inputs, selects, textareas) */
+input,
+textarea,
+select,
+button {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Focus outline */
+:focus {
+  outline: none;
+}

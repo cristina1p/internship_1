@@ -1,18 +1,13 @@
+import { LoginRequestBodySchema } from '@api/schemaValidations'
+import { LoginResponse } from '@models/auth'
 import { config } from '@server/config'
-import { findUserByEmail, respondWithError } from '@server/helper'
-import { DatabaseSchema } from '@server/models'
+import { respondWithError, findUserByEmail } from '@server/helper'
+import { DatabaseSchema, convertDbUserToUser } from '@server/models'
 import { JwtUserPayload } from '@server/route-handlers'
 import bcrypt from 'bcryptjs'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import jwt from 'jsonwebtoken'
-import { z } from 'zod'
-
-// Zod schema, validates the structure of the incoming request body
-const LoginRequestBodySchema = z.object({
-  email: z.string().email('Invalid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters long'),
-})
 
 // If data does not match this format, zod will return error
 export const login =
@@ -54,5 +49,9 @@ export const login =
         expiresIn: config.jwtExpirationTime,
       },
     )
-    res.status(200).json({ message: 'Login successful', token })
+    res.status(200).json({
+      message: 'Login successful',
+      token,
+      userDetails: convertDbUserToUser(dbUser),
+    } as LoginResponse)
   }
