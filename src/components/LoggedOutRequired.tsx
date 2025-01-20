@@ -1,12 +1,8 @@
 import { UserDetailsContext } from '@components/contexts'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState, PropsWithChildren } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
-type LoggedOutProps = {
-  children?: React.ReactNode
-}
-
-export function LoggedOutRequired({ children }: LoggedOutProps) {
+export function LoggedOutRequired({ children }: PropsWithChildren) {
   const { userDetails } = useContext(UserDetailsContext)
   const [authChecked, setAuthChecked] = useState(false) // Tracks whether authentication is initialized
 
