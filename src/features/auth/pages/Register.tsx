@@ -1,9 +1,9 @@
 import { RegisterForm } from '@auth/components/RegisterForm'
-import styles from '@auth/pages/Register.module.scss'
+import styles from '@auth/pages/AuthPage.module.scss'
 
 export function Register() {
   return (
-    <div className={styles.registerPage}>
+    <div className={styles.authPage}>
       <RegisterForm />
     </div>
   )
