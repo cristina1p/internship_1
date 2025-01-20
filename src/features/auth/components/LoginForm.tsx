@@ -3,10 +3,7 @@ import { LoginRequestBodySchema } from '@api/schemaValidations'
 import styles from '@auth/components/AuthForm.module.scss'
 import { UserDetailsContext } from '@components/contexts'
 import { Input } from '@components/Input'
-import {
-  saveTokenToLocalStorage,
-  saveUserToLocalStorage,
-} from '@helper/localStorage'
+import { saveTokenToLocalStorage } from '@helper/localStorage'
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -31,17 +28,11 @@ export const LoginForm: React.FC = () => {
     await login(loginFormValues)
       .then((response) => {
         const { token, userDetails } = response.data
-        // Store token & user details to local storage
+        // Store token to local storage
         saveTokenToLocalStorage(token)
-        saveUserToLocalStorage(userDetails)
-
         setUserDetails(userDetails)
 
-        if (userDetails.role === 'User') {
-          navigate('/posts')
-        } else {
-          navigate('/dashboard')
-        }
+        navigate('/dashboard')
       })
       .catch((error) => {
         setErrorMessage('Login failed. Please check your credentials.')

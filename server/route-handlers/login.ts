@@ -41,7 +41,6 @@ export const login =
     const token = jwt.sign(
       {
         id: dbUser.id,
-        email: dbUser.email,
         role: dbUser.role,
       } as JwtUserPayload,
       config.jwtSecretKey,

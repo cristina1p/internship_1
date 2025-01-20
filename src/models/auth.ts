@@ -9,3 +9,12 @@ export interface LoginResponse {
 export interface RegisterResponse {
   message: string
 }
+
+export interface GetAccountResponse {
+  userDetails: User
+}
+
+export interface ErrorResponse {
+  message: string
+  code: number
+}

@@ -4,6 +4,7 @@ import {
   register,
   login,
   authenticateJwt,
+  getAccount,
   getUsers,
   getUserById,
   updateUserById,
@@ -39,6 +40,8 @@ server.post('/api/register', register(router))
 server.post('/api/login', login(router))
 
 // Protected routes
+server.get('/api/account', authenticateJwt, getAccount(router))
+
 server.get('/api/users', authenticateJwt, getUsers(router))
 server.get('/api/users/:id', authenticateJwt, getUserById(router))
 server.put('/api/users/:id', authenticateJwt, updateUserById(router))
