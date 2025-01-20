@@ -27,5 +27,5 @@ export function LoggedOutRequired({ children }: LoggedOutProps) {
     }
   }
 
-  return children ? children : <Outlet />
+  return children || <Outlet />
 }
