@@ -6,6 +6,8 @@ import { Input } from '@components/Input'
 import { Select } from '@components/Select'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Gender } from '@models/users'
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
@@ -25,6 +27,20 @@ const GenderSelectOptions: GenderSelectOptionsType[] = [
 export const RegisterForm: React.FC = () => {
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
+  const mutation = useMutation({
+    mutationFn: registerApi,
+    onSuccess: () => navigate('/dashboard'),
+    onError: (error) => {
+      if (axios.isAxiosError(error)) {
+        setErrorMessage(error.response?.data?.message || 'Register failed')
+      } else {
+        // Handle non-Axios errors
+        setErrorMessage('An unexpected error occurred')
+      }
+
+      console.error(error)
+    },
+  })
 
   // react-hook-form with zod resolver
   const {
@@ -37,12 +53,7 @@ export const RegisterForm: React.FC = () => {
 
   const onSubmit = async (registerFormValues: RegisterFormValues) => {
     setErrorMessage('')
-
-    await registerApi(registerFormValues)
-      .then(() => navigate('/login'))
-      .catch((error) => {
-        setErrorMessage(error.response?.data?.message || 'Register failed')
-      })
+    mutation.mutate(registerFormValues)
   }
 
   return (

@@ -5,6 +5,7 @@ import { UserDetailsContext } from '@components/contexts'
 import { Input } from '@components/Input'
 import { saveTokenToLocalStorage } from '@helper/localStorage'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -14,6 +15,21 @@ export const LoginForm: React.FC = () => {
   const navigate = useNavigate()
   const { setUserDetails } = useContext(UserDetailsContext)
   const [errorMessage, setErrorMessage] = useState('')
+  const mutation = useMutation({
+    mutationFn: login,
+    onSuccess: (data) => {
+      const { token, userDetails } = data
+      // Store token to local storage
+      saveTokenToLocalStorage(token)
+      setUserDetails(userDetails)
+
+      navigate('/dashboard')
+    },
+    onError: (error) => {
+      setErrorMessage('Login failed. Please check your credentials.')
+      console.error(error)
+    },
+  })
 
   // react-hook-form with zod resolver
   const {
@@ -24,20 +40,8 @@ export const LoginForm: React.FC = () => {
     resolver: zodResolver(LoginRequestBodySchema),
   })
 
-  const onSubmit = async (loginFormValues: LoginFormValues) => {
-    await login(loginFormValues)
-      .then((response) => {
-        const { token, userDetails } = response.data
-        // Store token to local storage
-        saveTokenToLocalStorage(token)
-        setUserDetails(userDetails)
-
-        navigate('/dashboard')
-      })
-      .catch((error) => {
-        setErrorMessage('Login failed. Please check your credentials.')
-        console.error(error)
-      })
+  const onSubmit = (loginFormValues: LoginFormValues) => {
+    mutation.mutate(loginFormValues)
   }
 
   return (
