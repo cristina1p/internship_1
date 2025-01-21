@@ -1,5 +1,6 @@
 import { getAccount } from '@api/user'
 import { UserDetailsContext } from '@components/contexts/UserDetailsContext'
+import { Spinner } from '@components/Spinner'
 import { getTokenFromLocalStorage } from '@helper/localStorage'
 import { User } from '@models/users'
 import { useQuery } from '@tanstack/react-query'
@@ -9,29 +10,31 @@ export function UserDetailsContextProvider({
   children,
 }: React.PropsWithChildren) {
   const [userDetails, setUserDetails] = useState<User | undefined>(undefined)
-  const [isAuthChecked, setIsAuthChecked] = useState<boolean>(false)
+  // Temporary sync state to avoid flicker
+  const [isSyncing, setIsSyncing] = useState<boolean>(true)
   const token = getTokenFromLocalStorage()
-  const { data, isError, isSuccess } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['accountDetails'],
     queryFn: getAccount,
     enabled: !!token, // Only run the query if the token exists
   })
-  useEffect(() => {
-    if (data) {
-      setUserDetails(data.userDetails)
-    }
-  }, [data])
 
   useEffect(() => {
-    if (!token || isError || isSuccess) {
-      setIsAuthChecked(true)
+    if (data?.userDetails) {
+      setUserDetails(data.userDetails)
+      setIsSyncing(false) // Synchronization complete
+    } else if (!isLoading) {
+      // If loading is done
+      setIsSyncing(false)
     }
-  }, [token, isError, isSuccess])
+  }, [data, isLoading])
+
+  if (isLoading || isSyncing) {
+    return <Spinner /> // Show spinner while loading or syncing
+  }
 
   return (
-    <UserDetailsContext.Provider
-      value={{ isAuthChecked, userDetails, setUserDetails }}
-    >
+    <UserDetailsContext.Provider value={{ userDetails, setUserDetails }}>
       {children}
     </UserDetailsContext.Provider>
   )

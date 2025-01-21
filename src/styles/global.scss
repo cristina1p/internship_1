@@ -3,3 +3,9 @@
 
 @use './reset' as *;
 @use './typography' as *;
+
+html,
+body,
+#root {
+  height: 100%;
+}

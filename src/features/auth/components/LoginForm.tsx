@@ -23,7 +23,7 @@ export const LoginForm: React.FC = () => {
       saveTokenToLocalStorage(token)
       setUserDetails(userDetails)
 
-      navigate('/dashboard')
+      navigate('/dashboard', { replace: true })
     },
     onError: (error) => {
       setErrorMessage('Login failed. Please check your credentials.')
