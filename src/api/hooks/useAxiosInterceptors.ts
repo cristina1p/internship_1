@@ -1,11 +1,10 @@
 import { api } from '@api/axios'
-import { removeTokenFromLocalStorage } from '@helper/localStorage'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { TokenContext } from '@components/contexts'
+import { useContext, useEffect } from 'react'
 
 // Custom hook to set up the interceptor
 export const useAxiosInterceptors = () => {
-  const navigate = useNavigate()
+  const { setToken } = useContext(TokenContext)
 
   useEffect(() => {
     // Add a response interceptor
@@ -20,9 +19,7 @@ export const useAxiosInterceptors = () => {
           error.response?.status === 401 &&
           error.response?.data?.message === 'Invalid or expired token'
         ) {
-          console.error('Unauthorized! Redirecting to login...')
-          removeTokenFromLocalStorage()
-          navigate('/login') // Redirect to login page using react-router-dom navigate
+          setToken('')
         }
         // Reject the promise to handle other errors
         return Promise.reject(error)
@@ -33,5 +30,5 @@ export const useAxiosInterceptors = () => {
     return () => {
       api.interceptors.response.eject(responseInterceptor)
     }
-  }, [navigate])
+  }, [setToken])
 }

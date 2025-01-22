@@ -1,33 +1,29 @@
 import { login, LoginFormValues } from '@api/auth'
 import { LoginRequestBodySchema } from '@api/schemaValidations'
 import styles from '@auth/components/AuthForm.module.scss'
-import { UserDetailsContext } from '@components/contexts'
+import { TokenContext } from '@components/contexts'
 import { Input } from '@components/Input'
-import { saveTokenToLocalStorage } from '@helper/localStorage'
+import { paths } from '@helper/paths'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
-export const LoginForm: React.FC = () => {
+export const LoginForm = () => {
   const navigate = useNavigate()
-  const { setUserDetails } = useContext(UserDetailsContext)
+  const { setToken } = useContext(TokenContext)
   const [errorMessage, setErrorMessage] = useState('')
-  const mutation = useMutation({
+
+  const { mutate } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      const { token, userDetails } = data
-      // Store token to local storage
-      saveTokenToLocalStorage(token)
-      setUserDetails(userDetails)
-
-      navigate('/dashboard', { replace: true })
+      setToken(data.token)
+      navigate(paths.dashboard, { replace: true })
     },
-    onError: (error) => {
+    onError: () => {
       setErrorMessage('Login failed. Please check your credentials.')
-      console.error(error)
     },
   })
 
@@ -41,7 +37,7 @@ export const LoginForm: React.FC = () => {
   })
 
   const onSubmit = (loginFormValues: LoginFormValues) => {
-    mutation.mutate(loginFormValues)
+    mutate(loginFormValues)
   }
 
   return (
@@ -81,7 +77,7 @@ export const LoginForm: React.FC = () => {
       </form>
 
       <span>
-        Don't have an account? <Link to="/register">Register</Link>
+        Don't have an account? <Link to={paths.register}>Register</Link>
       </span>
     </div>
   )

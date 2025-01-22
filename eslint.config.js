@@ -25,6 +25,13 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      'padding-line-between-statements': [
+        'warn',
+        // Require a blank line after variable declarations
+        { blankLine: 'always', prev: 'const', next: 'function' },
+        { blankLine: 'always', prev: 'let', next: 'function' },
+        { blankLine: 'always', prev: 'var', next: 'function' },
+      ],
       'import/order': [
         'error',
         {

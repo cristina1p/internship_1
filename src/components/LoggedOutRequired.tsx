@@ -1,4 +1,5 @@
 import { UserDetailsContext } from '@components/contexts'
+import { paths } from '@helper/paths'
 import { useContext, PropsWithChildren } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
@@ -6,7 +7,7 @@ export function LoggedOutRequired({ children }: PropsWithChildren) {
   const { userDetails } = useContext(UserDetailsContext)
 
   if (userDetails) {
-    return <Navigate to={'/dashboard'} replace />
+    return <Navigate to={paths.dashboard} replace />
   }
 
   return children || <Outlet />

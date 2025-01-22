@@ -2,9 +2,11 @@ import { Login } from '@auth/pages/Login'
 import { Register } from '@auth/pages/Register'
 import { AuthRequired } from '@components/AuthRequired'
 import { AxiosInterceptors } from '@components/AxiosInterceptors'
+import { TokenContextProvider } from '@components/contexts'
 import { UserDetailsContextProvider } from '@components/contexts/UserDetailsContextProvider'
 import { LoggedOutRequired } from '@components/LoggedOutRequired'
 import { NotFound } from '@components/NotFound'
+import { paths } from '@helper/paths'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -14,25 +16,30 @@ export function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <AxiosInterceptors />
-        <UserDetailsContextProvider>
-          <Routes>
-            <Route path="/" element={<div>Home</div>} />
+        <TokenContextProvider>
+          <AxiosInterceptors />
+          <UserDetailsContextProvider>
+            <Routes>
+              <Route path={paths.home} element={<div>Home</div>} />
 
-            <Route element={<LoggedOutRequired />}>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-            </Route>
+              <Route element={<LoggedOutRequired />}>
+                <Route path={paths.login} element={<Login />} />
+                <Route path={paths.register} element={<Register />} />
+              </Route>
 
-            <Route element={<AuthRequired />}>
-              <Route path="/posts" element={<div>Posts Page</div>} />
-              <Route path="/users" element={<div>Users Page</div>} />
-              <Route path="/dashboard" element={<div>Dashboard Page</div>} />
-            </Route>
+              <Route element={<AuthRequired />}>
+                <Route path={paths.posts} element={<div>Posts Page</div>} />
+                <Route path={paths.users} element={<div>Users Page</div>} />
+                <Route
+                  path={paths.dashboard}
+                  element={<div>Dashboard Page</div>}
+                />
+              </Route>
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </UserDetailsContextProvider>
+              <Route path={paths.notFound} element={<NotFound />} />
+            </Routes>
+          </UserDetailsContextProvider>
+        </TokenContextProvider>
       </BrowserRouter>
     </QueryClientProvider>
   )

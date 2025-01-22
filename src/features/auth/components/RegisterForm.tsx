@@ -4,6 +4,7 @@ import styles from '@auth/components/AuthForm.module.scss'
 import { Checkbox } from '@components/Checkbox'
 import { Input } from '@components/Input'
 import { Select } from '@components/Select'
+import { paths } from '@helper/paths'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Gender } from '@models/users'
 import { useMutation } from '@tanstack/react-query'
@@ -27,9 +28,10 @@ const GenderSelectOptions: GenderSelectOptionsType[] = [
 export const RegisterForm: React.FC = () => {
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
-  const mutation = useMutation({
+
+  const { mutate } = useMutation({
     mutationFn: registerApi,
-    onSuccess: () => navigate('/dashboard'),
+    onSuccess: () => navigate(paths.login),
     onError: (error) => {
       if (axios.isAxiosError(error)) {
         setErrorMessage(error.response?.data?.message || 'Register failed')
@@ -37,8 +39,6 @@ export const RegisterForm: React.FC = () => {
         // Handle non-Axios errors
         setErrorMessage('An unexpected error occurred')
       }
-
-      console.error(error)
     },
   })
 
@@ -53,7 +53,7 @@ export const RegisterForm: React.FC = () => {
 
   const onSubmit = async (registerFormValues: RegisterFormValues) => {
     setErrorMessage('')
-    mutation.mutate(registerFormValues)
+    mutate(registerFormValues)
   }
 
   return (
@@ -137,7 +137,7 @@ export const RegisterForm: React.FC = () => {
       </form>
 
       <span>
-        Already register? <Link to="/login">Login</Link>
+        Already register? <Link to={paths.login}>Login</Link>
       </span>
     </div>
   )
