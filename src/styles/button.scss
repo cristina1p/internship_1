@@ -1,0 +1,16 @@
+@use '/src/styles/variables.scss' as *;
+
+.buttonPrimary {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 4px;
+  background: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: #0056b3;
+  }
+}

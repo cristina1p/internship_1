@@ -10,7 +10,6 @@ export interface RequestWithUser extends Request {
 
 export type JwtUserPayload = {
   id: number
-  email: string
   role: Role
 }
 

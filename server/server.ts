@@ -4,6 +4,7 @@ import {
   register,
   login,
   authenticateJwt,
+  getAccount,
   getUsers,
   getUserById,
   updateUserById,
@@ -34,21 +35,23 @@ const router = jsonServer.router<DatabaseSchema>(`${__dirname}${config.dbPath}`)
 const middlewares = jsonServer.defaults()
 
 // Register a custom POST /register endpoint
-server.post('/register', register(router))
+server.post('/api/register', register(router))
 // Set up a custom route for /login
-server.post('/login', login(router))
+server.post('/api/login', login(router))
 
 // Protected routes
-server.get('/users', authenticateJwt, getUsers(router))
-server.get('/users/:id', authenticateJwt, getUserById(router))
-server.put('/users/:id', authenticateJwt, updateUserById(router))
-server.delete('/users/:id', authenticateJwt, deleteUserById(router))
+server.get('/api/account', authenticateJwt, getAccount(router))
 
-server.get('/posts', authenticateJwt, getPosts(router))
-server.get('/posts/:id', authenticateJwt, getPostById(router))
-server.post('/posts', authenticateJwt, createPost(router))
-server.put('/posts/:id', authenticateJwt, updatePost(router))
-server.delete('/posts/:id', authenticateJwt, deletePost(router))
+server.get('/api/users', authenticateJwt, getUsers(router))
+server.get('/api/users/:id', authenticateJwt, getUserById(router))
+server.put('/api/users/:id', authenticateJwt, updateUserById(router))
+server.delete('/api/users/:id', authenticateJwt, deleteUserById(router))
+
+server.get('/api/posts', authenticateJwt, getPosts(router))
+server.get('/api/posts/:id', authenticateJwt, getPostById(router))
+server.post('/api/posts', authenticateJwt, createPost(router))
+server.put('/api/posts/:id', authenticateJwt, updatePost(router))
+server.delete('/api/posts/:id', authenticateJwt, deletePost(router))
 
 // Set up middlewares and router
 server.use(middlewares)

@@ -9,3 +9,15 @@ export interface User {
 
 export type Gender = 'Male' | 'Female' | 'Prefer Not to Say'
 export type Role = 'Admin' | 'Moderator' | 'User'
+
+export const GenderOptions: ['Male', 'Female', 'Prefer Not to Say'] = [
+  'Male',
+  'Female',
+  'Prefer Not to Say',
+]
+
+export const RoleOptions: ['Admin', 'Moderator', 'User'] = [
+  'Admin',
+  'Moderator',
+  'User',
+]

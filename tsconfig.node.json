@@ -24,7 +24,9 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@models/*": ["src/models/*"],
-      "@server/*": ["server/*"]
+      "@server/*": ["server/*"],
+      "@api/*": ["src/api/*"],
+      "@auth/*": ["src/features/auth/*"]
     }
   },
   "include": ["vite.config.ts"]

@@ -1,0 +1,30 @@
+@use '/src/styles/variables.scss' as *;
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+
+  .checkbox {
+    display: flex;
+    gap: 8px;
+
+    .label {
+      font-size: 14px;
+      color: $text-color;
+    }
+  }
+
+  .errorMessage {
+    color: $error-color;
+    font-size: 0.9rem;
+  }
+
+  &.hasError {
+    .input {
+      &:focus {
+        border-color: $error-color;
+        box-shadow: 0 0 4px rgba(231, 76, 60, 0.5);
+      }
+    }
+  }
+}
