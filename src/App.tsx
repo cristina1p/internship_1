@@ -4,6 +4,7 @@ import { AuthRequired } from '@components/AuthRequired'
 import { AxiosInterceptors } from '@components/AxiosInterceptors'
 import { TokenContextProvider } from '@components/contexts'
 import { UserDetailsContextProvider } from '@components/contexts/UserDetailsContextProvider'
+import { LanguageSwitcher } from '@components/LanguageSwitcher'
 import { LoggedOutRequired } from '@components/LoggedOutRequired'
 import { NotFound } from '@components/NotFound'
 import { paths } from '@helper/paths'
@@ -20,7 +21,14 @@ export function App() {
           <AxiosInterceptors />
           <UserDetailsContextProvider>
             <Routes>
-              <Route path={paths.home} element={<div>Home</div>} />
+              <Route
+                path={paths.home}
+                element={
+                  <div>
+                    <LanguageSwitcher />
+                  </div>
+                }
+              />
 
               <Route element={<LoggedOutRequired />}>
                 <Route path={paths.login} element={<Login />} />

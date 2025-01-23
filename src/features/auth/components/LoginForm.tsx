@@ -8,10 +8,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 export const LoginForm = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const { setToken } = useContext(TokenContext)
   const [errorMessage, setErrorMessage] = useState('')
@@ -47,7 +49,7 @@ export const LoginForm = () => {
         className={styles.authForm}
         aria-labelledby="login-form-title"
       >
-        <h2 id="login-form-title">Login</h2>
+        <h2 id="login-form-title">{t('loginForm.title')}</h2>
 
         {errorMessage && (
           <span className={styles.errorMessage}>{errorMessage}</span>
@@ -55,29 +57,32 @@ export const LoginForm = () => {
 
         <Input
           id="email"
-          label="Email"
+          label={t('authForm.emailLabel')}
           type="email"
-          placeholder="Enter your email"
+          placeholder={t('authForm.emailPlaceholder')}
           error={errors.email?.message}
           extraInputProps={() => register('email')}
         />
 
         <Input
           id="password"
-          label="Password"
+          label={t('authForm.passwordLabel')}
           type="password"
-          placeholder="Enter your password"
+          placeholder={t('authForm.passwordPlaceholder')}
           error={errors.password?.message}
           extraInputProps={() => register('password')}
         />
 
-        <button type="submit" className="button" disabled={isSubmitting}>
-          {isSubmitting ? 'Logging in...' : 'Login'}
+        <button type="submit" className="buttonPrimary" disabled={isSubmitting}>
+          {isSubmitting
+            ? t('loginForm.loggingInButton')
+            : t('loginForm.loginButton')}{' '}
         </button>
       </form>
 
       <span>
-        Don't have an account? <Link to={paths.register}>Register</Link>
+        {t('loginForm.noAccount')}{' '}
+        <Link to={paths.register}>{t('loginForm.registerLink')}</Link>
       </span>
     </div>
   )

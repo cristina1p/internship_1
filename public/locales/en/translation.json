@@ -1,0 +1,26 @@
+{
+  "authForm.emailLabel": "Email",
+  "authForm.emailPlaceholder": "Enter your email",
+  "authForm.passwordLabel": "Password",
+  "authForm.passwordPlaceholder": "Enter your password",
+
+  "loginForm.title": "Login",
+  "loginForm.loggingInButton": "Logging in...",
+  "loginForm.loginButton": "Login",
+  "loginForm.noAccount": "Don't have an account?",
+  "loginForm.registerLink": "Register",
+
+  "registerForm.title": "Register",
+  "registerForm.firstNameLabel": "First Name",
+  "registerForm.firstNamePlaceholder": "Enter your first name",
+  "registerForm.lastNameLabel": "Last Name",
+  "registerForm.lastNamePlaceholder": "Enter your last name",
+  "registerForm.genderLabel": "Gender",
+  "registerForm.confirmPasswordLabel": "Confirm Password",
+  "registerForm.confirmPasswordPlaceholder": "Confirm your password",
+  "registerForm.termsAndConditionsLabel": "I agree to the terms and conditions",
+  "registerForm.registeringButton": "Registering...",
+  "registerForm.registerButton": "Register",
+  "registerForm.alreadyRegistered": "Already registered?",
+  "registerForm.loginLink": "Login"
+}
