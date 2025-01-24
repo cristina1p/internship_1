@@ -9,8 +9,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Gender } from '@models/users'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 
 type GenderSelectOptionsType = {
@@ -25,7 +26,8 @@ const GenderSelectOptions: GenderSelectOptionsType[] = [
   { value: 'Prefer Not to Say', label: 'Prefer Not to Say' },
 ]
 
-export const RegisterForm: React.FC = () => {
+export const RegisterForm = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -63,7 +65,7 @@ export const RegisterForm: React.FC = () => {
         className={styles.authForm}
         aria-labelledby="register-form-title"
       >
-        <h2 id="register-form-title">Register</h2>
+        <h2 id="register-form-title">{t('registerForm.title')}</h2>
 
         {errorMessage && (
           <span className={styles.errorMessage}>{errorMessage}</span>
@@ -71,18 +73,18 @@ export const RegisterForm: React.FC = () => {
 
         <Input
           id="firstName"
-          label="First Name"
+          label={t('registerForm.firstNameLabel')}
           type="text"
-          placeholder="Enter your first name"
+          placeholder={t('registerForm.firstNamePlaceholder')}
           error={errors.firstName?.message}
           extraInputProps={() => register('firstName')}
         />
 
         <Input
           id="lastName"
-          label="Last Name"
+          label={t('registerForm.lastNameLabel')}
           type="text"
-          placeholder="Enter your last name"
+          placeholder={t('registerForm.lastNamePlaceholder')}
           aria-label="Last Name"
           aria-required={true}
           error={errors.lastName?.message}
@@ -91,16 +93,16 @@ export const RegisterForm: React.FC = () => {
 
         <Input
           id="email"
-          label="Email"
+          label={t('authForm.emailLabel')}
           type="email"
-          placeholder="Enter your email"
+          placeholder={t('authForm.emailPlaceholder')}
           error={errors.email?.message}
           extraInputProps={() => register('email')}
         />
 
         <Select
           id="gender"
-          label="Gender"
+          label={t('registerForm.genderLabel')}
           error={errors.gender}
           options={GenderSelectOptions}
           extraSelectProps={() => register('gender')}
@@ -108,17 +110,17 @@ export const RegisterForm: React.FC = () => {
 
         <Input
           id="password"
-          label="Password"
+          label={t('authForm.passwordLabel')}
           type="password"
-          placeholder="Enter your password"
+          placeholder={t('authForm.passwordPlaceholder')}
           error={errors.password?.message}
           extraInputProps={() => register('password')}
         />
 
         <Input
           id="confirmPassword"
-          label="Confirm Password"
-          placeholder="Confirm your password"
+          label={t('registerForm.confirmPasswordLabel')}
+          placeholder={t('registerForm.confirmPasswordPlaceholder')}
           type="password"
           error={errors.confirmPassword?.message}
           extraInputProps={() => register('confirmPassword')}
@@ -126,18 +128,21 @@ export const RegisterForm: React.FC = () => {
 
         <Checkbox
           id="termsAndConditions"
-          label="I agree to the terms and conditions"
+          label={t('registerForm.termsAndConditionsLabel')}
           error={errors.termsAndConditions}
           extraInputProps={() => register('termsAndConditions')}
         />
 
         <button className="button" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Registering in...' : 'Register'}
+          {isSubmitting
+            ? t('registerForm.registeringButton')
+            : t('registerForm.registerButton')}
         </button>
       </form>
 
       <span>
-        Already register? <Link to={paths.login}>Login</Link>
+        {t('registerForm.alreadyRegistered')}{' '}
+        <Link to={paths.login}>{t('registerForm.loginLink')}</Link>
       </span>
     </div>
   )

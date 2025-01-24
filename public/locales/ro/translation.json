@@ -1,0 +1,26 @@
+{
+  "authForm.emailPlaceholder": "Introduceți adresa de email",
+  "authForm.emailLabel": "Email",
+  "authForm.passwordLabel": "Parolă",
+  "authForm.passwordPlaceholder": "Introduceți parola",
+
+  "loginForm.title": "Autentificare",
+  "loginForm.loggingInButton": "Se autentifică...",
+  "loginForm.loginButton": "Autentificare",
+  "loginForm.noAccount": "Nu aveți un cont?",
+  "loginForm.registerLink": "Înregistrare",
+
+  "registerForm.title": "Înregistrare",
+  "registerForm.firstNameLabel": "Prenume",
+  "registerForm.firstNamePlaceholder": "Introdu prenumele tău",
+  "registerForm.lastNameLabel": "Nume",
+  "registerForm.lastNamePlaceholder": "Introdu numele tău",
+  "registerForm.genderLabel": "Gen",
+  "registerForm.confirmPasswordLabel": "Confirmă Parola",
+  "registerForm.confirmPasswordPlaceholder": "Confirmă parola",
+  "registerForm.termsAndConditionsLabel": "Sunt de acord cu termenii și condițiile",
+  "registerForm.registeringButton": "Se înregistrează...",
+  "registerForm.registerButton": "Înregistrare",
+  "registerForm.alreadyRegistered": "Ai deja un cont?",
+  "registerForm.loginLink": "Autentificare"
+}
