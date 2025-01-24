@@ -21,14 +21,7 @@ export function App() {
           <AxiosInterceptors />
           <UserDetailsContextProvider>
             <Routes>
-              <Route
-                path={paths.home}
-                element={
-                  <div>
-                    <LanguageSwitcher />
-                  </div>
-                }
-              />
+              <Route path={paths.home} element={<LanguageSwitcher />} />
 
               <Route element={<LoggedOutRequired />}>
                 <Route path={paths.login} element={<Login />} />
