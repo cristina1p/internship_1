@@ -3,12 +3,13 @@
     {
       "id": 1,
       "createdAt": "2025-01-05T16:05:45.222Z",
-      "firstName": "Ana-Maria",
+      "firstName": "Ana",
       "lastName": "B",
       "email": "ana@gmail.com",
       "gender": "Female",
       "role": "Admin",
-      "password": "$2a$10$3gP.lB1hesTRVD2shNylNe.w0xDJb0Un/wB6TYApB6VZbiF67pJ8y"
+      "password": "$2a$10$3gP.lB1hesTRVD2shNylNe.w0xDJb0Un/wB6TYApB6VZbiF67pJ8y",
+      "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
       "id": 2,
@@ -18,7 +19,8 @@
       "email": "mikekloe@example.com",
       "gender": "Male",
       "role": "Moderator",
-      "password": "$2a$10$Fc0lp1Ih0stYadukBJT8LulpzHkDbHBfEQE49sYIRGxeio6kO6BS."
+      "password": "$2a$10$Fc0lp1Ih0stYadukBJT8LulpzHkDbHBfEQE49sYIRGxeio6kO6BS.",
+      "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
       "id": 3,
@@ -28,17 +30,19 @@
       "email": "lukeadam@example.com",
       "gender": "Male",
       "role": "User",
-      "password": "$2a$10$tzg22H.YtAd3XeRZDFdtc.HpskmVqQ8O0Fm/lkDekX7JpSmehgHkS"
+      "password": "$2a$10$tzg22H.YtAd3XeRZDFdtc.HpskmVqQ8O0Fm/lkDekX7JpSmehgHkS",
+      "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
-      "id": 5,
+      "id": 4,
       "createdAt": "2024-07-05T17:31:44.876Z",
       "firstName": "John",
       "lastName": "Adam",
       "email": "johnadam@example.com",
       "gender": "Male",
       "role": "User",
-      "password": "$2a$10$Oso2eKgp54Cm7er3Z6KKM.DJAXKQWrCkWX0ABZ853EJrVxZTyeEUK"
+      "password": "$2a$10$Oso2eKgp54Cm7er3Z6KKM.DJAXKQWrCkWX0ABZ853EJrVxZTyeEUK",
+      "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
       "id": 5,
@@ -48,7 +52,8 @@
       "gender": "Male",
       "role": "User",
       "password": "$2a$10$oaDcohMz0CS/isf3bA1Uy.Mhavq.UMotX7NbssPiiCLlomfDZh5/m",
-      "createdAt": "2025-01-09T08:14:45.099Z"
+      "createdAt": "2025-01-09T08:14:45.099Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
       "id": 6,
@@ -58,7 +63,8 @@
       "gender": "Female",
       "role": "User",
       "password": "$2a$10$IboB.35evnSheFYbrXvMCutkHrlbAsNOtp1ThqILnlbmIA78kIrSK",
-      "createdAt": "2025-01-09T08:15:53.971Z"
+      "createdAt": "2025-01-09T08:15:53.971Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
       "id": 7,
@@ -68,7 +74,8 @@
       "gender": "Female",
       "role": "User",
       "password": "$2a$10$sSH1M1GTcTU2ddSJlahPYeiiAJTSSgEFNLw5vEX8kCucAnCueg0.G",
-      "createdAt": "2025-01-09T08:21:23.345Z"
+      "createdAt": "2025-01-09T08:21:23.345Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
       "id": 8,
@@ -78,7 +85,8 @@
       "gender": "Male",
       "role": "User",
       "password": "$2a$10$GWlUJwWKUMGvxGIQ96RG9uaqSKEMgs77.VvJYO/xyqS7MAgDP.X5G",
-      "createdAt": "2025-01-09T09:12:33.267Z"
+      "createdAt": "2025-01-09T09:12:33.267Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
       "id": 9,
@@ -88,7 +96,8 @@
       "gender": "Male",
       "role": "User",
       "password": "$2a$10$M9WIR1CygcvX4lm45LStlOPA.gimwQM8gbKpFm05awLtF2Xlde0Im",
-      "createdAt": "2025-01-09T09:15:44.369Z"
+      "createdAt": "2025-01-09T09:15:44.369Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
     }
   ],
   "posts": [

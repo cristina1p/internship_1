@@ -1,0 +1,62 @@
+@use '/src/styles/variables.scss' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: $background-color;
+  border-bottom: 1px solid #e7e7e7;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .headerActions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .loggedInUserSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff;
+    padding: 5px 15px;
+    border-radius: 30px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    span {
+      width: 150px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 1rem;
+    }
+
+    .profileImage {
+      width: 40px; // Ensure the image has a fixed width
+      border-radius: 50%; // Make the image round (circle)
+      object-fit: cover; // Ensure the image fits well inside the circle without distortion
+    }
+  }
+}

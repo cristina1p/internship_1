@@ -5,6 +5,7 @@ export interface User {
   email: string // User's email address
   gender: Gender // Gender selection
   role: Role // User role
+  profileImage: string
 }
 
 export type Gender = 'Male' | 'Female' | 'Prefer Not to Say'

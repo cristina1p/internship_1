@@ -4,7 +4,7 @@ import { AuthRequired } from '@components/AuthRequired'
 import { AxiosInterceptors } from '@components/AxiosInterceptors'
 import { TokenContextProvider } from '@components/contexts'
 import { UserDetailsContextProvider } from '@components/contexts/UserDetailsContextProvider'
-import { LanguageSwitcher } from '@components/LanguageSwitcher'
+import { Layout } from '@components/layout/Layout'
 import { LoggedOutRequired } from '@components/LoggedOutRequired'
 import { NotFound } from '@components/NotFound'
 import { paths } from '@helper/paths'
@@ -21,23 +21,24 @@ export function App() {
           <AxiosInterceptors />
           <UserDetailsContextProvider>
             <Routes>
-              <Route path={paths.home} element={<LanguageSwitcher />} />
-
               <Route element={<LoggedOutRequired />}>
                 <Route path={paths.login} element={<Login />} />
                 <Route path={paths.register} element={<Register />} />
               </Route>
 
-              <Route element={<AuthRequired />}>
-                <Route path={paths.posts} element={<div>Posts Page</div>} />
-                <Route path={paths.users} element={<div>Users Page</div>} />
-                <Route
-                  path={paths.dashboard}
-                  element={<div>Dashboard Page</div>}
-                />
-              </Route>
+              <Route element={<Layout />}>
+                <Route path={paths.home} />
+                <Route element={<AuthRequired />}>
+                  <Route path={paths.posts} element={<div>Posts Page</div>} />
+                  <Route path={paths.users} element={<div>Users Page</div>} />
+                  <Route
+                    path={paths.dashboard}
+                    element={<div>Dashboard Page</div>}
+                  />
+                </Route>
 
-              <Route path={paths.notFound} element={<NotFound />} />
+                <Route path={paths.notFound} element={<NotFound />} />
+              </Route>
             </Routes>
           </UserDetailsContextProvider>
         </TokenContextProvider>

@@ -1,6 +1,5 @@
 @use './variables' as *;
 @use './button' as *;
-
 @use './reset' as *;
 @use './typography' as *;
 
@@ -8,4 +7,28 @@ html,
 body,
 #root {
   height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  header {
+    padding: 20px;
+  }
+
+  main {
+    flex: 1; // This allows the content area to grow
+    background: #e9ecef;
+    padding: 20px;
+    text-align: center;
+  }
+
+  footer {
+    padding: 20px;
+    color: $text-light-color;
+    text-align: center;
+    background-color: $background-dark-color;
+  }
 }

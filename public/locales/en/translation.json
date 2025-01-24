@@ -1,4 +1,9 @@
 {
+  "header.signin_button": "Sign In",
+  "header.signup_button": "Sign Up",
+  "header.logout_button": "Log Out",
+  "footer.copyright": "© 2025 Your App. All Rights Reserved.",
+
   "authForm.emailLabel": "Email",
   "authForm.emailPlaceholder": "Enter your email",
   "authForm.passwordLabel": "Password",

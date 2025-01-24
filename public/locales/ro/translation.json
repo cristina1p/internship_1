@@ -1,4 +1,9 @@
 {
+  "header.signin_button": "Autentificare",
+  "header.signup_button": "Înregistrare",
+  "header.logout_button": "Deconectare",
+  "footer.copyright": "© 2025 Aplicația Ta. Toate Drepturile Rezervate.",
+
   "authForm.emailPlaceholder": "Introduceți adresa de email",
   "authForm.emailLabel": "Email",
   "authForm.passwordLabel": "Parolă",
