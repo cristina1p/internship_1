@@ -27,13 +27,16 @@ export function App() {
               </Route>
 
               <Route element={<Layout />}>
-                <Route path={paths.home} />
                 <Route element={<AuthRequired />}>
                   <Route path={paths.posts} element={<div>Posts Page</div>} />
                   <Route path={paths.users} element={<div>Users Page</div>} />
                   <Route
                     path={paths.dashboard}
                     element={<div>Dashboard Page</div>}
+                  />
+                  <Route
+                    path={paths.settings}
+                    element={<div>Settings Page</div>}
                   />
                 </Route>
 

@@ -1,0 +1,37 @@
+@use '/src/styles/variables.scss' as *;
+
+.layout {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  @media (min-width: 1200px) {
+    &.loggedIn {
+      grid-template-columns: auto 1fr;
+    }
+
+    nav {
+      grid-row: 1 / span 2;
+    }
+
+    footer {
+      grid-column: 1 / -1;
+    }
+  }
+
+  header {
+    padding: 20px;
+  }
+
+  main {
+    background: #e9ecef;
+    padding: 20px;
+  }
+
+  footer {
+    padding: 20px;
+    color: $text-light-color;
+    text-align: center;
+    background-color: $background-dark-color;
+  }
+}

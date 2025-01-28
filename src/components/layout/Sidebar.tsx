@@ -1,0 +1,69 @@
+import { UserDetailsContext } from '@components/contexts'
+import styles from '@components/layout/Sidebar.module.scss'
+import { paths } from '@helper/paths'
+import { Role } from '@models/users'
+import { useContext } from 'react'
+import { FaHome, FaUser, FaFileAlt, FaCog } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+
+interface NavigationOptions {
+  path: string
+  label: string
+  icon: JSX.Element
+}
+
+type RoleBasedRoutes = Record<Role, NavigationOptions[]>
+
+interface SidebarProps {
+  isSidebarOpen: boolean
+  toggleSidebar: () => void
+}
+
+const baseRoutes: NavigationOptions[] = [
+  { path: paths.dashboard, label: 'Dashboard', icon: <FaHome /> },
+  { path: paths.posts, label: 'Posts', icon: <FaFileAlt /> },
+  { path: paths.settings, label: 'Settings', icon: <FaCog /> },
+]
+
+const roleBasedRoutes: RoleBasedRoutes = {
+  Admin: [
+    ...baseRoutes,
+    { path: paths.users, label: 'Users', icon: <FaUser /> },
+  ],
+  Moderator: baseRoutes,
+  User: baseRoutes,
+}
+
+export const Sidebar = ({ isSidebarOpen, toggleSidebar }: SidebarProps) => {
+  const { userDetails } = useContext(UserDetailsContext)
+  const { role } = userDetails!
+  const routes = roleBasedRoutes[role]
+
+  return (
+    <>
+      {isSidebarOpen && (
+        <div className={styles.backdrop} onClick={toggleSidebar} />
+      )}
+
+      <nav className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ''} `}>
+        <div>
+          <div className={styles.logo}>{isSidebarOpen ? 'Logo' : 'L'}</div>
+
+          <ul>
+            {routes.map((route) => (
+              <li key={route.path}>
+                <Link to={route.path} onClick={toggleSidebar}>
+                  {route.icon}
+
+                  {isSidebarOpen ? (
+                    <span className={styles.label}>{route.label}</span>
+                  ) : null}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+    </>
+  )
+}
