@@ -1,5 +1,5 @@
 import { api } from '@api/axios'
-import { TokenContext } from '@components/contexts'
+import { TokenContext } from '@contexts/TokenContext'
 import { useContext, useEffect } from 'react'
 
 // Custom hook to set up the interceptor

@@ -1,6 +1,9 @@
-import { UserDetailsContext } from '@components/contexts'
-import { Footer, Header, MainContent, Sidebar } from '@components/layout'
-import styles from '@components/layout/Layout.module.scss'
+import { UserDetailsContext } from '@contexts/UserDetailsContext'
+import { Footer } from '@layouts/Footer'
+import { Header } from '@layouts/Header'
+import styles from '@layouts/Layout.module.scss'
+import { MainContent } from '@layouts/MainContent'
+import { Sidebar } from '@layouts/Sidebar'
 import { PropsWithChildren, useContext, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 

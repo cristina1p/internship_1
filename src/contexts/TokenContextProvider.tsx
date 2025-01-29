@@ -1,4 +1,4 @@
-import { TokenContext } from '@components/contexts/TokenContext'
+import { TokenContext } from '@contexts/TokenContext'
 import {
   getTokenFromLocalStorage,
   saveTokenToLocalStorage,

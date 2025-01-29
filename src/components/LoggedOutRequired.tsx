@@ -1,4 +1,4 @@
-import { UserDetailsContext } from '@components/contexts'
+import { UserDetailsContext } from '@contexts/UserDetailsContext'
 import { paths } from '@helper/paths'
 import { useContext, PropsWithChildren } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'

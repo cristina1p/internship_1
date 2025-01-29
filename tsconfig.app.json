@@ -29,7 +29,9 @@
       "@models/*": ["src/models/*"],
       "@server/*": ["server/*"],
       "@api/*": ["src/api/*"],
-      "@auth/*": ["src/features/auth/*"]
+      "@auth/*": ["src/features/auth/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@layouts/*": ["src/layouts/*"]
     }
   },
   "include": ["src", "server"]
