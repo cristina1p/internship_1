@@ -1,5 +1,6 @@
 import { UserDetailsContext } from '@components/contexts'
 import styles from '@components/layout/Sidebar.module.scss'
+import { isDesktop } from '@helper/isDesktop'
 import { paths } from '@helper/paths'
 import { Role } from '@models/users'
 import { useContext } from 'react'
@@ -39,6 +40,12 @@ export const Sidebar = ({ isSidebarOpen, toggleSidebar }: SidebarProps) => {
   const { role } = userDetails!
   const routes = roleBasedRoutes[role]
 
+  const handleClick = () => {
+    if (!isDesktop()) {
+      toggleSidebar()
+    }
+  }
+
   return (
     <>
       {isSidebarOpen && (
@@ -52,7 +59,7 @@ export const Sidebar = ({ isSidebarOpen, toggleSidebar }: SidebarProps) => {
           <ul>
             {routes.map((route) => (
               <li key={route.path}>
-                <Link to={route.path} onClick={toggleSidebar}>
+                <Link to={route.path} onClick={handleClick}>
                   {route.icon}
                   {isSidebarOpen && (
                     <span className={styles.label}>{route.label}</span>
