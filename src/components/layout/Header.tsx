@@ -42,7 +42,7 @@ export const Header = ({ toggleSidebar }: HeaderProps) => {
   )
 }
 
-function HeaderLoggedInArea() {
+const HeaderLoggedInArea = () => {
   // State for toggling the dropdown menu
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const { userDetails } = useContext(UserDetailsContext)
@@ -81,7 +81,7 @@ function HeaderLoggedInArea() {
   )
 }
 
-function HeaderLoggedOutArea() {
+const HeaderLoggedOutArea = () => {
   const { t } = useTranslation()
 
   return (
