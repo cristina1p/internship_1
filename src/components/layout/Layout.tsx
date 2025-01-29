@@ -8,7 +8,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const { userDetails } = useContext(UserDetailsContext)
 
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen)
+  const toggleSidebar = () => setIsSidebarOpen((prevState) => !prevState)
 
   return (
     <div className={`${styles.layout} ${userDetails ? styles.loggedIn : ''}`}>

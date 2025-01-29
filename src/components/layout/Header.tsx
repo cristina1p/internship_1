@@ -51,7 +51,7 @@ const HeaderLoggedInArea = () => {
   const { t } = useTranslation()
 
   const logout = () => setToken('')
-  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen)
+  const toggleDropdown = () => setIsDropdownOpen((prevState) => !prevState)
 
   const { firstName, lastName, profileImage } = userDetails!
 
