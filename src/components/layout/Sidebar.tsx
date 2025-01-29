@@ -54,10 +54,9 @@ export const Sidebar = ({ isSidebarOpen, toggleSidebar }: SidebarProps) => {
               <li key={route.path}>
                 <Link to={route.path} onClick={toggleSidebar}>
                   {route.icon}
-
-                  {isSidebarOpen ? (
+                  {isSidebarOpen && (
                     <span className={styles.label}>{route.label}</span>
-                  ) : null}
+                  )}
                 </Link>
               </li>
             ))}
