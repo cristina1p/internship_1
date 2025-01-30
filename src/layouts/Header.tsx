@@ -3,7 +3,7 @@ import { TokenContext } from '@contexts/TokenContext'
 import { UserDetailsContext } from '@contexts/UserDetailsContext'
 import { paths } from '@helper/paths'
 import styles from '@layouts/Header.module.scss'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FaBars } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
@@ -28,7 +28,7 @@ export const Header = ({ toggleSidebar }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <button onClick={handleHamburgerClick}>
-        <FaBars size={30} />
+        <FaBars size={16} />
       </button>
 
       {/* Right Side */}
@@ -46,6 +46,7 @@ export const Header = ({ toggleSidebar }: HeaderProps) => {
 const HeaderLoggedInArea = () => {
   // State for toggling the dropdown menu
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
   const { userDetails } = useContext(UserDetailsContext)
   const { setToken } = useContext(TokenContext) // Acces token and setToken to clear it
 
@@ -56,8 +57,22 @@ const HeaderLoggedInArea = () => {
 
   const { firstName, lastName, profileImage } = userDetails!
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
   return (
-    <div className={styles.loggedIn}>
+    <div className={styles.loggedIn} ref={dropdownRef}>
       <span>
         {firstName} {lastName}
       </span>
