@@ -13,6 +13,7 @@ export default defineConfig({
       '@auth': '/src/features/auth',
       '@contexts': '/src/contexts',
       '@layouts': '/src/layouts',
+      '@guards': '/src/guards',
     },
   },
   server: {
