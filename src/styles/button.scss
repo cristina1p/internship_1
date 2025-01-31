@@ -52,7 +52,7 @@ $outlined-text-color: $border-color;
 
     &:hover {
       background-color: $outlined-border-color;
-      color: $primary-text-color; // Change text color on hover if needed
+      color: $primary-text-color;
     }
   }
 }

@@ -5,15 +5,14 @@
   align-items: center;
 
   select {
-    background-color: $background-color;
     color: $text-color;
-    border: 1px solid $form-border-color;
     border-radius: 4px;
     padding: 0.5rem;
     cursor: pointer;
+    background-color: $background-color;
 
     &:hover {
-      border-color: $primary-color;
+      border-color: $form-border-color;
     }
 
     &:focus {

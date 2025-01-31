@@ -1,15 +1,59 @@
+@use '/src/styles/variables.scss' as *;
+
 .sidebar {
   position: fixed;
   left: -260px;
   width: 260px;
   height: 100%;
   background-color: #f4f4f4;
-  padding: 20px;
   transition: left 0.3s ease;
   z-index: 51;
+  border-right: 1px solid $border-color;
 
   &.open {
     left: 0;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-inline: 4px;
+
+    a {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow: hidden;
+      padding-inline: 16px;
+      padding-block: 6px;
+
+      &:hover {
+        background-color: $primary-color-highlight;
+      }
+      svg {
+        flex-shrink: 0;
+      }
+    }
+
+    li {
+      &.active {
+        background-color: $primary-color-highlight;
+        border-radius: 4px;
+
+        a {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-inline: 12px;
+    padding-block: 12px;
   }
 
   @media (min-width: 1200px) {
@@ -18,32 +62,9 @@
     transition: width 0.3s ease;
 
     &.open {
-      width: 260px;
+      width: auto;
+      max-width: 260px;
     }
-  }
-
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 12px;
-
-    a {
-      height: 24px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      overflow: hidden;
-
-      svg {
-        flex-shrink: 0;
-      }
-    }
-  }
-
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
   }
 }
 

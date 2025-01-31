@@ -5,8 +5,7 @@ import styles from '@layouts/Sidebar.module.scss'
 import { Role } from '@models/users'
 import { useContext } from 'react'
 import { FaHome, FaUser, FaFileAlt, FaCog } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-
+import { Link, useLocation } from 'react-router-dom'
 interface NavigationOptions {
   path: string
   label: string
@@ -21,15 +20,15 @@ interface SidebarProps {
 }
 
 const baseRoutes: NavigationOptions[] = [
-  { path: paths.dashboard, label: 'Dashboard', icon: <FaHome /> },
-  { path: paths.posts, label: 'Posts', icon: <FaFileAlt /> },
-  { path: paths.settings, label: 'Settings', icon: <FaCog /> },
+  { path: paths.dashboard, label: 'Dashboard', icon: <FaHome size={20} /> },
+  { path: paths.posts, label: 'Posts', icon: <FaFileAlt size={20} /> },
+  { path: paths.settings, label: 'Settings', icon: <FaCog size={20} /> },
 ]
 
 const roleBasedRoutes: RoleBasedRoutes = {
   Admin: [
     ...baseRoutes,
-    { path: paths.users, label: 'Users', icon: <FaUser /> },
+    { path: paths.users, label: 'Users', icon: <FaUser size={20} /> },
   ],
   Moderator: baseRoutes,
   User: baseRoutes,
@@ -39,6 +38,7 @@ export const Sidebar = ({ isSidebarOpen, toggleSidebar }: SidebarProps) => {
   const { userDetails } = useContext(UserDetailsContext)
   const { role } = userDetails!
   const routes = roleBasedRoutes[role]
+  const location = useLocation()
 
   const handleClick = () => {
     if (!isDesktop()) {
@@ -53,12 +53,13 @@ export const Sidebar = ({ isSidebarOpen, toggleSidebar }: SidebarProps) => {
       )}
 
       <nav className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ''} `}>
-        <div>
-          <div className={styles.logo}>{isSidebarOpen ? 'Logo' : 'L'}</div>
+        <div className={styles.logo}>{isSidebarOpen ? 'Logo' : 'L'}</div>
+        <ul>
+          {routes.map((route) => {
+            const isActive = location.pathname === route.path
 
-          <ul>
-            {routes.map((route) => (
-              <li key={route.path}>
+            return (
+              <li key={route.path} className={isActive ? styles.active : ''}>
                 <Link to={route.path} onClick={handleClick}>
                   {route.icon}
                   {isSidebarOpen && (
@@ -66,9 +67,9 @@ export const Sidebar = ({ isSidebarOpen, toggleSidebar }: SidebarProps) => {
                   )}
                 </Link>
               </li>
-            ))}
-          </ul>
-        </div>
+            )
+          })}
+        </ul>
       </nav>
     </>
   )
