@@ -31,8 +31,8 @@
       "@api/*": ["src/api/*"],
       "@auth/*": ["src/features/auth/*"],
       "@contexts/*": ["src/contexts/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@guards/*": ["src/guards/*"]
+      "@guards/*": ["src/guards/*"],
+      "@layouts/*": ["src/layouts/*"]
     }
   },
   "include": ["src", "server"]

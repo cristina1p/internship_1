@@ -2,7 +2,7 @@ import { LanguageSwitcher } from '@components/LanguageSwitcher'
 import { TokenContext } from '@contexts/TokenContext'
 import { UserDetailsContext } from '@contexts/UserDetailsContext'
 import { paths } from '@helper/paths'
-import styles from '@layouts/Header.module.scss'
+import styles from '@layouts/dashboard/Header.module.scss'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FaBars } from 'react-icons/fa'
@@ -19,7 +19,7 @@ export const Header = ({ toggleSidebar }: HeaderProps) => {
 
   const handleHamburgerClick = () => {
     if (userDetails) {
-      toggleSidebar()
+      toggleSidebar() // Only call if toggleSidebar is passed
     } else {
       navigate(paths.login)
     }
@@ -31,7 +31,6 @@ export const Header = ({ toggleSidebar }: HeaderProps) => {
         <FaBars size={16} />
       </button>
 
-      {/* Right Side */}
       <div className={styles.rightSide}>
         <LanguageSwitcher />
 
@@ -101,7 +100,7 @@ const HeaderLoggedOutArea = () => {
   const { t } = useTranslation()
 
   return (
-    <div>
+    <div className={styles.loggedOut}>
       <Link to={paths.register}>
         <span className="button button--secondary">
           {t('header.signup_button')}

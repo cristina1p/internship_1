@@ -7,7 +7,8 @@ import { UserDetailsContextProvider } from '@contexts/UserDetailsContextProvider
 import { AuthRequired } from '@guards/AuthRequired'
 import { LoggedOutRequired } from '@guards/LoggedOutRequired'
 import { paths } from '@helper/paths'
-import { Layout } from '@layouts/Layout'
+import { AuthLayout } from '@layouts/auth'
+import { Layout } from '@layouts/dashboard'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -22,8 +23,10 @@ export function App() {
           <UserDetailsContextProvider>
             <Routes>
               <Route element={<LoggedOutRequired />}>
-                <Route path={paths.login} element={<Login />} />
-                <Route path={paths.register} element={<Register />} />
+                <Route element={<AuthLayout />}>
+                  <Route path={paths.login} element={<Login />} />
+                  <Route path={paths.register} element={<Register />} />
+                </Route>
               </Route>
 
               <Route element={<Layout />}>

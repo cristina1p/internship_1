@@ -1,0 +1,16 @@
+@use '/src/styles/variables.scss';
+
+.authMainContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: grey;
+  padding: 20px;
+  box-sizing: border-box;
+
+  @media (max-width: 599px) {
+    padding: 0;
+    margin: 0;
+  }
+}

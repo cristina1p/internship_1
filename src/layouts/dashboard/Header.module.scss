@@ -10,6 +10,7 @@
   .rightSide {
     display: flex;
     gap: 16px;
+    align-items: center;
 
     .nav {
       .loggedIn {
@@ -65,6 +66,15 @@
               background-color: $primary-color-highlight;
             }
           }
+        }
+      }
+
+      .loggedOut {
+        display: flex;
+        gap: 8px;
+
+        a {
+          display: flex;
         }
       }
     }
