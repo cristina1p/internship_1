@@ -22,8 +22,8 @@ export function App() {
           <AxiosInterceptors />
           <UserDetailsContextProvider>
             <Routes>
-              <Route element={<LoggedOutRequired />}>
-                <Route element={<AuthLayout />}>
+              <Route element={<AuthLayout />}>
+                <Route element={<LoggedOutRequired />}>
                   <Route path={paths.login} element={<Login />} />
                   <Route path={paths.register} element={<Register />} />
                 </Route>

@@ -6,6 +6,7 @@ import { Role } from '@models/users'
 import { useContext } from 'react'
 import { FaHome, FaUser, FaFileAlt, FaCog } from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom'
+
 interface NavigationOptions {
   path: string
   label: string

@@ -29,7 +29,7 @@
       "@auth/*": ["src/features/auth/*"],
       "@contexts/*": ["src/contexts/*"],
       "@guards/*": ["src/guards/*"],
-      "@layoust/*": ["src/layoust/*"]
+      "@layouts/*": ["src/layouts/*"]
     }
   },
   "include": ["vite.config.ts"]
