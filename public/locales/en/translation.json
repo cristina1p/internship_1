@@ -27,5 +27,10 @@
   "registerForm.registeringButton": "Registering...",
   "registerForm.registerButton": "Register",
   "registerForm.alreadyRegistered": "Already registered?",
-  "registerForm.loginLink": "Login"
+  "registerForm.loginLink": "Login",
+
+  "sidebar.dashboard": "Dashboard",
+  "sidebar.posts": "Posts",
+  "sidebar.settings": "Settings",
+  "sidebar.users": "Users"
 }

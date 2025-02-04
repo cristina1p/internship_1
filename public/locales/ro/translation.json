@@ -27,5 +27,10 @@
   "registerForm.registeringButton": "Se înregistrează...",
   "registerForm.registerButton": "Înregistrare",
   "registerForm.alreadyRegistered": "Ai deja un cont?",
-  "registerForm.loginLink": "Autentificare"
+  "registerForm.loginLink": "Autentificare",
+
+  "sidebar.dashboard": "Tablou de bord",
+  "sidebar.posts": "Postări",
+  "sidebar.settings": "Setări",
+  "sidebar.users": "Utilizatori"
 }

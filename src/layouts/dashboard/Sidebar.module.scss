@@ -23,7 +23,6 @@
     a {
       min-height: 36px;
       display: flex;
-      align-items: center;
       gap: 4px;
       overflow: hidden;
       padding-inline: 16px;
@@ -64,7 +63,7 @@
 
     &.open {
       width: auto;
-      max-width: 260px;
+      width: 260px;
     }
   }
 }

@@ -10,7 +10,7 @@ const languageOptions = [
 export const LanguageSwitcher = () => {
   const { i18n } = useTranslation()
 
-  const handleLanguageClick = (key: string) => {
+  const handleLanguageChange = (key: string) => {
     i18n.changeLanguage(key)
   }
 
@@ -21,7 +21,7 @@ export const LanguageSwitcher = () => {
   return (
     <Dropdown
       options={languageOptions}
-      onOptionClick={(key) => handleLanguageClick(key)}
+      onOptionClick={handleLanguageChange}
       menuTrigger={selectedLanguage?.label}
     />
   )

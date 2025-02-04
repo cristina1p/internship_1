@@ -4,12 +4,13 @@ import { paths } from '@helper/paths'
 import styles from '@layouts/dashboard/Sidebar.module.scss'
 import { Role } from '@models/users'
 import { useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 import { FaHome, FaUser, FaFileAlt, FaCog } from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom'
 
 interface NavigationOptions {
   path: string
-  label: string
+  labelKey: string
   icon: JSX.Element
 }
 
@@ -21,15 +22,31 @@ interface SidebarProps {
 }
 
 const baseRoutes: NavigationOptions[] = [
-  { path: paths.dashboard, label: 'Dashboard', icon: <FaHome size={20} /> },
-  { path: paths.posts, label: 'Posts', icon: <FaFileAlt size={20} /> },
-  { path: paths.settings, label: 'Settings', icon: <FaCog size={20} /> },
+  {
+    path: paths.dashboard,
+    labelKey: 'sidebar.dashboard',
+    icon: <FaHome size={20} />,
+  },
+  {
+    path: paths.posts,
+    labelKey: 'sidebar.posts',
+    icon: <FaFileAlt size={20} />,
+  },
+  {
+    path: paths.settings,
+    labelKey: 'sidebar.settings',
+    icon: <FaCog size={20} />,
+  },
 ]
 
 const roleBasedRoutes: RoleBasedRoutes = {
   Admin: [
     ...baseRoutes,
-    { path: paths.users, label: 'Users', icon: <FaUser size={20} /> },
+    {
+      path: paths.users,
+      labelKey: 'sidebar.users',
+      icon: <FaUser size={20} />,
+    },
   ],
   Moderator: baseRoutes,
   User: baseRoutes,
@@ -37,9 +54,10 @@ const roleBasedRoutes: RoleBasedRoutes = {
 
 export const Sidebar = ({ isSidebarOpen, toggleSidebar }: SidebarProps) => {
   const { userDetails } = useContext(UserDetailsContext)
-  const { role } = userDetails!
-  const routes = roleBasedRoutes[role]
   const location = useLocation()
+  const { t } = useTranslation()
+
+  const routes = roleBasedRoutes[userDetails!.role]
 
   const handleClick = () => {
     if (!isDesktop()) {
@@ -64,7 +82,7 @@ export const Sidebar = ({ isSidebarOpen, toggleSidebar }: SidebarProps) => {
                 <Link to={route.path} onClick={handleClick}>
                   {route.icon}
                   {isSidebarOpen && (
-                    <span className={styles.label}>{route.label}</span>
+                    <span className={styles.label}>{t(route.labelKey)}</span>
                   )}
                 </Link>
               </li>

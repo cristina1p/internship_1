@@ -26,10 +26,4 @@ i18n
     },
   })
 
-// Normalize the detected language before setting it
-i18n.on('initialized', () => {
-  const normalizedLng = normalizeLanguage(i18n.language)
-  i18n.changeLanguage(normalizedLng)
-})
-
 export default i18n

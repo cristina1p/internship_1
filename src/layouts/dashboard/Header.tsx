@@ -49,8 +49,6 @@ const HeaderLoggedInArea = () => {
 
   const { t } = useTranslation()
 
-  const logout = () => setToken('')
-
   const { firstName, lastName, profileImage } = userDetails!
   const userDropdownOptions = [
     { key: 'logout', label: t('header.logout_button') },
@@ -59,7 +57,7 @@ const HeaderLoggedInArea = () => {
   const handleOptionClick = (key: string) => {
     switch (key) {
       case 'logout':
-        return logout()
+        return setToken('')
     }
   }
 
