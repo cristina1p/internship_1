@@ -1,19 +1,28 @@
-import styles from '@components/LanguageSwitcher.module.scss'
 import { useTranslation } from 'react-i18next'
 
-export const LanguageSwitcher = () => {
-  const { i18n } = useTranslation() // Hook for translations
+import { Dropdown } from './Dropdown'
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng)
+const languageOptions = [
+  { key: 'en', label: 'English' },
+  { key: 'ro', label: 'Română' },
+]
+
+export const LanguageSwitcher = () => {
+  const { i18n } = useTranslation()
+
+  const handleLanguageClick = (key: string) => {
+    i18n.changeLanguage(key)
   }
 
+  const selectedLanguage =
+    languageOptions.find((option) => option.key === i18n.language) ||
+    languageOptions[0]
+
   return (
-    <div className={styles.languageSwitcher}>
-      <select onChange={(e) => changeLanguage(e.target.value)}>
-        <option value={'en'}>English</option>
-        <option value={'ro'}>Română</option>
-      </select>
-    </div>
+    <Dropdown
+      options={languageOptions}
+      onOptionClick={(key) => handleLanguageClick(key)}
+      menuTrigger={selectedLanguage?.label}
+    />
   )
 }

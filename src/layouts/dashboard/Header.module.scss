@@ -29,8 +29,10 @@
         }
 
         .userDropdown {
-          display: flex;
-          position: relative;
+          button {
+            border: 0;
+            padding: 0;
+          }
 
           .profileImage {
             width: 40px;
@@ -40,31 +42,13 @@
           }
 
           .dropdownMenu {
-            position: absolute;
-            top: 44px;
+            min-width: 160px;
+            left: auto;
             right: 0;
-            background-color: $background-color;
-            border: 1px solid $background-color;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 8px;
-            width: 160px;
           }
 
-          .logoutOption {
-            display: block;
-            width: 100%;
-            padding: 2px;
-            text-align: center;
-            background-color: $background-color;
-            color: $text-color;
-            font-size: 0.9rem;
-            border-radius: 5px;
-            cursor: pointer;
-
-            &:hover {
-              background-color: $primary-color-highlight;
-            }
+          &:hover {
+            background-color: $primary-color-highlight;
           }
         }
       }

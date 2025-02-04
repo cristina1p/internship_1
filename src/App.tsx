@@ -10,7 +10,7 @@ import { paths } from '@helper/paths'
 import { AuthLayout } from '@layouts/auth'
 import { Layout } from '@layouts/dashboard'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 const queryClient = new QueryClient()
 
@@ -22,15 +22,20 @@ export function App() {
           <AxiosInterceptors />
           <UserDetailsContextProvider>
             <Routes>
-              <Route element={<AuthLayout />}>
-                <Route element={<LoggedOutRequired />}>
+              <Route
+                path={paths.home}
+                element={<Navigate to={paths.login} replace />}
+              />
+
+              <Route element={<LoggedOutRequired />}>
+                <Route element={<AuthLayout />}>
                   <Route path={paths.login} element={<Login />} />
                   <Route path={paths.register} element={<Register />} />
                 </Route>
               </Route>
 
-              <Route element={<Layout />}>
-                <Route element={<AuthRequired />}>
+              <Route element={<AuthRequired />}>
+                <Route element={<Layout />}>
                   <Route path={paths.posts} element={<div>Posts Page</div>} />
                   <Route path={paths.users} element={<div>Users Page</div>} />
                   <Route
