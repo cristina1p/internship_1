@@ -54,11 +54,8 @@ const HeaderLoggedInArea = () => {
     { key: 'logout', label: t('header.logout_button') },
   ]
 
-  const handleOptionClick = (key: string) => {
-    switch (key) {
-      case 'logout':
-        return setToken('')
-    }
+  const actions: Record<string, () => void> = {
+    logout: () => setToken(''),
   }
 
   return (
@@ -71,7 +68,7 @@ const HeaderLoggedInArea = () => {
         className={styles.userDropdown}
         menuClassName={styles.dropdownMenu}
         options={userDropdownOptions}
-        onOptionClick={handleOptionClick}
+        onOptionClick={(key) => actions[key]?.()}
         menuTrigger={
           <img
             src={profileImage}
