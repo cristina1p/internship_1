@@ -13,7 +13,7 @@ export function UserDetailsContextProvider({
   const [userDetails, setUserDetails] = useState<User | undefined>(undefined)
   const { token } = useContext(TokenContext)
   const { data, isLoading } = useQuery({
-    queryKey: [QueryKeys.account],
+    queryKey: [QueryKeys.account, token],
     queryFn: getAccount,
     enabled: !!token, // Only run the query if the token exists
   })
