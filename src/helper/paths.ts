@@ -5,5 +5,6 @@ export const paths = {
   dashboard: '/dashboard',
   posts: '/posts',
   users: '/users',
+  settings: '/settings',
   notFound: '*',
 }

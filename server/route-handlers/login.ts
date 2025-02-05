@@ -34,7 +34,11 @@ export const login =
     // Verify the password
     const passwordIsValid = bcrypt.compareSync(password, dbUser.password)
     if (!passwordIsValid) {
-      return respondWithError(res, 400, 'Invalid password')
+      return respondWithError(
+        res,
+        401,
+        'Login failed. Please check your credentials.',
+      )
     }
 
     // Create a JWT token

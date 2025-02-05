@@ -12,11 +12,11 @@ export const Input = (props: InputProps) => {
 
   return (
     <div className={`${styles.inputGroup} ${error ? styles.hasError : ''}`}>
-      {label ? (
+      {label && (
         <label htmlFor={props.id} className={styles.label}>
           {label}
         </label>
-      ) : null}
+      )}
 
       <input
         {...restInput}

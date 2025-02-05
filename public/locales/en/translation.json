@@ -1,4 +1,9 @@
 {
+  "header.signin_button": "Sign In",
+  "header.signup_button": "Sign Up",
+  "header.logout_button": "Log Out",
+  "footer.copyright": "© 2025 Your App. All Rights Reserved.",
+
   "authForm.emailLabel": "Email",
   "authForm.emailPlaceholder": "Enter your email",
   "authForm.passwordLabel": "Password",
@@ -22,5 +27,10 @@
   "registerForm.registeringButton": "Registering...",
   "registerForm.registerButton": "Register",
   "registerForm.alreadyRegistered": "Already registered?",
-  "registerForm.loginLink": "Login"
+  "registerForm.loginLink": "Login",
+
+  "sidebar.dashboard": "Dashboard",
+  "sidebar.posts": "Posts",
+  "sidebar.settings": "Settings",
+  "sidebar.users": "Users"
 }

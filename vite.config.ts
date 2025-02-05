@@ -11,6 +11,9 @@ export default defineConfig({
       '@models': '/src/models',
       '@api': '/src/api',
       '@auth': '/src/features/auth',
+      '@contexts': '/src/contexts',
+      '@guards': '/src/guards',
+      '@layouts': '/src/layouts',
     },
   },
   server: {

@@ -1,17 +1,28 @@
 import { useTranslation } from 'react-i18next'
 
-export const LanguageSwitcher = () => {
-  const { i18n } = useTranslation() // Hook for translations
+import { Dropdown } from './Dropdown'
 
-  // Function to change the language
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng) // Updates the current language
+const languageOptions = [
+  { key: 'en', label: 'English' },
+  { key: 'ro', label: 'Română' },
+]
+
+export const LanguageSwitcher = () => {
+  const { i18n } = useTranslation()
+
+  const handleLanguageChange = (key: string) => {
+    i18n.changeLanguage(key)
   }
 
+  const selectedLanguage =
+    languageOptions.find((option) => option.key === i18n.language) ||
+    languageOptions[0]
+
   return (
-    <select onChange={(e) => changeLanguage(e.target.value)}>
-      <option value={'en'}>English</option>
-      <option value={'ro'}>Română</option>
-    </select>
+    <Dropdown
+      options={languageOptions}
+      onOptionClick={handleLanguageChange}
+      menuTrigger={selectedLanguage?.label}
+    />
   )
 }

@@ -1,16 +1,58 @@
 @use '/src/styles/variables.scss' as *;
+@use 'sass:color';
 
-.buttonPrimary {
-  width: 100%;
-  padding: 0.8rem;
+// Base button styles
+$primary-hover-color: color.adjust($primary-color, $lightness: -10%);
+$primary-active-color: color.adjust($primary-color, $lightness: -30%);
+$secondary-hover-color: color.adjust($secondary-color, $lightness: -10%);
+$secondary-active-color: color.adjust($secondary-color, $lightness: -30%);
+
+$primary-text-color: #fff;
+$secondary-text-color: $primary-text-color;
+
+$border-color: #007bff;
+$outlined-border-color: $border-color;
+$outlined-text-color: $border-color;
+
+.button {
+  padding: 10px 12px;
   border-radius: 4px;
-  background: #007bff;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 
-  &:hover {
-    background: #0056b3;
+  &--primary {
+    background-color: $primary-color;
+    color: $primary-text-color;
+
+    &:hover {
+      background-color: $primary-hover-color;
+    }
+
+    &:active {
+      background-color: $primary-active-color; // Even darker gray when active
+    }
+  }
+
+  &--secondary {
+    background-color: $secondary-color; // Gray background for secondary button
+    color: $secondary-text-color; // Text color for secondary button
+
+    &:hover {
+      background-color: $secondary-hover-color; // Slightly darker gray on hover
+    }
+
+    &:active {
+      background-color: $secondary-active-color; // Even darker gray when active
+    }
+  }
+
+  &--outlined {
+    background-color: transparent;
+    border: 2px solid $outlined-border-color;
+    color: $outlined-text-color;
+
+    &:hover {
+      background-color: $outlined-border-color;
+      color: $primary-text-color;
+    }
   }
 }

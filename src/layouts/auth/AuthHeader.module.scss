@@ -1,0 +1,16 @@
+@use '/src/styles/variables.scss' as *;
+
+.authHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 12px;
+  padding-block: 8px;
+  background-color: $background-color;
+  border-bottom: 1px solid $border-color;
+
+  .logo {
+    font-weight: bold;
+    font-size: 22px;
+  }
+}

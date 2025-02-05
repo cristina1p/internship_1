@@ -17,7 +17,7 @@ export const searchableUserFields: SearchableUserField[] = [
 ]
 
 export function convertDbUserToUser(dbUser: DbUser): User {
-  const { id, email, firstName, lastName, gender, role } = dbUser
+  const { id, email, firstName, lastName, gender, role, profileImage } = dbUser
 
   return {
     id,
@@ -26,5 +26,6 @@ export function convertDbUserToUser(dbUser: DbUser): User {
     lastName,
     gender,
     role,
+    profileImage,
   }
 }

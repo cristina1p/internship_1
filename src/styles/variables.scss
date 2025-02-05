@@ -1,8 +1,15 @@
+@use 'sass:color';
+
 // _variables.scss
 $primary-color: #3498db;
-$secondary-color: #2ecc71;
+$secondary-color: hsl(145, 63%, 49%);
 $error-color: #e74c3c;
-$background-color: #f9f9f9;
+$background-color: #f4f4f4;
 $text-color: #333;
 $label-color: #555;
 $form-border-color: #a4a5ad;
+$text-light-color: #f9f9f9;
+$background-dark-color: #282c34;
+$border-color: #e7e7e7;
+
+$primary-color-highlight: color.adjust($primary-color, $lightness: 40%);

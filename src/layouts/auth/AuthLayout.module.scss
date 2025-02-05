@@ -1,0 +1,14 @@
+@use '/src/styles/variables.scss' as *;
+
+.authLayout {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  footer {
+    padding: 20px;
+    color: $text-light-color;
+    text-align: center;
+    background-color: $background-dark-color;
+  }
+}

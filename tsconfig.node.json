@@ -26,7 +26,10 @@
       "@models/*": ["src/models/*"],
       "@server/*": ["server/*"],
       "@api/*": ["src/api/*"],
-      "@auth/*": ["src/features/auth/*"]
+      "@auth/*": ["src/features/auth/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@guards/*": ["src/guards/*"],
+      "@layouts/*": ["src/layouts/*"]
     }
   },
   "include": ["vite.config.ts"]
