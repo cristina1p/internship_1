@@ -109,7 +109,8 @@
       "date": "2025-01-01",
       "userId": 1,
       "viewCounter": 250,
-      "comments": ["Great tips, thanks!", "This really helped me!"]
+      "comments": ["Great tips, thanks!", "This really helped me!"],
+      "status": "Published"
     },
     {
       "id": 2,
@@ -119,7 +120,8 @@
       "date": "2025-01-13",
       "userId": 2,
       "viewCounter": 150,
-      "comments": ["Very informative.", "Loved the examples provided."]
+      "comments": ["Very informative.", "Loved the examples provided."],
+      "status": "Draft"
     },
     {
       "id": 3,
@@ -131,7 +133,74 @@
       "comments": [
         "This is exactly what I needed!",
         "Can you share more examples?"
-      ]
+      ],
+      "status": "Deleted"
+    },
+    {
+      "id": 4,
+      "title": "Understanding React Hooks",
+      "description": "A deep dive into React Hooks and how they simplify state management in functional components.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-01-15",
+      "userId": 4,
+      "viewCounter": 180,
+      "comments": ["Super helpful!", "Finally understand useEffect."],
+      "status": "Published"
+    },
+    {
+      "id": 5,
+      "title": "How to Optimize Web Performance",
+      "description": "Techniques and best practices for making your website faster and more efficient.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-01-17",
+      "userId": 5,
+      "viewCounter": 220,
+      "comments": ["Great insights!", "Any tips for large images?"],
+      "status": "Published"
+    },
+    {
+      "id": 6,
+      "title": "CSS Grid vs Flexbox: When to Use What",
+      "description": "A comparison of CSS Grid and Flexbox to help you choose the best layout tool for your project.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-01-19",
+      "userId": 6,
+      "viewCounter": 130,
+      "comments": ["Clear and concise!", "I prefer Grid for layouts."],
+      "status": "Draft"
+    },
+    {
+      "id": 7,
+      "title": "Node.js Best Practices",
+      "description": "Learn essential best practices for writing clean, scalable, and maintainable Node.js applications.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-01-21",
+      "userId": 7,
+      "viewCounter": 170,
+      "comments": ["Super useful!", "What about logging strategies?"],
+      "status": "Published"
+    },
+    {
+      "id": 8,
+      "title": "Getting Started with MongoDB",
+      "description": "An introduction to MongoDB, including how to set up and interact with the database using Node.js.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-01-23",
+      "userId": 8,
+      "viewCounter": 90,
+      "comments": ["Finally, a simple guide!", "Is it better than SQL?"],
+      "status": "Draft"
+    },
+    {
+      "id": 9,
+      "title": "Top JavaScript Frameworks in 2025",
+      "description": "An overview of the most popular JavaScript frameworks in 2025 and their key features.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-01-25",
+      "userId": 9,
+      "viewCounter": 300,
+      "comments": ["React is still my favorite!", "Svelte is underrated."],
+      "status": "Published"
     }
   ]
 }

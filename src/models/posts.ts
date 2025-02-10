@@ -7,4 +7,13 @@ export interface Post {
   userId: number // ID of the user who created the post
   viewCounter?: number // Optional: number of views
   comments?: string[] // Optional: Array of comment strings or IDs
+  status: Status
 }
+
+export type Status = 'Published' | 'Draft' | 'Deleted'
+
+export const StatusOptions: ['Published', 'Draft', 'Deleted'] = [
+  'Published',
+  'Draft',
+  'Deleted',
+]

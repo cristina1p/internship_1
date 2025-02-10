@@ -1,3 +1,4 @@
+import { Post } from './posts'
 import { User } from './users'
 
 export interface LoginResponse {
@@ -17,4 +18,8 @@ export interface GetAccountResponse {
 export interface ErrorResponse {
   message: string
   code: number
+}
+
+export interface GetPostResponse {
+  posts: Post[]
 }
