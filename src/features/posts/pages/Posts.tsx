@@ -55,7 +55,7 @@ export const Posts = () => {
           />
         </div>
 
-        <div className={styles.filtersRigt}>
+        <div className={styles.filtersRight}>
           <input
             type="date"
             value={start}
@@ -70,7 +70,7 @@ export const Posts = () => {
             options={statusOptions}
             onOptionClick={setStatusFilter}
             menuTrigger={<span>{status || 'Select Status'}</span>}
-            className="customDropdown"
+            className={styles.dropdown}
           />
         </div>
       </div>

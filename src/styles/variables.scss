@@ -2,7 +2,9 @@
 
 // _variables.scss
 $primary-color: #3498db;
-$primary-color: #3498db;
+$primary-400: #5caeea;
+$primary-300: #85c3f0;
+$primary-200: #add7f5;
 $secondary-color: hsl(145, 63%, 49%);
 $error-color: #e74c3c;
 $background-color: #f4f4f4;
@@ -14,15 +16,3 @@ $background-dark-color: #282c34;
 $border-color: #e7e7e7;
 
 $primary-color-highlight: color.adjust($primary-color, $lightness: 40%);
-
-$primary-50: #ebf5fc; // Very light
-$primary-100: #d6ebfa;
-$primary-200: #add7f5;
-$primary-300: #85c3f0;
-$primary-400: #5caeea;
-$primary-500: #3498db; // Primary color
-$primary-600: #2e88c5;
-$primary-700: #276ea1;
-$primary-800: #1f547d;
-$primary-900: #18395a;
-$primary-950: #0f243b; // Very dark

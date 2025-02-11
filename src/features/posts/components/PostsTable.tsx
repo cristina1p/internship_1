@@ -35,7 +35,7 @@ export const PostsTable = (props: { posts: Post[] }) => {
     }),
     columnHelper.accessor('date', { header: () => 'Date' }),
     columnHelper.accessor('viewCounter', { header: () => 'View Count' }),
-    columnHelper.accessor('userId', { header: () => 'UserId' }),
+    columnHelper.accessor('userId', { header: () => 'Author Id' }),
     columnHelper.accessor('status', { header: () => 'Status' }),
   ]
 
@@ -56,42 +56,44 @@ export const PostsTable = (props: { posts: Post[] }) => {
   })
 
   return (
-    <table className={styles.table}>
-      <thead>
-        {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id}>
-            {headerGroup.headers.map((header) => (
-              <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext(),
-                    )}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody>
-        {table.getRowModel().rows.length > 0 ? (
-          table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
+    <div className={styles.tableContainer}>
+      <table className={styles.table}>
+        <thead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext(),
+                      )}
+                </th>
               ))}
             </tr>
-          ))
-        ) : (
-          <tr>
-            <td colSpan={columns.length} className="text-center">
-              No posts found within this date range.
-            </td>
-          </tr>
-        )}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+        <tbody>
+          {table.getRowModel().rows.length > 0 ? (
+            table.getRowModel().rows.map((row) => (
+              <tr key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <td key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={columns.length}>
+                No posts found within this date range.
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
   )
 }

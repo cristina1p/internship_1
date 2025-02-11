@@ -1,58 +1,59 @@
 @use '/src/styles/variables.scss' as *;
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.tableContainer {
+  overflow-x: scroll;
 
-  thead {
-    background-color: #f4f4f4;
+  .table {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 
-    tr {
-      th {
-        padding: 12px;
-        text-align: left;
-        font-weight: bold;
-        border-bottom: 2px solid $border-color;
-      }
-    }
-  }
+    thead {
+      background-color: #f4f4f4;
 
-  tbody {
-    tr {
-      &:nth-child(even) {
-        background-color: #fafafa;
-      }
-
-      &:hover {
-        background-color: #f0f0f0;
-      }
-
-      td {
-        padding: 12px;
-        border-bottom: 1px solid #ddd;
-        text-align: left;
+      tr {
+        th {
+          padding: 12px;
+          text-align: left;
+          font-weight: bold;
+          border-bottom: 2px solid $border-color;
+        }
       }
     }
 
-    tr:last-child td {
-      border-bottom: none;
-    }
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: #fafafa;
+        }
 
-    .text-center {
-      text-align: center;
-      font-style: italic;
-      color: #888;
-      padding: 20px;
-    }
+        &:hover {
+          background-color: #f0f0f0;
+        }
 
-    th:nth-child(4),
-    td:nth-child(4) {
-      white-space: nowrap;
-      min-width: 130px;
+        td {
+          padding: 12px;
+          border-bottom: 1px solid #ddd;
+          text-align: left;
+        }
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .text-center {
+        text-align: center;
+        font-style: italic;
+        color: #888;
+        padding: 20px;
+      }
+
+      th:nth-child(4),
+      td:nth-child(4) {
+        white-space: nowrap;
+        min-width: 130px;
+      }
     }
   }
 }
