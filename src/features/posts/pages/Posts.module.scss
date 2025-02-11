@@ -1,0 +1,65 @@
+@use '/src/styles/variables.scss' as *;
+// Mobile-first default styles (for small screens)
+.postsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  padding: 10px;
+
+  .pageTitle {
+    text-align: center;
+  }
+
+  .filtersContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    .filterLeft {
+      width: 100%;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .filtersRigt {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 100%;
+
+      .dropdown,
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (min-width: 600px) {
+    .filtersContainer {
+      flex-direction: row;
+
+      .filterLeft {
+        width: auto;
+      }
+
+      .filtersRigt {
+        width: auto;
+        flex-direction: row;
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .pageTitle {
+      text-align: start;
+    }
+
+    .filtersContainer {
+      justify-content: space-between;
+    }
+  }
+}

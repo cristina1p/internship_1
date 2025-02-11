@@ -1,6 +1,7 @@
 import { getPosts } from '@api/hooks/posts'
 import { Dropdown } from '@components/Dropdown'
 import { PostsTable } from '@posts/components/PostsTable'
+import styles from '@posts/pages/Posts.module.scss'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 
@@ -42,35 +43,38 @@ export const Posts = () => {
   if (error) return <span>Error loading posts</span>
 
   return (
-    <div>
-      <h1>Posts</h1>
-      <input
-        type="text"
-        placeholder="Search by Title or Description..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+    <div className={styles.postsContainer}>
+      <h1 className={styles.pageTitle}>Posts</h1>
+      <div className={styles.filtersContainer}>
+        <div className={styles.filterLeft}>
+          <input
+            type="text"
+            placeholder="Search by Title or Description..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
 
-      <div>
-        <input
-          type="date"
-          value={start}
-          onChange={(e) => setStartDateFilter(e.target.value)}
-        />
-        <input
-          type="date"
-          value={end}
-          onChange={(e) => setEndDateFilter(e.target.value)}
-        />
+        <div className={styles.filtersRigt}>
+          <input
+            type="date"
+            value={start}
+            onChange={(e) => setStartDateFilter(e.target.value)}
+          />
+          <input
+            type="date"
+            value={end}
+            onChange={(e) => setEndDateFilter(e.target.value)}
+          />
+          <Dropdown
+            options={statusOptions}
+            onOptionClick={setStatusFilter}
+            menuTrigger={<span>{status || 'Select Status'}</span>}
+            className="customDropdown"
+          />
+        </div>
       </div>
 
-      <Dropdown
-        options={statusOptions}
-        onOptionClick={setStatusFilter}
-        menuTrigger={<span>{status || 'Select Status'}</span>}
-        className="customDropdown"
-        menuClassName="customMenu"
-      />
       {!isLoading && <PostsTable posts={data?.posts || []} />}
     </div>
   )
