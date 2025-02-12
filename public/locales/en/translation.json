@@ -32,5 +32,14 @@
   "sidebar.dashboard": "Dashboard",
   "sidebar.posts": "Posts",
   "sidebar.settings": "Settings",
-  "sidebar.users": "Users"
+  "sidebar.users": "Users",
+
+  "table.image": "Image",
+  "table.title": "Title",
+  "table.description": "Description",
+  "table.date": "Date",
+  "table.viewCount": "View Count",
+  "table.userId": "Author ID",
+  "table.status": "Status",
+  "table.noPosts": "No posts found within this date range."
 }

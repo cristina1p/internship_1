@@ -7,14 +7,16 @@ import {
   getFilteredRowModel,
   useReactTable,
 } from '@tanstack/react-table'
+import { useTranslation } from 'react-i18next'
 
 export const PostsTable = (props: { posts: Post[] }) => {
   const columnHelper = createColumnHelper<Post>()
+  const { t } = useTranslation()
 
   // Define table columns
   const columns = [
     columnHelper.accessor('image', {
-      header: () => 'Image',
+      header: () => t('table.image'),
       cell: (info) => (
         <img
           src={info.getValue()}
@@ -28,15 +30,17 @@ export const PostsTable = (props: { posts: Post[] }) => {
         />
       ),
     }),
-    columnHelper.accessor('title', { header: () => 'Title' }),
+    columnHelper.accessor('title', { header: () => t('table.title') }),
     columnHelper.accessor('description', {
-      header: () => 'Description',
+      header: () => t('table.description'),
       cell: (info) => <i>{info.getValue()}</i>,
     }),
-    columnHelper.accessor('date', { header: () => 'Date' }),
-    columnHelper.accessor('viewCounter', { header: () => 'View Count' }),
-    columnHelper.accessor('userId', { header: () => 'Author Id' }),
-    columnHelper.accessor('status', { header: () => 'Status' }),
+    columnHelper.accessor('date', { header: () => t('table.date') }),
+    columnHelper.accessor('viewCounter', {
+      header: () => t('table.viewCount'),
+    }),
+    // columnHelper.accessor('userId', { header: () => t('table.userId') }),
+    columnHelper.accessor('status', { header: () => t('table.status') }),
   ]
 
   const table = useReactTable({
@@ -87,9 +91,7 @@ export const PostsTable = (props: { posts: Post[] }) => {
             ))
           ) : (
             <tr>
-              <td colSpan={columns.length}>
-                No posts found within this date range.
-              </td>
+              <td colSpan={columns.length}>{t('table.noPosts')}</td>
             </tr>
           )}
         </tbody>

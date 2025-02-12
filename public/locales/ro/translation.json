@@ -32,5 +32,14 @@
   "sidebar.dashboard": "Tablou de bord",
   "sidebar.posts": "Postări",
   "sidebar.settings": "Setări",
-  "sidebar.users": "Utilizatori"
+  "sidebar.users": "Utilizatori",
+
+  "table.image": "Imagine",
+  "table.title": "Titlu",
+  "table.description": "Descriere",
+  "table.date": "Data",
+  "table.viewCount": "Număr de vizualizări",
+  "table.userId": "ID autor",
+  "table.status": "Stare",
+  "table.noPosts": "Nu s-au găsit postări în acest interval de date."
 }
