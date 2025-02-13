@@ -1,4 +1,5 @@
 import { StatusOptions } from '@models/posts'
+import { GetPostsResponse } from '@models/posts'
 import { isAuthorized, respondWithError } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
 import { searchablePostFields } from '@server/models'
@@ -30,6 +31,16 @@ const GetPostsQuerySchema = z.object({
       z.array(statusEnum), // /posts?status=Draft&status=Deleted
     ])
     .optional(),
+  page: z
+    .string()
+    .optional()
+    .transform((val) => Number(val) || 0)
+    .pipe(z.number().int().min(0)),
+  limit: z
+    .string()
+    .optional()
+    .transform((val) => Number(val) || 10)
+    .pipe(z.number().int().min(1)),
 })
 
 // Route handler for getting posts
@@ -50,7 +61,7 @@ export const getPosts =
     }
 
     // Destructure validated query parameters
-    const { search, start, end, status } = result.data
+    const { search, start, end, status, page, limit } = result.data
 
     // Apply a single .filter() to combine all conditions
     const filteredPosts = router.db
@@ -82,6 +93,13 @@ export const getPosts =
       })
       .value()
 
-    // Return the filtered posts in the response
-    res.status(200).json({ posts: filteredPosts })
+    // Calculate paginated and total count
+    const totalPosts = filteredPosts.length
+    const offset = page * limit
+    const paginatedPosts = filteredPosts.slice(offset, offset + limit)
+
+    res.status(200).json({
+      posts: paginatedPosts,
+      total: totalPosts,
+    } as GetPostsResponse)
   }

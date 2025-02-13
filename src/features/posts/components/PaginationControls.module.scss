@@ -1,0 +1,49 @@
+@use '/src/styles/variables.scss' as *;
+
+.paginationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+
+  button {
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+
+    &:disabled {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
+  }
+
+  select {
+    cursor: pointer;
+  }
+
+  .pageInfo,
+  .goToText {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+  }
+
+  .pageForm {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .pageInput {
+    width: 60px;
+    text-align: center;
+  }
+
+  .verticalLine {
+    border-left: 2px solid #969595;
+    height: 20px;
+  }
+}

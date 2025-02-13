@@ -18,6 +18,10 @@ export const Posts = () => {
   const [debouncedSearch, setDebouncedSearch] = useState('')
   const [start, setStartDateFilter] = useState('')
   const [end, setEndDateFilter] = useState('')
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 10,
+  })
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -35,6 +39,8 @@ export const Posts = () => {
         start,
         end: end,
         search: debouncedSearch,
+        page: pagination.pageIndex,
+        limit: pagination.pageSize, // Number of posts per page
       },
     ],
     queryFn: getPosts,
@@ -75,7 +81,14 @@ export const Posts = () => {
         </div>
       </div>
 
-      {!isLoading && <PostsTable posts={data?.posts || []} />}
+      {!isLoading && (
+        <PostsTable
+          posts={data?.posts || []}
+          total={data?.total || 0}
+          pagination={pagination}
+          setPagination={setPagination}
+        />
+      )}
     </div>
   )
 }

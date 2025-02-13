@@ -1,6 +1,6 @@
 import { api } from '@api/axios'
 import { filterEmptyParams } from '@helper/filterEmptyParams'
-import { GetPostResponse } from '@models/auth'
+import { GetPostsResponse } from '@models/posts'
 
 type GetPostsQueryKey = [
   string,
@@ -9,6 +9,8 @@ type GetPostsQueryKey = [
     start?: string
     end?: string
     search?: string
+    page?: number
+    limit?: number
   },
 ]
 
@@ -20,7 +22,7 @@ export const getPosts = async ({
   const [, params] = queryKey
 
   const filteredParams = filterEmptyParams(params)
-  const response = await api.get<GetPostResponse>('posts', {
+  const response = await api.get<GetPostsResponse>('posts', {
     params: filteredParams,
   })
 

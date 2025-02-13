@@ -41,5 +41,10 @@
   "table.viewCount": "View Count",
   "table.userId": "Author ID",
   "table.status": "Status",
-  "table.noPosts": "No posts found within this date range."
+  "table.noPosts": "No posts found within this date range.",
+
+  "pagination.page": "Page",
+  "pagination.of": "of",
+  "pagination.goTo": "Go to",
+  "pagination.go": "Go"
 }

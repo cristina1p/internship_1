@@ -41,5 +41,10 @@
   "table.viewCount": "Număr de vizualizări",
   "table.userId": "ID autor",
   "table.status": "Stare",
-  "table.noPosts": "Nu s-au găsit postări în acest interval de date."
+  "table.noPosts": "Nu s-au găsit postări în acest interval de date.",
+
+  "pagination.page": "Pagina",
+  "pagination.of": "din",
+  "pagination.goTo": "Mergi la",
+  "pagination.go": "Mergi"
 }

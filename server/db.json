@@ -201,6 +201,116 @@
       "viewCounter": 300,
       "comments": ["React is still my favorite!", "Svelte is underrated."],
       "status": "Published"
+    },
+    {
+      "id": 10,
+      "title": "Mastering Async/Await in JavaScript",
+      "description": "A detailed guide on how to use async/await effectively in JavaScript.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-01-27",
+      "userId": 1,
+      "viewCounter": 140,
+      "comments": ["Very well explained!", "This helped me a lot!"],
+      "status": "Published"
+    },
+    {
+      "id": 11,
+      "title": "The Power of Custom React Hooks",
+      "description": "Learn how to create and use custom hooks to enhance your React applications.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-01-28",
+      "userId": 2,
+      "viewCounter": 110,
+      "comments": ["Great article!", "Custom hooks make life easier."],
+      "status": "Draft"
+    },
+    {
+      "id": 12,
+      "title": "Docker for Beginners",
+      "description": "A step-by-step guide to getting started with Docker and containerized applications.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-01-29",
+      "userId": 3,
+      "viewCounter": 200,
+      "comments": ["Exactly what I was looking for!", "Super clear guide."],
+      "status": "Published"
+    },
+    {
+      "id": 13,
+      "title": "Understanding TypeScript Generics",
+      "description": "An in-depth look at generics in TypeScript and how to use them efficiently.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-01-30",
+      "userId": 4,
+      "viewCounter": 160,
+      "comments": ["This was a bit tricky at first.", "Generics are powerful!"],
+      "status": "Published"
+    },
+    {
+      "id": 14,
+      "title": "How to Use Zustand for State Management",
+      "description": "A practical guide to using Zustand for state management in React.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-02-01",
+      "userId": 5,
+      "viewCounter": 120,
+      "comments": ["Is this better than Redux?", "Simple and effective!"],
+      "status": "Draft"
+    },
+    {
+      "id": 15,
+      "title": "Building a REST API with Express.js",
+      "description": "A beginner-friendly tutorial on building a RESTful API using Express.js and Node.js.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-02-02",
+      "userId": 6,
+      "viewCounter": 210,
+      "comments": ["Very useful!", "Just what I needed."],
+      "status": "Published"
+    },
+    {
+      "id": 16,
+      "title": "How to Secure Your Node.js Application",
+      "description": "Best practices for improving the security of your Node.js applications.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-02-03",
+      "userId": 7,
+      "viewCounter": 180,
+      "comments": ["Security is so important!", "Nice list of tips."],
+      "status": "Published"
+    },
+    {
+      "id": 17,
+      "title": "Introduction to Next.js",
+      "description": "An overview of Next.js and why it's a great framework for building React applications.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-02-04",
+      "userId": 8,
+      "viewCounter": 95,
+      "comments": ["SSR is a game-changer!", "Love Next.js!"],
+      "status": "Draft"
+    },
+    {
+      "id": 18,
+      "title": "GraphQL vs REST: Which One to Choose?",
+      "description": "A comparison between GraphQL and REST to help you decide which API design to use.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-02-05",
+      "userId": 9,
+      "viewCounter": 250,
+      "comments": ["GraphQL is amazing!", "REST is still relevant."],
+      "status": "Published"
+    },
+    {
+      "id": 19,
+      "title": "State Management in Vue 3 with Pinia",
+      "description": "A look at how Pinia makes state management easier in Vue 3.",
+      "image": "https://placeholder.pics/svg/300",
+      "date": "2025-02-06",
+      "userId": 1,
+      "viewCounter": 130,
+      "comments": ["Pinia is great!", "Way better than Vuex."],
+      "status": "Published"
     }
   ]
 }

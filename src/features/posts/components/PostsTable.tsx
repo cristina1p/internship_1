@@ -1,15 +1,31 @@
 import { Post } from '@models/posts'
+import { PaginationControls } from '@posts/components/PaginationControls'
 import styles from '@posts/components/PostsTable.module.scss'
 import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from '@tanstack/react-table'
 import { useTranslation } from 'react-i18next'
 
-export const PostsTable = (props: { posts: Post[] }) => {
+export interface PostsTableProps {
+  posts: Post[]
+  total: number
+  pagination: { pageIndex: number; pageSize: number }
+  setPagination: React.Dispatch<
+    React.SetStateAction<{ pageIndex: number; pageSize: number }>
+  >
+}
+
+export const PostsTable = ({
+  posts,
+  pagination,
+  setPagination,
+  total,
+}: PostsTableProps) => {
   const columnHelper = createColumnHelper<Post>()
   const { t } = useTranslation()
 
@@ -39,17 +55,24 @@ export const PostsTable = (props: { posts: Post[] }) => {
     columnHelper.accessor('viewCounter', {
       header: () => t('table.viewCount'),
     }),
-    // columnHelper.accessor('userId', { header: () => t('table.userId') }),
+    columnHelper.accessor('userId', { header: () => t('table.userId') }),
     columnHelper.accessor('status', { header: () => t('table.status') }),
   ]
 
   const table = useReactTable({
-    data: props.posts,
+    data: posts,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    manualPagination: true, // Enables server-side pagination
+    pageCount: Math.ceil(total / pagination.pageSize), // Calculate total pages from API
+    state: {
+      pagination,
+    },
+    onPaginationChange: setPagination,
     globalFilterFn: (row, _columnIds, filterValue) => {
-      return ['title', 'description'].some((columnId: string) =>
+      return ['title', 'description'].some((columnId) =>
         row
           .getValue(columnId)
           ?.toString()
@@ -96,6 +119,8 @@ export const PostsTable = (props: { posts: Post[] }) => {
           )}
         </tbody>
       </table>
+
+      <PaginationControls table={table} />
     </div>
   )
 }
