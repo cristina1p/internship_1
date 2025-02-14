@@ -30,64 +30,68 @@ export const PaginationControls = <TData,>({
 
   return (
     <div className={styles.paginationContainer}>
-      <button
-        onClick={() => table.firstPage()}
-        disabled={!table.getCanPreviousPage()}
-      >
-        {'<<'}
-      </button>
-      <button
-        onClick={() => table.previousPage()}
-        disabled={!table.getCanPreviousPage()}
-      >
-        {'<'}
-      </button>
-      <button
-        onClick={() => table.nextPage()}
-        disabled={!table.getCanNextPage()}
-      >
-        {'>'}
-      </button>
-      <button
-        onClick={() => table.lastPage()}
-        disabled={!table.getCanNextPage()}
-      >
-        {'>>'}
-      </button>
-
-      <span className={styles.pageInfo}>
-        {t('pagination.page')} {currentPage} {t('pagination.of')} {totalPages}
-      </span>
-
-      {/* Vertical line */}
-      <div className={styles.verticalLine}></div>
-
-      {/* Go to Page */}
-      <form onSubmit={handlePageSubmit} className={styles.pageForm}>
-        <span className={styles.goToText}>{t('pagination.goTo')}</span>
-        <input
-          type="number"
-          value={pageInput}
-          onChange={handlePageInputChange}
-          min={1}
-          max={totalPages}
-          className={styles.pageInput}
-        />
-        <button type="submit" disabled={pageInput === currentPage.toString()}>
-          {t('pagination.go')}
+      <div className={styles.topRow}>
+        <button
+          onClick={() => table.firstPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          {'<<'}
         </button>
-      </form>
+        <button
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          {'<'}
+        </button>
+        <button
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          {'>'}
+        </button>
+        <button
+          onClick={() => table.lastPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          {'>>'}
+        </button>
 
-      <select
-        value={table.getState().pagination.pageSize}
-        onChange={(e) => table.setPageSize(Number(e.target.value))}
-      >
-        {[10, 20, 30, 40, 50].map((pageSize) => (
-          <option key={pageSize} value={pageSize}>
-            {pageSize}
-          </option>
-        ))}
-      </select>
+        <span className={styles.pageInfo}>
+          {t('pagination.page')} {currentPage} {t('pagination.of')} {totalPages}
+        </span>
+
+        {/* Vertical line */}
+        <div className={styles.verticalLine}></div>
+      </div>
+
+      <div className={styles.bottomRow}>
+        {/* Go to Page */}
+        <form onSubmit={handlePageSubmit} className={styles.pageForm}>
+          <span className={styles.goToText}>{t('pagination.goTo')}</span>
+          <input
+            type="number"
+            value={pageInput}
+            onChange={handlePageInputChange}
+            min={1}
+            max={totalPages}
+            className={styles.pageInput}
+          />
+          <button type="submit" disabled={pageInput === currentPage.toString()}>
+            {t('pagination.go')}
+          </button>
+        </form>
+
+        <select
+          value={table.getState().pagination.pageSize}
+          onChange={(e) => table.setPageSize(Number(e.target.value))}
+        >
+          {[10, 20, 30, 40, 50].map((pageSize) => (
+            <option key={pageSize} value={pageSize}>
+              {pageSize}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   )
 }
