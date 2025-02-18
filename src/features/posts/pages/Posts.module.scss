@@ -7,8 +7,17 @@
   width: 100%;
   gap: 10px;
 
-  .pageTitle {
-    text-align: center;
+  .postsHeader {
+    display: flex;
+    justify-content: space-between;
+
+    .pageTitle {
+      text-align: left;
+    }
+
+    button {
+      align-self: center;
+    }
   }
 
   .filtersContainer {

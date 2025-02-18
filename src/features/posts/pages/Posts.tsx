@@ -1,9 +1,11 @@
-import { getPosts } from '@api/hooks/posts'
+import { getPosts } from '@api/posts'
 import { Dropdown } from '@components/Dropdown'
+import { paths } from '@helper/paths'
 import { PostsTable } from '@posts/components/PostsTable'
 import styles from '@posts/pages/Posts.module.scss'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const statusOptions = [
   { label: 'All Statuses', key: '' },
@@ -22,6 +24,7 @@ export const Posts = () => {
     pageIndex: 0,
     pageSize: 10,
   })
+  const navigate = useNavigate()
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -50,7 +53,16 @@ export const Posts = () => {
 
   return (
     <div className={styles.postsContainer}>
-      <h1 className={styles.pageTitle}>Posts</h1>
+      <div className={styles.postsHeader}>
+        <h1 className={styles.pageTitle}>Posts</h1>
+        <button
+          className="buttonPrimary"
+          onClick={() => navigate(paths.createPost)}
+        >
+          Create Post
+        </button>
+      </div>
+
       <div className={styles.filtersContainer}>
         <div className={styles.filterLeft}>
           <input

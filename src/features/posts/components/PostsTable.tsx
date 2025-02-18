@@ -1,6 +1,8 @@
+import { deletePost } from '@api/deletePost'
 import { Post } from '@models/posts'
 import { PaginationControls } from '@posts/components/PaginationControls'
 import styles from '@posts/components/PostsTable.module.scss'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import {
   createColumnHelper,
   flexRender,
@@ -9,7 +11,13 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from '@tanstack/react-table'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
+
+import { EditPostModal } from './EditPostModal'
+import { PostActions } from './PostActions'
+
 
 export interface PostsTableProps {
   posts: Post[]
@@ -26,8 +34,42 @@ export const PostsTable = ({
   setPagination,
   total,
 }: PostsTableProps) => {
-  const columnHelper = createColumnHelper<Post>()
   const { t } = useTranslation()
+  const queryClient = useQueryClient()
+
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null)
+
+  // Delete mutation
+  const deleteMutation = useMutation({
+    mutationFn: deletePost,
+    onSuccess: () => {
+      toast.success(t('table.deleteSuccess'))
+      queryClient.invalidateQueries({ queryKey: ['posts'] })
+    },
+    onError: (error: Error) => {
+      toast.error(t('table.deleteError', { error: error.message }))
+    },
+  })
+
+  // Handle delete action
+  const handleDelete = (postId: string) => {
+    if (window.confirm(t('table.confirmDelete'))) {
+      deleteMutation.mutate(postId)
+    }
+  }
+
+  const actions: Record<string, (postIndex: number) => void> = {
+    edit: (postIndex) => {
+      setSelectedPost(posts[postIndex])
+      setIsModalOpen(true)
+    },
+    delete: (postIndex) => {
+      handleDelete(posts[postIndex].id.toString())
+    },
+  }
+
+  const columnHelper = createColumnHelper<Post>()
 
   // Define table columns
   const columns = [
@@ -51,12 +93,22 @@ export const PostsTable = ({
       header: () => t('table.description'),
       cell: (info) => <i>{info.getValue()}</i>,
     }),
-    columnHelper.accessor('date', { header: () => t('table.date') }),
+    columnHelper.accessor('date', {
+      header: () => t('table.date'),
+    }),
+
     columnHelper.accessor('viewCounter', {
       header: () => t('table.viewCount'),
     }),
     columnHelper.accessor('userId', { header: () => t('table.userId') }),
     columnHelper.accessor('status', { header: () => t('table.status') }),
+    columnHelper.display({
+      id: 'actions',
+      header: () => t('table.actions'),
+      cell: (info) => (
+        <PostActions onOptionClick={(key) => actions[key]?.(info.row.index)} />
+      ),
+    }),
   ]
 
   const table = useReactTable({
@@ -90,7 +142,7 @@ export const PostsTable = ({
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id}>
+                  <th key={header.id} className={styles[header.column.id]}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -107,7 +159,7 @@ export const PostsTable = ({
               table.getRowModel().rows.map((row) => (
                 <tr key={row.id}>
                   {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id}>
+                    <td key={cell.id} className={styles[cell.column.id]}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),
@@ -126,6 +178,12 @@ export const PostsTable = ({
       </div>
 
       <PaginationControls table={table} />
+      {isModalOpen && selectedPost && (
+        <EditPostModal
+          post={selectedPost}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   )
 }

@@ -22,6 +22,16 @@
     }
 
     tbody {
+      .date {
+        white-space: nowrap;
+      }
+
+      .description {
+        min-width: 200px;
+        max-width: 400px;
+        width: 100%;
+      }
+
       tr {
         &:nth-child(even) {
           background-color: #fafafa;
@@ -47,12 +57,6 @@
         font-style: italic;
         color: #888;
         padding: 20px;
-      }
-
-      th:nth-child(4),
-      td:nth-child(4) {
-        white-space: nowrap;
-        min-width: 130px;
       }
     }
   }
