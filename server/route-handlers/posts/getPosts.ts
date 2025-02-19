@@ -66,6 +66,8 @@ export const getPosts =
     // Apply a single .filter() to combine all conditions
     const filteredPosts = router.db
       .get('posts')
+      .sortBy((post) => new Date(post.date))
+      .reverse()
       .filter((post) => {
         // Role-based filtering
         const matchesRole = isAuthorized(role, userId, post.userId)

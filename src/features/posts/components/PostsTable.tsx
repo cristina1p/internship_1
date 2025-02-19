@@ -18,7 +18,6 @@ import { toast } from 'react-toastify'
 import { EditPostModal } from './EditPostModal'
 import { PostActions } from './PostActions'
 
-
 export interface PostsTableProps {
   posts: Post[]
   total: number

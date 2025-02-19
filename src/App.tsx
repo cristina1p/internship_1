@@ -9,6 +9,7 @@ import { LoggedOutRequired } from '@guards/LoggedOutRequired'
 import { paths } from '@helper/paths'
 import { AuthLayout } from '@layouts/auth'
 import { Layout } from '@layouts/dashboard'
+import { CreatePost } from '@posts/components'
 import { Posts } from '@posts/pages/Posts'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
@@ -41,10 +42,7 @@ export function App() {
               <Route element={<AuthRequired />}>
                 <Route element={<Layout />}>
                   <Route path={paths.posts} element={<Posts />} />
-                  <Route
-                    path={paths.createPost}
-                    element={<div>Create Post</div>}
-                  />
+                  <Route path={paths.createPost} element={<CreatePost />} />
                   <Route path={paths.users} element={<div>Users Page</div>} />
                   <Route
                     path={paths.dashboard}

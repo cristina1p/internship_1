@@ -35,6 +35,7 @@ export const createPost = (
       date: new Date().toISOString(),
       viewCounter: 0,
       comments: [],
+      status: 'Published',
     }
 
     // Add the new post to the database
