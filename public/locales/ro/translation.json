@@ -48,6 +48,11 @@
   "sort.newest": "Cele mai noi",
   "sort.oldest": "Cele mai vechi",
 
+  "status.all": "Toate stările",
+  "status.Published": "Publicat",
+  "status.Draft": "Schiță",
+  "status.Deleted": "Șters",
+
   "pagination.page": "Pagina",
   "pagination.of": "din",
   "pagination.goTo": "Mergi la",

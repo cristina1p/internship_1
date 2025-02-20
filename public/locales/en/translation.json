@@ -48,6 +48,11 @@
   "sort.newest": "Newest",
   "sort.oldest": "Oldest",
 
+  "status.all": "All Statuses",
+  "status.Published": "Published",
+  "status.Draft": "Draft",
+  "status.Deleted": "Deleted",
+
   "pagination.page": "Page",
   "pagination.of": "of",
   "pagination.goTo": "Go to",
