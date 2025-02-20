@@ -27,9 +27,16 @@
     gap: 4px;
 
     .filterLeft {
+      display: flex;
+      flex-direction: column;
       width: 100%;
+      gap: 4px;
 
       > * {
+        width: 100%;
+      }
+
+      .dropdown button {
         width: 100%;
       }
     }
@@ -49,15 +56,28 @@
 
   @media (min-width: 600px) {
     .filtersContainer {
-      flex-direction: row;
+      justify-content: space-between;
 
       .filterLeft {
-        width: auto;
+        flex-direction: row;
+
+        > * {
+          width: auto;
+        }
       }
 
       .filtersRight {
-        width: auto;
         flex-direction: row;
+      }
+    }
+  }
+
+  @media (min-width: 900px) {
+    .filtersContainer {
+      flex-direction: row;
+
+      .filtersRight {
+        justify-content: flex-end;
       }
     }
   }
@@ -68,7 +88,12 @@
     }
 
     .filtersContainer {
+      flex-direction: row;
       justify-content: space-between;
+
+      .filtersRight {
+        justify-content: flex-end;
+      }
     }
   }
 }

@@ -43,6 +43,10 @@
   "table.status": "Status",
   "table.actions": "Actions",
   "table.noPosts": "No posts found within this date range.",
+  "table.search": "Search by Title or Description...",
+
+  "sort.newest": "Newest",
+  "sort.oldest": "Oldest",
 
   "pagination.page": "Page",
   "pagination.of": "of",

@@ -43,6 +43,10 @@
   "table.status": "Stare",
   "table.actions": "Acțiuni",
   "table.noPosts": "Nu s-au găsit postări în acest interval de date.",
+  "table.search": "Căutați după titlu sau descriere...",
+
+  "sort.newest": "Cele mai noi",
+  "sort.oldest": "Cele mai vechi",
 
   "pagination.page": "Pagina",
   "pagination.of": "din",

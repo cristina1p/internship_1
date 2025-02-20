@@ -18,6 +18,10 @@ export const StatusOptions: ['Published', 'Draft', 'Deleted'] = [
   'Deleted',
 ]
 
+export type SortOrder = 'asc' | 'desc'
+
+export const Sort: ['asc', 'desc'] = ['asc', 'desc']
+
 export interface GetPostsResponse {
   posts: Post[]
   page: number | undefined

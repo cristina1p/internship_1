@@ -1,4 +1,4 @@
-import { StatusOptions } from '@models/posts'
+import { Sort, StatusOptions } from '@models/posts'
 import { GetPostsResponse } from '@models/posts'
 import { isAuthorized, respondWithError } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
@@ -41,6 +41,7 @@ const GetPostsQuerySchema = z.object({
     .optional()
     .transform((val) => Number(val) || 10)
     .pipe(z.number().int().min(1)),
+  sort: z.enum(Sort).optional(),
 })
 
 // Route handler for getting posts
@@ -61,13 +62,20 @@ export const getPosts =
     }
 
     // Destructure validated query parameters
-    const { search, start, end, status, page, limit } = result.data
+    const { search, start, end, status, page, limit, sort } = result.data
 
-    // Apply a single .filter() to combine all conditions
-    const filteredPosts = router.db
+    // Apply sort
+    let sortedPosts = router.db
       .get('posts')
       .sortBy((post) => new Date(post.date))
-      .reverse()
+
+    // If sorting is applied, adjust the order
+    if (sort === 'desc') {
+      sortedPosts = sortedPosts.reverse()
+    }
+
+    // Apply a single .filter() to combine all conditions
+    const filteredPosts = sortedPosts
       .filter((post) => {
         // Role-based filtering
         const matchesRole = isAuthorized(role, userId, post.userId)

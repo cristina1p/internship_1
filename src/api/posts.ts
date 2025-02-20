@@ -11,6 +11,7 @@ type GetPostsQueryKey = [
     search?: string
     page?: number
     limit?: number
+    sort?: string
   },
 ]
 

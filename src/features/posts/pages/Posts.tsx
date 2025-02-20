@@ -1,10 +1,13 @@
 import { getPosts } from '@api/posts'
 import { Dropdown } from '@components/Dropdown'
 import { paths } from '@helper/paths'
+import { SortOrder } from '@models/posts'
+import { SortDropdown } from '@posts/components'
 import { PostsTable } from '@posts/components/PostsTable'
 import styles from '@posts/pages/Posts.module.scss'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const statusOptions = [
@@ -24,7 +27,9 @@ export const Posts = () => {
     pageIndex: 0,
     pageSize: 10,
   })
+  const [sort, setSort] = useState<SortOrder>('desc')
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -44,6 +49,7 @@ export const Posts = () => {
         search: debouncedSearch,
         page: pagination.pageIndex,
         limit: pagination.pageSize, // Number of posts per page
+        sort,
       },
     ],
     queryFn: getPosts,
@@ -67,10 +73,11 @@ export const Posts = () => {
         <div className={styles.filterLeft}>
           <input
             type="text"
-            placeholder="Search by Title or Description..."
+            placeholder={t('table.search')}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
+          <SortDropdown onSortChange={setSort} />
         </div>
 
         <div className={styles.filtersRight}>
