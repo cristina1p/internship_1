@@ -64,18 +64,8 @@ export const getPosts =
     // Destructure validated query parameters
     const { search, start, end, status, page, limit, sort } = result.data
 
-    // Apply sort
-    let sortedPosts = router.db
+    const filteredPosts = router.db
       .get('posts')
-      .sortBy((post) => new Date(post.date))
-
-    // If sorting is applied, adjust the order
-    if (sort === 'desc') {
-      sortedPosts = sortedPosts.reverse()
-    }
-
-    // Apply a single .filter() to combine all conditions
-    const filteredPosts = sortedPosts
       .filter((post) => {
         // Role-based filtering
         const matchesRole = isAuthorized(role, userId, post.userId)
@@ -101,6 +91,8 @@ export const getPosts =
           matchesStatus
         )
       })
+      .sortBy((post) => new Date(post.date))
+      .thru((posts) => (sort === 'desc' ? posts.reverse() : posts))
       .value()
 
     // Calculate paginated and total count
