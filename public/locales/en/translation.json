@@ -61,6 +61,9 @@
   "editModal.savingButton": "Saving...",
   "editModal.errorMessage": "An error occurred",
 
+  "dashboard": "Dashboard",
+  "breadcrumb.newPost": "Create Post",
+
   "pagination.page": "Page",
   "pagination.of": "of",
   "pagination.goTo": "Go to",
