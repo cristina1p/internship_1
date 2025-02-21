@@ -53,6 +53,14 @@
   "status.Draft": "Schiță",
   "status.Deleted": "Șters",
 
+  "editModal.title": "Editează Postarea",
+  "editModal.titleInputLabel": "Titlu",
+  "editModal.descriptionInputLabel": "Descriere",
+  "editModal.imageUrlInputLabel": "URL Imagine",
+  "editModal.saveButton": "Salvează Modificările",
+  "editModal.savingButton": "Se Salvează...",
+  "editModal.errorMessage": "A apărut o eroare",
+
   "pagination.page": "Pagina",
   "pagination.of": "din",
   "pagination.goTo": "Mergi la",

@@ -8,11 +8,13 @@ import { Post } from 'src/models'
 import { z } from 'zod'
 
 // Zod schema for validating updates
-const UpdatePostRequestBodySchema = z.object({
-  title: z.string().optional(),
-  description: z.string().optional(),
-  image: z.string().url('Invalid image URL').optional(),
-})
+const UpdatePostRequestBodySchema = z
+  .object({
+    title: z.string().optional(),
+    description: z.string().optional(),
+    image: z.string().url('Invalid image URL').optional(),
+  })
+  .strict()
 
 export const updatePost = (
   router: jsonServer.JsonServerRouter<DatabaseSchema>,

@@ -1,5 +1,6 @@
 import { deletePost } from '@api/deletePost'
 import { Post } from '@models/posts'
+import { EditPostModal } from '@posts/components/EditPostModal'
 import { PaginationControls } from '@posts/components/PaginationControls'
 import styles from '@posts/components/PostsTable.module.scss'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
@@ -15,7 +16,6 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
 
-import { EditPostModal } from './EditPostModal'
 import { PostActions } from './PostActions'
 
 export interface PostsTableProps {

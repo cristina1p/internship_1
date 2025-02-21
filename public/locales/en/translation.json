@@ -53,6 +53,14 @@
   "status.Draft": "Draft",
   "status.Deleted": "Deleted",
 
+  "editModal.title": "Edit Post",
+  "editModal.titleInputLabel": "Title",
+  "editModal.descriptionInputLabel": "Description",
+  "editModal.imageUrlInputLabel": "Image URL",
+  "editModal.saveButton": "Save Changes",
+  "editModal.savingButton": "Saving...",
+  "editModal.errorMessage": "An error occurred",
+
   "pagination.page": "Page",
   "pagination.of": "of",
   "pagination.goTo": "Go to",
