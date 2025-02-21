@@ -61,6 +61,11 @@
   "editModal.savingButton": "Saving...",
   "editModal.errorMessage": "An error occurred",
 
+  "createPostForm.title": "Title",
+  "createPostForm.description": "Description",
+  "createPostForm.imageUrl": "Image URL",
+  "createPostForm.button": "Create Post",
+
   "dashboard": "Dashboard",
   "breadcrumb.newPost": "Create Post",
 

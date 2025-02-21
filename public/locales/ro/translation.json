@@ -61,6 +61,11 @@
   "editModal.savingButton": "Se Salvează...",
   "editModal.errorMessage": "A apărut o eroare",
 
+  "createPostForm.title": "Titlu",
+  "createPostForm.description": "Descriere",
+  "createPostForm.imageUrl": "URL Imagine",
+  "createPostForm.button": "Creează Postare",
+
   "dashboard": "Tablou de bord",
   "breadcrumb.newPost": "Creează postare",
 

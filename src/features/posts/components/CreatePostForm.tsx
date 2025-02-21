@@ -1,5 +1,6 @@
 import { api } from '@api/axios'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 import styles from './CreatePostForm.module.scss'
@@ -9,6 +10,7 @@ export const CreatePostForm = () => {
   const [description, setDescription] = useState('')
   const [image, setImage] = useState('')
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault() // prevetnt the page to refresh
@@ -30,7 +32,7 @@ export const CreatePostForm = () => {
   return (
     <form onSubmit={handleSubmit} className={styles.createPostForm}>
       <label>
-        Title:
+        {t('createPostForm.title')}
         <input
           type="text"
           value={title}
@@ -40,7 +42,7 @@ export const CreatePostForm = () => {
       </label>
 
       <label>
-        <p>Description:</p>
+        <p>{t('createPostForm.description')}</p>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -49,7 +51,7 @@ export const CreatePostForm = () => {
       </label>
 
       <label>
-        Image URL:
+        {t('createPostForm.imageUrl')}
         <input
           type="url"
           value={image}
@@ -59,7 +61,7 @@ export const CreatePostForm = () => {
       </label>
 
       <button type="submit" className="buttonPrimary">
-        Create Post
+        {t('createPostForm.button')}
       </button>
     </form>
   )
