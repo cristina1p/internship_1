@@ -34,6 +34,9 @@
   "sidebar.settings": "Settings",
   "sidebar.users": "Users",
 
+  "language.english": "English",
+  "language.romanian": "Romanian",
+
   "table.image": "Image",
   "table.title": "Title",
   "table.description": "Description",
@@ -44,6 +47,11 @@
   "table.actions": "Actions",
   "table.noPosts": "No posts found within this date range.",
   "table.search": "Search by Title or Description...",
+  "table.deleteSuccess": "Item deleted successfully",
+  "table.confirmDelete": "Are you sure you want to delete this item?",
+
+  "options.Edit": "Edit",
+  "options.Delete": "Delete",
 
   "sort.newest": "Newest",
   "sort.oldest": "Oldest",

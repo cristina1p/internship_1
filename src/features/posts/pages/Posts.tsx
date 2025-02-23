@@ -6,16 +6,15 @@ import { SortDropdown } from '@posts/components'
 import { PostsTable } from '@posts/components/PostsTable'
 import styles from '@posts/pages/Posts.module.scss'
 import { useQuery } from '@tanstack/react-query'
-import { TFunction } from 'i18next'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
-const getStatusOptions = (t: TFunction) => [
-  { label: t('status.all'), key: '' },
-  { label: t('status.Published'), key: 'Published' },
-  { label: t('status.Draft'), key: 'Draft' },
-  { label: t('status.Deleted'), key: 'Deleted' },
+const getStatusOptions = [
+  { key: '', labelKey: 'status.all' },
+  { key: 'Published', labelKey: 'status.Published' },
+  { key: 'Draft', labelKey: 'status.Draft' },
+  { key: 'Deleted', labelKey: 'status.Deleted' },
 ]
 
 export const Posts = () => {
@@ -93,13 +92,9 @@ export const Posts = () => {
             onChange={(e) => setEndDateFilter(e.target.value)}
           />
           <Dropdown
-            options={getStatusOptions(t)}
+            options={getStatusOptions}
             onOptionClick={setStatusFilter}
-            menuTrigger={
-              <span>
-                {statusKey ? t(`status.${statusKey}`) : t('status.all')}
-              </span>
-            }
+            menuTrigger={statusKey ? `status.${statusKey}` : 'status.all'}
             className={styles.dropdown}
           />
         </div>

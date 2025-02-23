@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import styles from './Dropdown.module.scss'
 
 interface DropdownOption {
   key: string
-  label: string
+  labelKey: string
 }
 
 interface DropdownProps {
@@ -24,6 +25,7 @@ export const Dropdown = ({
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const { t } = useTranslation()
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -39,6 +41,9 @@ export const Dropdown = ({
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  const translatedMenuTrigger =
+    typeof menuTrigger === 'string' ? t(menuTrigger) : menuTrigger
+
   return (
     <div className={`${styles.dropdown} ${className || ''}`} ref={dropdownRef}>
       <button
@@ -48,7 +53,7 @@ export const Dropdown = ({
         aria-controls="dropdown-menu"
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        {menuTrigger}
+        {translatedMenuTrigger}
       </button>
 
       {isOpen && (
@@ -57,7 +62,7 @@ export const Dropdown = ({
           className={`${styles.dropdownMenu} ${menuClassName || ''}`}
           role="menu"
         >
-          {options.map(({ key, label }) => (
+          {options.map(({ key, labelKey }) => (
             <div
               key={key}
               className={styles.dropdownItem}
@@ -67,7 +72,7 @@ export const Dropdown = ({
                 setIsOpen(false)
               }}
             >
-              {label}
+              {t(labelKey)}
             </div>
           ))}
         </div>

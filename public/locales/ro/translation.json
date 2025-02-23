@@ -34,6 +34,9 @@
   "sidebar.settings": "Setări",
   "sidebar.users": "Utilizatori",
 
+  "language.english": "Engleză",
+  "language.romanian": "Română",
+
   "table.image": "Imagine",
   "table.title": "Titlu",
   "table.description": "Descriere",
@@ -44,6 +47,11 @@
   "table.actions": "Acțiuni",
   "table.noPosts": "Nu s-au găsit postări în acest interval de date.",
   "table.search": "Căutați după titlu sau descriere...",
+  "table.deleteSuccess": "Element șters cu succes",
+  "table.confirmDelete": "Sigur doriți să ștergeți acest element?",
+
+  "options.Edit": "Editează",
+  "options.Delete": "Șterge",
 
   "sort.newest": "Cele mai noi",
   "sort.oldest": "Cele mai vechi",

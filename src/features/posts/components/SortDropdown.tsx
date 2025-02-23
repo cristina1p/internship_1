@@ -1,7 +1,6 @@
 import { Dropdown } from '@components/Dropdown'
 import { SortOrder } from '@models/posts'
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import styles from '../pages/Posts.module.scss'
 
@@ -15,7 +14,6 @@ interface SortDropdownProps {
 }
 
 export const SortDropdown = ({ onSortChange }: SortDropdownProps) => {
-  const { t } = useTranslation()
   const [selectedSort, setSelectedSort] = useState<SortOrder>('desc')
 
   const handleSortChange = (key: string) => {
@@ -26,14 +24,9 @@ export const SortDropdown = ({ onSortChange }: SortDropdownProps) => {
 
   return (
     <Dropdown
-      options={sortOptions.map((option) => ({
-        ...option,
-        label: t(option.labelKey), // Translate using the correct key
-      }))}
+      options={sortOptions}
       onOptionClick={handleSortChange}
-      menuTrigger={
-        selectedSort === 'desc' ? t('sort.newest') : t('sort.oldest')
-      }
+      menuTrigger={selectedSort === 'desc' ? 'sort.newest' : 'sort.oldest'}
       className={styles.dropdown}
     />
   )

@@ -6,8 +6,8 @@ interface PostActionsProps {
 }
 
 const postOptions = [
-  { key: 'edit', label: 'Edit' },
-  { key: 'delete', label: 'Delete' },
+  { key: 'edit', labelKey: 'options.Edit' },
+  { key: 'delete', labelKey: 'options.Delete' },
 ]
 
 export const PostActions = ({ onOptionClick }: PostActionsProps) => {
