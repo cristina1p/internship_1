@@ -31,6 +31,11 @@ export const Posts = () => {
   const navigate = useNavigate()
   const { t } = useTranslation()
 
+  // Reset the page to 1 on any of these filters or search change
+  useEffect(() => {
+    setPagination((prev) => ({ ...prev, pageIndex: 0 }))
+  }, [search, statusKey, start, end, sort])
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setDebouncedSearch(search)
