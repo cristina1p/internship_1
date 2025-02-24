@@ -176,7 +176,7 @@ export const PostsTable = ({
         </table>
       </div>
 
-      <PaginationControls table={table} />
+      {total > pagination.pageSize && <PaginationControls table={table} />}
       {isModalOpen && selectedPost && (
         <EditPostModal
           post={selectedPost}

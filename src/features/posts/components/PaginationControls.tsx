@@ -13,8 +13,6 @@ export const PaginationControls = <TData,>({
   const { t } = useTranslation()
   const currentPage = table.getState().pagination.pageIndex + 1
   const totalPages = table.getPageCount()
-  const totalRecords = table.getPreFilteredRowModel().rows.length // Total records in the table
-  const pageSize = table.getState().pagination.pageSize
 
   const [pageInput, setPageInput] = useState(currentPage.toString())
 
@@ -29,11 +27,6 @@ export const PaginationControls = <TData,>({
       table.setPageIndex(page - 1) // React Table is zero-based
     }
   }
-
-  // Hide pagination if there are fewer records than the current page size
-  const shouldDisplayPagination = totalRecords > pageSize
-
-  if (!shouldDisplayPagination) return null
 
   return (
     <div className={styles.paginationContainer}>

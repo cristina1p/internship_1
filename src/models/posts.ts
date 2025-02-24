@@ -24,8 +24,5 @@ export const Sort: ['asc', 'desc'] = ['asc', 'desc']
 
 export interface GetPostsResponse {
   posts: Post[]
-  page: number | undefined
-  limit: number | undefined
   total: number
-  totalPages: number
 }
