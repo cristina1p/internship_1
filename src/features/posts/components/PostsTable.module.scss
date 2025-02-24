@@ -2,6 +2,7 @@
 
 .tableContainer {
   overflow-x: auto;
+  overflow-y: hidden;
 
   .table {
     width: 100%;
@@ -51,14 +52,19 @@
 
       tr:last-child td {
         border-bottom: none;
-      }
 
-      .text-center {
-        text-align: center;
-        font-style: italic;
-        color: #888;
-        padding: 20px;
+        [role='menu'] {
+          bottom: 100%;
+          top: auto;
+        }
       }
+    }
+
+    .text-center {
+      text-align: center;
+      font-style: italic;
+      color: #888;
+      padding: 20px;
     }
   }
 }
