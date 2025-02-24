@@ -1,7 +1,7 @@
 @use '/src/styles/variables.scss' as *;
 
 .tableContainer {
-  overflow-x: scroll;
+  overflow-x: auto;
 
   .table {
     background-color: white;
