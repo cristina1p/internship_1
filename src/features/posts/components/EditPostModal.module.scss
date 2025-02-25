@@ -27,15 +27,18 @@
       text-align: center;
     }
 
-    label {
-      display: block;
-      select {
-        display: block;
+    .dropdown {
+      .dropdownMenu {
+        width: 100%;
+      }
+
+      button {
+        width: 100%;
       }
     }
+
     input,
-    textarea,
-    select {
+    textarea {
       width: 100%;
       margin-top: 6px;
     }

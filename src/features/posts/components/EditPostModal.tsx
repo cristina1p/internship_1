@@ -1,9 +1,15 @@
 import { updatePost } from '@api/updatePost'
+import { Dropdown } from '@components/Dropdown'
 import { Post, Status } from '@models/posts'
 import styles from '@posts/components/EditPostModal.module.scss'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
+const getStatusOptions = [
+  { key: 'Published', labelKey: 'status.Published' },
+  { key: 'Draft', labelKey: 'status.Draft' },
+]
 
 interface EditPostModalProps {
   post: Post
@@ -15,7 +21,7 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
   const [title, setTitle] = useState(post.title)
   const [description, setDescription] = useState(post.description)
   const [imageUrl, setImageUrl] = useState(post.image)
-  const [status, setStatus] = useState(post.status)
+  const [statusKey, setStatusKey] = useState(post.status)
   const queryClient = useQueryClient()
 
   const { mutate, isPending, isError } = useMutation({
@@ -27,7 +33,13 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
   })
 
   const handleSave = () => {
-    mutate({ id: post.id, title, description, image: imageUrl, status })
+    mutate({
+      id: post.id,
+      title,
+      description,
+      image: imageUrl,
+      status: statusKey,
+    })
   }
 
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -69,16 +81,14 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
           />
         </label>
 
-        <label>
-          {t('editModal.statusInputLabel')}
-          <select
-            value={status}
-            onChange={(e) => setStatus(e.target.value as Status)}
-          >
-            <option value="Published">{t('editModal.published')}</option>
-            <option value="Draft">{t('editModal.draft')}</option>
-          </select>
-        </label>
+        {t('editModal.statusInputLabel')}
+        <Dropdown
+          options={getStatusOptions}
+          onOptionClick={(key) => setStatusKey(key as Status)}
+          menuTrigger={statusKey ? `status.${statusKey}` : 'status.all'}
+          className={styles.dropdown}
+          menuClassName={styles.dropdownMenu}
+        />
 
         <label>
           {t('editModal.descriptionInputLabel')}

@@ -63,8 +63,9 @@
 
   "editModal.title": "Editează Postarea",
   "editModal.titleInputLabel": "Titlu",
-  "editModal.published": "Publicat",
-  "editModal.draft": "Schiță",
+
+  "editModal.statusInputLabel": "Stare",
+
   "editModal.descriptionInputLabel": "Descriere",
   "editModal.imageUrlInputLabel": "URL Imagine",
   "editModal.saveButton": "Salvează Modificările",
