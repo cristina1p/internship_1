@@ -13,6 +13,7 @@ const UpdatePostRequestBodySchema = z
     title: z.string().optional(),
     description: z.string().optional(),
     image: z.string().url('Invalid image URL').optional(),
+    status: z.enum(['Published', 'Draft']).optional(),
   })
   .strict()
 

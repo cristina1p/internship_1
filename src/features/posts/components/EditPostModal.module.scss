@@ -29,9 +29,13 @@
 
     label {
       display: block;
+      select {
+        display: block;
+      }
     }
     input,
-    textarea {
+    textarea,
+    select {
       width: 100%;
       margin-top: 6px;
     }

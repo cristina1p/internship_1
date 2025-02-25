@@ -1,5 +1,5 @@
 import { updatePost } from '@api/updatePost'
-import { Post } from '@models/posts'
+import { Post, Status } from '@models/posts'
 import styles from '@posts/components/EditPostModal.module.scss'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
@@ -15,6 +15,7 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
   const [title, setTitle] = useState(post.title)
   const [description, setDescription] = useState(post.description)
   const [imageUrl, setImageUrl] = useState(post.image)
+  const [status, setStatus] = useState(post.status)
   const queryClient = useQueryClient()
 
   const { mutate, isPending, isError } = useMutation({
@@ -26,7 +27,7 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
   })
 
   const handleSave = () => {
-    mutate({ id: post.id, title, description, image: imageUrl })
+    mutate({ id: post.id, title, description, image: imageUrl, status })
   }
 
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -48,12 +49,7 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
     }
   }, [onClose])
 
-  const isSaveDisabled =
-    !title ||
-    !description ||
-    (title === post.title &&
-      description === post.description &&
-      imageUrl === post.image)
+  const isSaveDisabled = !title || !description
 
   return (
     <div className={styles.modalOverlay} onClick={handleOverlayClick}>
@@ -71,6 +67,17 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+        </label>
+
+        <label>
+          {t('editModal.statusInputLabel')}
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value as Status)}
+          >
+            <option value="Published">{t('editModal.published')}</option>
+            <option value="Draft">{t('editModal.draft')}</option>
+          </select>
         </label>
 
         <label>
