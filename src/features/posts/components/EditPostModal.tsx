@@ -113,13 +113,13 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
             label={t('editModal.descriptionInputLabel')}
             {...register('description')}
             error={errors.description?.message}
-            extraTextareaProps={() => register('title')}
+            extraTextareaProps={() => register('description')}
           />
 
           <Input
             id="image"
             label={t('editModal.imageUrlInputLabel')}
-            type="text"
+            type="url"
             error={errors.image?.message}
             extraInputProps={() => register('image')}
           />

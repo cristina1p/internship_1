@@ -1,67 +1,75 @@
-import { api } from '@api/axios'
-import React, { useState } from 'react'
+import { CreatePostFormValues, CreatePostRequestBodySchema } from '@api/posts'
+import { createPost } from '@api/posts/createPost'
+import { Input } from '@components/Input'
+import { Textarea } from '@components/Textarea'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 import styles from './CreatePostForm.module.scss'
 
 export const CreatePostForm = () => {
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [image, setImage] = useState('')
+  const queryClient = useQueryClient()
   const navigate = useNavigate()
   const { t } = useTranslation()
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault() // prevetnt the page to refresh
-
-    // Call API to create a new post
-    try {
-      const response = await api.post('/posts', {
-        title,
-        description,
-        image,
-      })
-      console.log('Post created successfully:', response.data)
-
+  const { mutate, isPending } = useMutation({
+    mutationFn: createPost,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['posts'] })
       navigate('/posts')
-    } catch (error) {
-      console.log('Error creating post:', error)
-    }
+    },
+  })
+
+  // Initialize react hook form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CreatePostFormValues>({
+    resolver: zodResolver(CreatePostRequestBodySchema),
+    defaultValues: {
+      title: '',
+      description: '',
+      image: '',
+    },
+  })
+
+  const onSubmit = (createPostFormValues: CreatePostFormValues) => {
+    mutate(createPostFormValues)
   }
+
   return (
-    <form onSubmit={handleSubmit} className={styles.createPostForm}>
-      <label>
-        {t('createPostForm.title')}
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </label>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.createPostForm}>
+      <Input
+        id="title"
+        label={t('createPostForm.title')}
+        type="text"
+        error={errors.title?.message}
+        extraInputProps={() => register('title')}
+      />
 
-      <label>
-        <p>{t('createPostForm.description')}</p>
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-      </label>
+      <Textarea
+        id="description"
+        label={t('createPostForm.description')}
+        error={errors.description?.message}
+        extraTextareaProps={() => register('description')}
+      />
 
-      <label>
-        {t('createPostForm.imageUrl')}
-        <input
-          type="url"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-          required
-        />
-      </label>
+      <Input
+        id="image"
+        label={t('createPostForm.imageUrl')}
+        type="url"
+        error={errors.image?.message}
+        extraInputProps={() => register('image')}
+      />
 
-      <button type="submit" className="buttonPrimary">
-        {t('createPostForm.button')}
+      <button type="submit" className="buttonPrimary" disabled={isPending}>
+        {isPending
+          ? t('createPostForm.savingButton')
+          : t('createPostForm.button')}
       </button>
     </form>
   )
