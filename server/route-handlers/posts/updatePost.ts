@@ -1,3 +1,4 @@
+import { UpdatePostRequestBodySchema } from '@api/posts'
 import { respondWithError } from '@server/helper'
 import { isAuthorized } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
@@ -5,17 +6,6 @@ import { RequestWithUser } from '@server/route-handlers'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { Post } from 'src/models'
-import { z } from 'zod'
-
-// Zod schema for validating updates
-const UpdatePostRequestBodySchema = z
-  .object({
-    title: z.string().optional(),
-    description: z.string().optional(),
-    image: z.string().url('Invalid image URL').optional(),
-    status: z.enum(['Published', 'Draft']).optional(),
-  })
-  .strict()
 
 export const updatePost = (
   router: jsonServer.JsonServerRouter<DatabaseSchema>,

@@ -1,12 +1,17 @@
-import { updatePost } from '@api/updatePost'
+import { UpdatePostFormValues, UpdatePostRequestBodySchema } from '@api/posts'
+import { updatePost } from '@api/posts'
 import { Dropdown } from '@components/Dropdown'
+import { Input } from '@components/Input'
+import { Textarea } from '@components/Textarea'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Post, Status } from '@models/posts'
 import styles from '@posts/components/EditPostModal.module.scss'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-const getStatusOptions = [
+const statusOptions = [
   { key: 'Published', labelKey: 'status.Published' },
   { key: 'Draft', labelKey: 'status.Draft' },
 ]
@@ -18,13 +23,9 @@ interface EditPostModalProps {
 
 export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
   const { t } = useTranslation()
-  const [title, setTitle] = useState(post.title)
-  const [description, setDescription] = useState(post.description)
-  const [imageUrl, setImageUrl] = useState(post.image)
-  const [statusKey, setStatusKey] = useState(post.status)
   const queryClient = useQueryClient()
 
-  const { mutate, isPending, isError } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: updatePost,
     onSuccess: () => {
       onClose()
@@ -32,14 +33,24 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
     },
   })
 
-  const handleSave = () => {
-    mutate({
-      id: post.id,
-      title,
-      description,
-      image: imageUrl,
-      status: statusKey,
-    })
+  // Initialize react hook form
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<UpdatePostFormValues>({
+    resolver: zodResolver(UpdatePostRequestBodySchema),
+    defaultValues: {
+      title: post.title,
+      description: post.description,
+      image: post.image,
+      status: post.status as Status | undefined,
+    },
+  })
+
+  const onSubmit = (postFormValues: UpdatePostFormValues) => {
+    mutate({ id: post.id, ...postFormValues })
   }
 
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -61,8 +72,6 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
     }
   }, [onClose])
 
-  const isSaveDisabled = !title || !description
-
   return (
     <div className={styles.modalOverlay} onClick={handleOverlayClick}>
       <div className={styles.modal}>
@@ -72,51 +81,55 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
 
         <h2>{t('editModal.title')}</h2>
 
-        <label>
-          {t('editModal.titleInputLabel')}
-          <input
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            id="title"
+            label={t('editModal.titleInputLabel')}
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            error={errors.title?.message}
+            extraInputProps={() => register('title')}
           />
-        </label>
 
-        {t('editModal.statusInputLabel')}
-        <Dropdown
-          options={getStatusOptions}
-          onOptionClick={(key) => setStatusKey(key as Status)}
-          menuTrigger={statusKey ? `status.${statusKey}` : 'status.all'}
-          className={styles.dropdown}
-          menuClassName={styles.dropdownMenu}
-        />
+          <div className={styles.dropdownContainer}>
+            <label htmlFor="status">{t('editModal.statusInputLabel')} </label>
+            <Controller
+              name="status"
+              control={control}
+              render={({ field }) => (
+                <Dropdown
+                  id="status"
+                  options={statusOptions}
+                  onOptionClick={field.onChange}
+                  menuTrigger={`status.${field.value}`}
+                  className={styles.dropdown}
+                  menuClassName={styles.dropdownMenu}
+                />
+              )}
+            />
+          </div>
 
-        <label>
-          {t('editModal.descriptionInputLabel')}
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          ></textarea>
-        </label>
+          <Textarea
+            id="description"
+            label={t('editModal.descriptionInputLabel')}
+            {...register('description')}
+            error={errors.description?.message}
+            extraTextareaProps={() => register('title')}
+          />
 
-        <label>
-          {t('editModal.imageUrlInputLabel')}
-          <input
+          <Input
+            id="image"
+            label={t('editModal.imageUrlInputLabel')}
             type="text"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
+            error={errors.image?.message}
+            extraInputProps={() => register('image')}
           />
-        </label>
 
-        <button
-          className="buttonPrimary"
-          onClick={handleSave}
-          disabled={isSaveDisabled || isPending}
-        >
-          {isPending ? t('editModal.savingButton') : t('editModal.saveButton')}
-        </button>
-        {isError && (
-          <p className={styles.error}>{t('editPostModal.errorMessage')}</p>
-        )}
+          <button type="submit" className="buttonPrimary" disabled={isPending}>
+            {isPending
+              ? t('editModal.savingButton')
+              : t('editModal.saveButton')}
+          </button>
+        </form>
       </div>
     </div>
   )

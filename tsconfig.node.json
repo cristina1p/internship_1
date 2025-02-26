@@ -23,6 +23,7 @@
     "baseUrl": "./",
     "paths": {
       "@components/*": ["src/components/*"],
+      "@helper/*": ["src/helper/*"],
       "@models/*": ["src/models/*"],
       "@server/*": ["server/*"],
       "@api/*": ["src/api/*"],

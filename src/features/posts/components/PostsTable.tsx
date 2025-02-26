@@ -1,4 +1,4 @@
-import { deletePost } from '@api/deletePost'
+import { deletePost } from '@api/posts'
 import { Post } from '@models/posts'
 import { EditPostModal } from '@posts/components/EditPostModal'
 import { PaginationControls } from '@posts/components/PaginationControls'

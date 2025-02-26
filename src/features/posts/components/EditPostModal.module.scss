@@ -27,26 +27,6 @@
       text-align: center;
     }
 
-    .dropdown {
-      .dropdownMenu {
-        width: 100%;
-      }
-
-      button {
-        width: 100%;
-      }
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      margin-top: 6px;
-    }
-
-    textarea {
-      height: 100px;
-    }
-
     .closeButton {
       position: absolute;
       top: 10px;
@@ -61,16 +41,32 @@
       }
     }
 
-    .error {
-      font-size: 14px;
-      margin-top: 10px;
-      color: $error-color;
-      text-align: center;
-    }
-  }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
 
-  @media (min-width: 500px) {
-    .modal {
+      textarea {
+        height: 100px;
+      }
+
+      .dropdownContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        .dropdown {
+          .dropdownMenu {
+            width: 100%;
+          }
+          button {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 500px) {
       width: 500px;
       height: auto;
       border-radius: 6px;

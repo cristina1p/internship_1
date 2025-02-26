@@ -9,6 +9,7 @@ interface DropdownOption {
 }
 
 interface DropdownProps {
+  id?: string
   options: DropdownOption[]
   onOptionClick: (key: string) => void
   menuTrigger: JSX.Element | string
@@ -17,6 +18,7 @@ interface DropdownProps {
 }
 
 export const Dropdown = ({
+  id,
   options,
   onOptionClick,
   menuTrigger,
@@ -47,6 +49,8 @@ export const Dropdown = ({
   return (
     <div className={`${styles.dropdown} ${className || ''}`} ref={dropdownRef}>
       <button
+        id={id}
+        type="button"
         className={styles.dropdownButton}
         aria-haspopup="true"
         aria-expanded={isOpen}

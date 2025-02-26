@@ -63,9 +63,7 @@
 
   "editModal.title": "Edit Post",
   "editModal.titleInputLabel": "Title",
-
   "editModal.statusInputLabel": "Status",
-
   "editModal.descriptionInputLabel": "Description",
   "editModal.imageUrlInputLabel": "Image URL",
   "editModal.saveButton": "Save Changes",

@@ -1,11 +1,9 @@
+import { UpdatePostFormValues } from '@api/posts'
 import { Post } from '@models/posts'
 
-import { api } from './axios'
+import { api } from '../axios'
 
-type UpdatePostRequest = Pick<
-  Post,
-  'id' | 'title' | 'description' | 'image' | 'status'
->
+type UpdatePostRequest = Pick<Post, 'id'> & UpdatePostFormValues
 
 export const updatePost = async (params: UpdatePostRequest): Promise<Post> => {
   const { id, ...requestBody } = params
