@@ -1,0 +1,24 @@
+@use '/src/styles/variables.scss' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  font-size: 14px;
+
+  .breadcrumbLink {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .breadcrumbLabel {
+    color: $breadcrumb-color;
+  }
+
+  .breadcrumbSeparator {
+    margin: 0 5px;
+  }
+}

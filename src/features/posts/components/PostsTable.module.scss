@@ -1,0 +1,70 @@
+@use '/src/styles/variables.scss' as *;
+
+.tableContainer {
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  .table {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    thead {
+      background-color: #f4f4f4;
+
+      tr {
+        th {
+          padding: 12px;
+          text-align: left;
+          font-weight: bold;
+          border-bottom: 2px solid $border-color;
+        }
+      }
+    }
+
+    tbody {
+      .date {
+        white-space: nowrap;
+      }
+
+      .description {
+        min-width: 200px;
+        max-width: 400px;
+        width: 100%;
+      }
+
+      tr {
+        &:nth-child(even) {
+          background-color: #fafafa;
+        }
+
+        &:hover {
+          background-color: #f0f0f0;
+        }
+
+        td {
+          padding: 12px;
+          border-bottom: 1px solid #ddd;
+          text-align: left;
+        }
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+
+        [role='menu'] {
+          bottom: 100%;
+          top: auto;
+        }
+      }
+    }
+
+    .text-center {
+      text-align: center;
+      font-style: italic;
+      color: #888;
+      padding: 20px;
+    }
+  }
+}

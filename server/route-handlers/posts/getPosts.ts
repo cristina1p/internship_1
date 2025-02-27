@@ -1,3 +1,5 @@
+import { Sort, StatusOptions } from '@models/posts'
+import { GetPostsResponse } from '@models/posts'
 import { isAuthorized, respondWithError } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
 import { searchablePostFields } from '@server/models'
@@ -5,6 +7,8 @@ import { RequestWithUser } from '@server/route-handlers'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { z } from 'zod'
+
+const statusEnum = z.enum(StatusOptions, { message: 'Invalid status' })
 
 // Zod schema for validating query parameters for getting posts
 const GetPostsQuerySchema = z.object({
@@ -21,6 +25,23 @@ const GetPostsQuerySchema = z.object({
       message: 'Invalid end date (must be in ISO 8601 format)',
     })
     .optional(),
+  status: z
+    .union([
+      statusEnum.transform((status) => [status]), // /posts?status=Draft
+      z.array(statusEnum), // /posts?status=Draft&status=Deleted
+    ])
+    .optional(),
+  page: z
+    .string()
+    .optional()
+    .transform((val) => Number(val) || 0)
+    .pipe(z.number().int().min(0)),
+  limit: z
+    .string()
+    .optional()
+    .transform((val) => Number(val) || 10)
+    .pipe(z.number().int().min(1)),
+  sort: z.enum(Sort).optional(),
 })
 
 // Route handler for getting posts
@@ -41,15 +62,13 @@ export const getPosts =
     }
 
     // Destructure validated query parameters
-    const { search, start, end } = result.data
+    const { search, start, end, status, page, limit, sort } = result.data
 
-    // Apply a single .filter() to combine all conditions
     const filteredPosts = router.db
       .get('posts')
       .filter((post) => {
         // Role-based filtering
-        const matchesRole = !isAuthorized(role, userId, post.userId)
-
+        const matchesRole = isAuthorized(role, userId, post.userId)
         const matchesStart = !start || new Date(post.date) >= new Date(start)
 
         const matchesEnd = !end || new Date(post.date) <= new Date(end)
@@ -61,11 +80,28 @@ export const getPosts =
             post[field].toLowerCase().includes(search.toLowerCase()),
           )
 
+        const matchesStatus = !status || status.includes(post.status)
+
         // Combine all conditions
-        return matchesRole && matchesStart && matchesEnd && matchesSearch
+        return (
+          matchesRole &&
+          matchesStart &&
+          matchesEnd &&
+          matchesSearch &&
+          matchesStatus
+        )
       })
+      .sortBy((post) => new Date(post.date))
+      .thru((posts) => (sort === 'desc' ? posts.reverse() : posts))
       .value()
 
-    // Return the filtered posts in the response
-    res.status(200).json({ posts: filteredPosts })
+    // Calculate paginated and total count
+    const totalPosts = filteredPosts.length
+    const offset = page * limit
+    const paginatedPosts = filteredPosts.slice(offset, offset + limit)
+
+    res.status(200).json({
+      posts: paginatedPosts,
+      total: totalPosts,
+    } as GetPostsResponse)
   }

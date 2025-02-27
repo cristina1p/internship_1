@@ -1,17 +1,10 @@
+import { CreatePostRequestBodySchema } from '@api/posts/CreatePostRequestBodySchema'
 import { respondWithError } from '@server/helper'
 import { DatabaseSchema } from '@server/models'
 import { RequestWithUser } from '@server/route-handlers'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
 import { Post } from 'src/models'
-import { z } from 'zod'
-
-// Zod schema to validate the post creation request body
-const CreatePostRequestBodySchema = z.object({
-  title: z.string().min(1, 'Title is required'),
-  description: z.string().min(1, 'Description is required'),
-  image: z.string().url('Invalid image URL'),
-})
 
 export const createPost = (
   router: jsonServer.JsonServerRouter<DatabaseSchema>,
@@ -35,6 +28,7 @@ export const createPost = (
       date: new Date().toISOString(),
       viewCounter: 0,
       comments: [],
+      status: 'Published',
     }
 
     // Add the new post to the database

@@ -1,0 +1,99 @@
+@use '/src/styles/variables.scss' as *;
+
+// Mobile-first default styles (for small screens)
+.postsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+
+  .postsHeader {
+    display: flex;
+    justify-content: space-between;
+
+    .pageTitle {
+      text-align: left;
+    }
+
+    button {
+      align-self: center;
+    }
+  }
+
+  .filtersContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    .filterLeft {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 4px;
+
+      > * {
+        width: 100%;
+      }
+
+      .dropdown button {
+        width: 100%;
+      }
+    }
+
+    .filtersRight {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 100%;
+
+      .dropdown button {
+        width: 100%;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  @media (min-width: 600px) {
+    .filtersContainer {
+      justify-content: space-between;
+
+      .filterLeft {
+        flex-direction: row;
+
+        > * {
+          width: auto;
+        }
+      }
+
+      .filtersRight {
+        flex-direction: row;
+      }
+    }
+  }
+
+  @media (min-width: 900px) {
+    .filtersContainer {
+      flex-direction: row;
+
+      .filtersRight {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .pageTitle {
+      text-align: start;
+    }
+
+    .filtersContainer {
+      flex-direction: row;
+      justify-content: space-between;
+
+      .filtersRight {
+        justify-content: flex-end;
+      }
+    }
+  }
+}

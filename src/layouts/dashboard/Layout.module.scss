@@ -4,6 +4,10 @@
   min-height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(
+    0,
+    1fr
+  ); // Ensures the child element do not overflow in the grid container
 
   @media (min-width: 1200px) {
     &.loggedIn {
@@ -22,11 +26,6 @@
   header {
     padding-inline: 12px;
     padding-block: 8px;
-  }
-
-  main {
-    background: #e9ecef;
-    padding: 20px;
   }
 
   footer {

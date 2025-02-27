@@ -1,0 +1,46 @@
+@use '/src/styles/variables.scss' as *;
+
+.textareaGroup {
+  display: flex;
+  flex-direction: column;
+
+  .label {
+    align-self: baseline;
+    font-weight: bold;
+    color: $label-color;
+  }
+
+  .textarea {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    resize: vertical; // Allows vertical resizing only
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+    }
+  }
+
+  .errorMessage {
+    color: $error-color;
+    font-size: 0.9rem;
+  }
+
+  &.hasError {
+    .label {
+      color: $error-color;
+    }
+
+    .textarea {
+      border-color: $error-color;
+
+      &:focus {
+        border-color: $error-color;
+        box-shadow: 0 0 4px rgba(231, 76, 60, 0.5);
+      }
+    }
+  }
+}

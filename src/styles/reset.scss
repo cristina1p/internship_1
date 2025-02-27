@@ -6,6 +6,7 @@
 *::after {
   margin: 0;
   padding: 0;
+  padding-inline-start: 0;
   box-sizing: border-box;
 }
 
@@ -81,6 +82,10 @@ button {
   border-radius: 4px;
   background-color: #fff;
   font-size: 1rem;
+}
+
+input[type='date'] {
+  padding: 0.4rem;
 }
 
 textarea {

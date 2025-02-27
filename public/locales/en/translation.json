@@ -32,5 +32,54 @@
   "sidebar.dashboard": "Dashboard",
   "sidebar.posts": "Posts",
   "sidebar.settings": "Settings",
-  "sidebar.users": "Users"
+  "sidebar.users": "Users",
+
+  "language.english": "English",
+  "language.romanian": "Romanian",
+
+  "table.image": "Image",
+  "table.title": "Title",
+  "table.description": "Description",
+  "table.date": "Date",
+  "table.viewCount": "View Count",
+  "table.userId": "Author ID",
+  "table.status": "Status",
+  "table.actions": "Actions",
+  "table.noPosts": "No posts found within this date range.",
+  "table.search": "Search by Title or Description...",
+  "table.deleteSuccess": "Item deleted successfully",
+  "table.confirmDelete": "Are you sure you want to delete this item?",
+
+  "options.Edit": "Edit",
+  "options.Delete": "Delete",
+
+  "sort.newest": "Newest",
+  "sort.oldest": "Oldest",
+
+  "status.all": "All Statuses",
+  "status.Published": "Published",
+  "status.Draft": "Draft",
+  "status.Deleted": "Deleted",
+
+  "editModal.title": "Edit Post",
+  "editModal.titleInputLabel": "Title",
+  "editModal.statusInputLabel": "Status",
+  "editModal.descriptionInputLabel": "Description",
+  "editModal.imageUrlInputLabel": "Image URL",
+  "editModal.saveButton": "Save Changes",
+  "editModal.savingButton": "Saving...",
+  "editModal.errorMessage": "An error occurred",
+
+  "createPostForm.title": "Title",
+  "createPostForm.description": "Description",
+  "createPostForm.imageUrl": "Image URL",
+  "createPostForm.button": "Create Post",
+
+  "dashboard": "Dashboard",
+  "breadcrumb.newPost": "Create Post",
+
+  "pagination.page": "Page",
+  "pagination.of": "of",
+  "pagination.goTo": "Go to",
+  "pagination.go": "Go"
 }

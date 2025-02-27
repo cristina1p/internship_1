@@ -47,11 +47,9 @@ const HeaderLoggedInArea = () => {
   const { userDetails } = useContext(UserDetailsContext)
   const { setToken } = useContext(TokenContext) // Acces token and setToken to clear it
 
-  const { t } = useTranslation()
-
   const { firstName, lastName, profileImage } = userDetails!
   const userDropdownOptions = [
-    { key: 'logout', label: t('header.logout_button') },
+    { key: 'logout', labelKey: 'header.logout_button' },
   ]
 
   const actions: Record<string, () => void> = {
@@ -87,15 +85,11 @@ const HeaderLoggedOutArea = () => {
   return (
     <div className={styles.loggedOut}>
       <Link to={paths.register}>
-        <span className="button button--secondary">
-          {t('header.signup_button')}
-        </span>
+        <span className="buttonSecondary">{t('header.signup_button')}</span>
       </Link>
 
       <Link to={paths.login}>
-        <span className="button button--primary">
-          {t('header.signin_button')}
-        </span>
+        <span className="buttonPrimary">{t('header.signin_button')}</span>
       </Link>
     </div>
   )

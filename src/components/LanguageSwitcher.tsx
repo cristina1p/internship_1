@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { Dropdown } from './Dropdown'
 
 const languageOptions = [
-  { key: 'en', label: 'English' },
-  { key: 'ro', label: 'Română' },
+  { key: 'en', labelKey: 'language.english' },
+  { key: 'ro', labelKey: 'language.romanian' },
 ]
 
 export const LanguageSwitcher = () => {
@@ -22,7 +22,7 @@ export const LanguageSwitcher = () => {
     <Dropdown
       options={languageOptions}
       onOptionClick={handleLanguageChange}
-      menuTrigger={selectedLanguage?.label}
+      menuTrigger={selectedLanguage?.labelKey}
     />
   )
 }

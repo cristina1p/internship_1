@@ -40,6 +40,7 @@ export const register =
       role: 'User',
       password: hashedPassword,
       createdAt: new Date().toISOString(),
+      profileImage: '',
     }
 
     // Save the new user to the "users" collection in the database
