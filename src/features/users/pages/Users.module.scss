@@ -1,0 +1,16 @@
+@use '/src/styles/variables.scss' as *;
+
+.usersContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+
+  .postsHeader {
+    display: flex;
+
+    .pageTitle {
+      text-align: left;
+    }
+  }
+}

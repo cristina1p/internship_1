@@ -46,10 +46,10 @@
   "table.status": "Stare",
   "table.actions": "Acțiuni",
   "table.noPosts": "Nu s-au găsit postări în acest interval de date.",
-  "table.search": "Căutați după titlu sau descriere...",
+  "table.noUsers": "No users found",
+  "table.search": "Căutați...",
   "table.deleteSuccess": "Element șters cu succes",
   "table.confirmDelete": "Sigur doriți să ștergeți acest element?",
-
   "options.Edit": "Editează",
   "options.Delete": "Șterge",
 

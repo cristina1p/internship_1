@@ -98,6 +98,116 @@
       "password": "$2a$10$M9WIR1CygcvX4lm45LStlOPA.gimwQM8gbKpFm05awLtF2Xlde0Im",
       "createdAt": "2025-01-09T09:15:44.369Z",
       "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 10,
+      "firstName": "Elena",
+      "lastName": "Toma",
+      "email": "elena@example.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-10T10:30:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 11,
+      "firstName": "Robert",
+      "lastName": "Filip",
+      "email": "robert@example.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-10T11:15:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 12,
+      "firstName": "Sophia",
+      "lastName": "Radu",
+      "email": "sophia@example.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-10T12:45:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 13,
+      "firstName": "David",
+      "lastName": "Neagu",
+      "email": "david@example.com",
+      "gender": "Male",
+      "role": "Moderator",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-11T09:30:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 14,
+      "firstName": "Emma",
+      "lastName": "Stan",
+      "email": "emma@example.com",
+      "gender": "Female",
+      "role": "Admin",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-11T14:20:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 15,
+      "firstName": "Oliver",
+      "lastName": "Popescu",
+      "email": "oliver@example.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-12T08:10:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 16,
+      "firstName": "Ava",
+      "lastName": "Mihai",
+      "email": "ava@example.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-12T09:50:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 17,
+      "firstName": "Lucas",
+      "lastName": "Gheorghe",
+      "email": "lucas@example.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-13T07:30:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 18,
+      "firstName": "Isabella",
+      "lastName": "Dumitru",
+      "email": "isabella@example.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-13T11:00:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 19,
+      "firstName": "Ethan",
+      "lastName": "Haiduc",
+      "email": "ethan@example.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-14T08:40:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
     }
   ],
   "posts": [
@@ -364,6 +474,28 @@
         "Pinia is great!",
         "Way better than Vuex."
       ],
+      "status": "Published"
+    },
+    {
+      "title": "title133",
+      "description": "description",
+      "image": "https://www.google.com/imgres?q=dashboard%20image&imgurl=https%3A%2F%2Fwww.geckoboard.com%2Fuploads%2FDigital-dashboard-example.png&imgrefurl=https%3A%2F%2Fwww.geckoboard.com%2Fdashboard-examples%2Fexecutive%2Fdigital-dashboard%2F&docid=cc8VHdKymbMu0M&tbnid=CF8zhM1D0ZQmDM&vet=12ahUKEwic9YCPm9SLAxVEwAIHHTspCVEQM3oECFAQAA..i&w=5120&h=2880&hcb=2&ved=2ahUKEwic9YCPm9SLAxVEwAIHHTspCVEQM3oECFAQAA",
+      "id": 20,
+      "userId": 1,
+      "date": "2025-02-25T07:19:54.568Z",
+      "viewCounter": 0,
+      "comments": [],
+      "status": "Published"
+    },
+    {
+      "title": "test",
+      "description": "description",
+      "image": "https://www.google.com/imgres?q=dashboard%20image&imgurl=https%3A%2F%2Fstatic.coupler.io%2Ftemplates%2Fall-in-one-marketing-dashboard.png&imgrefurl=https%3A%2F%2Fwww.coupler.io%2Fdashboard-examples&docid=gkvJT68k96ISgM&tbnid=ZlNZRoENhuA5-M&vet=12ahUKEwic9YCPm9SLAxVEwAIHHTspCVEQM3oECBoQAA..i&w=2560&h=1468&hcb=2&ved=2ahUKEwic9YCPm9SLAxVEwAIHHTspCVEQM3oECBoQAA",
+      "id": 21,
+      "userId": 1,
+      "date": "2025-02-27T10:50:39.477Z",
+      "viewCounter": 0,
+      "comments": [],
       "status": "Published"
     }
   ]

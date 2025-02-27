@@ -22,3 +22,8 @@ export const RoleOptions: ['Admin', 'Moderator', 'User'] = [
   'Moderator',
   'User',
 ]
+
+export interface GetUsersResponse {
+  users: User[]
+  total: number
+}

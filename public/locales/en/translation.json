@@ -46,7 +46,8 @@
   "table.status": "Status",
   "table.actions": "Actions",
   "table.noPosts": "No posts found within this date range.",
-  "table.search": "Search by Title or Description...",
+  "table.noUsers": "No users found",
+  "table.search": "Search...",
   "table.deleteSuccess": "Item deleted successfully",
   "table.confirmDelete": "Are you sure you want to delete this item?",
 
