@@ -10,9 +10,20 @@ import styles from './Users.module.scss'
 export const Users = () => {
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounce(search)
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 10,
+  })
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ['users', { search: debouncedSearch }],
+    queryKey: [
+      'users',
+      {
+        search: debouncedSearch,
+        page: pagination.pageIndex,
+        limit: pagination.pageSize,
+      },
+    ],
     queryFn: fetchUsers,
   })
 
@@ -37,7 +48,12 @@ export const Users = () => {
         />
       </div>
 
-      <UsersTable users={data?.users || []} total={data?.total || 0} />
+      <UsersTable
+        users={data?.users || []}
+        total={data?.total || 0}
+        pagination={pagination}
+        setPagination={setPagination}
+      />
     </div>
   )
 }

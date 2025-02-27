@@ -1,6 +1,5 @@
 export * from './PostsTable'
 export * from './PostsTable.module.scss'
-export * from './PaginationControls'
 export * from './EditPostModal'
 export * from './EditPostModal.module.scss'
 export * from './CreatePostForm'

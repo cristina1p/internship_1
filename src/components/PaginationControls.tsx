@@ -1,4 +1,4 @@
-import styles from '@posts/components/PaginationControls.module.scss'
+import styles from '@components/PaginationControls.module.scss'
 import { Table } from '@tanstack/react-table'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'

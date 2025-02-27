@@ -1,9 +1,11 @@
+import { PaginationControls } from '@components/PaginationControls'
 import { User } from '@models/users'
 import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from '@tanstack/react-table'
 import styles from '@users/components/UsersTable.module.scss'
@@ -12,9 +14,18 @@ import { t } from 'i18next'
 export interface UsersTableProps {
   users: User[]
   total: number
+  pagination: { pageIndex: number; pageSize: number }
+  setPagination: React.Dispatch<
+    React.SetStateAction<{ pageIndex: number; pageSize: number }>
+  >
 }
 
-export const UsersTable = ({ users }: UsersTableProps) => {
+export const UsersTable = ({
+  users,
+  pagination,
+  setPagination,
+  total,
+}: UsersTableProps) => {
   const columnHelper = createColumnHelper<User>()
 
   const columns = [
@@ -22,8 +33,10 @@ export const UsersTable = ({ users }: UsersTableProps) => {
       header: 'ID',
       footer: (info) => info.column.id,
     }),
-    columnHelper.accessor('firstName', {
+    columnHelper.accessor((row) => row.lastName, {
+      id: 'firstName',
       cell: (info) => info.getValue(),
+      header: () => <span>First Name</span>,
       footer: (info) => info.column.id,
     }),
     columnHelper.accessor((row) => row.lastName, {
@@ -52,6 +65,22 @@ export const UsersTable = ({ users }: UsersTableProps) => {
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    manualPagination: true, // Enables server-side pagination
+    pageCount: Math.ceil(total / pagination.pageSize), // Calculate total pages from API
+    state: {
+      pagination,
+    },
+    onPaginationChange: setPagination,
+    globalFilterFn: (row, _columnIds, filterValue) => {
+      return ['title', 'description'].some((columnId) =>
+        row
+          .getValue(columnId)
+          ?.toString()
+          .toLowerCase()
+          .includes(filterValue.toLowerCase()),
+      )
+    },
   })
 
   return (
@@ -96,6 +125,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
           </tbody>
         </table>
       </div>
+      {total > pagination.pageSize && <PaginationControls table={table} />}
     </div>
   )
 }

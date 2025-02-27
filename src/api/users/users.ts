@@ -3,7 +3,10 @@ import { GetUsersResponse } from '@models/users'
 
 import { api } from '../axios'
 
-type GetUsersQueryKey = [string, { search?: string }]
+type GetUsersQueryKey = [
+  string,
+  { search?: string; page?: number; limit?: number },
+]
 
 export const fetchUsers = async ({
   queryKey,

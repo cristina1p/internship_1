@@ -1,7 +1,7 @@
 import { deletePost } from '@api/posts'
+import { PaginationControls } from '@components/PaginationControls'
 import { Post } from '@models/posts'
 import { EditPostModal } from '@posts/components/EditPostModal'
-import { PaginationControls } from '@posts/components/PaginationControls'
 import styles from '@posts/components/PostsTable.module.scss'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import {
@@ -122,15 +122,6 @@ export const PostsTable = ({
       pagination,
     },
     onPaginationChange: setPagination,
-    globalFilterFn: (row, _columnIds, filterValue) => {
-      return ['title', 'description'].some((columnId) =>
-        row
-          .getValue(columnId)
-          ?.toString()
-          .toLowerCase()
-          .includes(filterValue.toLowerCase()),
-      )
-    },
   })
 
   return (
@@ -177,6 +168,7 @@ export const PostsTable = ({
       </div>
 
       {total > pagination.pageSize && <PaginationControls table={table} />}
+
       {isModalOpen && selectedPost && (
         <EditPostModal
           post={selectedPost}
