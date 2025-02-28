@@ -51,6 +51,15 @@
         align-items: center;
         position: relative;
       }
+
+      tr:last-child td {
+        border-bottom: none;
+
+        [role='menu'] {
+          bottom: 100%;
+          top: auto;
+        }
+      }
     }
   }
 }
