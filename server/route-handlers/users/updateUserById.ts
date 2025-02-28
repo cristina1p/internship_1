@@ -1,17 +1,9 @@
-import { GenderOptions, RoleOptions } from '@models/users'
+import { UpdateUserByIdRequestBodySchema } from '@api/users'
 import { respondWithError } from '@server/helper'
 import { DatabaseSchema, convertDbUserToUser } from '@server/models'
 import { RequestWithUser } from '@server/route-handlers'
 import { Response, Request } from 'express'
 import jsonServer from 'json-server'
-import { z } from 'zod'
-
-const UpdateUserByIdRequestBodySchema = z.object({
-  firstName: z.string().min(1, 'First name is required').optional(),
-  lastName: z.string().min(1, 'Last name is required').optional(),
-  gender: z.enum(GenderOptions, { message: 'Invalid gender' }).optional(),
-  role: z.enum(RoleOptions, { message: 'Invalid role' }).optional(),
-})
 
 export const updateUserById =
   (router: jsonServer.JsonServerRouter<DatabaseSchema>) =>

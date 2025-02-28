@@ -67,6 +67,10 @@
   "role.Moderator": "Moderator",
   "role.Admin": "Admin",
 
+  "gender.Male": "Male",
+  "gender.Female": "Female",
+  "gender.Prefer Not to Say": "Prefer Not to Say",
+
   "editModal.title": "Edit Post",
   "editModal.titleInputLabel": "Title",
   "editModal.statusInputLabel": "Status",
@@ -75,6 +79,10 @@
   "editModal.saveButton": "Save Changes",
   "editModal.savingButton": "Saving...",
   "editModal.errorMessage": "An error occurred",
+
+  "editModal.firstNameInputLabel": "First Name",
+  "editModal.lastNameInputLabel": "Last Name",
+  "editModal.genderInputLabel": "Gender",
 
   "createPostForm.title": "Title",
   "createPostForm.description": "Description",

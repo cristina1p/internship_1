@@ -66,6 +66,10 @@
   "role.Moderator": "Moderator",
   "role.Admin": "Administrator",
 
+  "gender.Male": "Masculin",
+  "gender.Female": "Feminin",
+  "gender.Prefer Not to Say": "Prefer să nu spun",
+
   "editModal.title": "Editează Postarea",
   "editModal.titleInputLabel": "Titlu",
   "editModal.statusInputLabel": "Stare",
@@ -74,6 +78,10 @@
   "editModal.saveButton": "Salvează Modificările",
   "editModal.savingButton": "Se Salvează...",
   "editModal.errorMessage": "A apărut o eroare",
+
+  "editModal.firstNameInputLabel": "Prenume",
+  "editModal.lastNameInputLabel": "Nume",
+  "editModal.genderInputLabel": "Gen",
 
   "createPostForm.title": "Titlu",
   "createPostForm.description": "Descriere",
