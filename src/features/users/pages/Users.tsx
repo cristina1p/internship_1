@@ -1,25 +1,40 @@
 import { fetchUsers } from '@api/users'
+import { Dropdown } from '@components/Dropdown'
 import { useDebounce } from '@helper/useDebounce'
 import { useQuery } from '@tanstack/react-query'
 import { UsersTable } from '@users/components'
 import { t } from 'i18next'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import styles from './Users.module.scss'
 
+const getRoleOptions = [
+  { key: '', labelKey: 'role.all' },
+  { key: 'User', labelKey: 'role.User' },
+  { key: 'Moderator', labelKey: 'role.Moderator' },
+  { key: 'Admin', labelKey: 'role.Admin' },
+]
+
 export const Users = () => {
   const [search, setSearch] = useState('')
+  const [role, setRole] = useState('')
   const debouncedSearch = useDebounce(search)
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,
   })
 
+  // Reset the page to 1 on any of these filters or search change
+  useEffect(() => {
+    setPagination((prev) => ({ ...prev, pageIndex: 0 }))
+  }, [search, role])
+
   const { data, isLoading, error } = useQuery({
     queryKey: [
       'users',
       {
         search: debouncedSearch,
+        role,
         page: pagination.pageIndex,
         limit: pagination.pageSize,
       },
@@ -45,6 +60,13 @@ export const Users = () => {
           placeholder={t('table.search')}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+        />
+
+        <Dropdown
+          options={getRoleOptions}
+          onOptionClick={setRole}
+          menuTrigger={role ? `role.${role}` : 'role.all'}
+          className={styles.dropdown}
         />
       </div>
 

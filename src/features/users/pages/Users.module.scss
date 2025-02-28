@@ -6,11 +6,16 @@
   width: 100%;
   gap: 10px;
 
-  .postsHeader {
+  .usersHeader {
     display: flex;
 
     .pageTitle {
       text-align: left;
     }
+  }
+
+  .filtersContainer {
+    display: flex;
+    justify-content: space-between;
   }
 }

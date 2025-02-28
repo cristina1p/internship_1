@@ -61,6 +61,11 @@
   "status.Draft": "Schiță",
   "status.Deleted": "Șters",
 
+  "role.all": "Toate rolurile",
+  "role.User": "Utilizator",
+  "role.Moderator": "Moderator",
+  "role.Admin": "Administrator",
+
   "editModal.title": "Editează Postarea",
   "editModal.titleInputLabel": "Titlu",
   "editModal.statusInputLabel": "Stare",

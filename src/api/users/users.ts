@@ -5,7 +5,7 @@ import { api } from '../axios'
 
 type GetUsersQueryKey = [
   string,
-  { search?: string; page?: number; limit?: number },
+  { search?: string; page?: number; limit?: number; role?: string },
 ]
 
 export const fetchUsers = async ({
