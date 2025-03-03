@@ -81,7 +81,7 @@ export const EditUserModal = ({ user, onClose }: EditUserModalProps) => {
           &times;
         </button>
 
-        <h2>{t('editModal.title')}</h2>
+        <h2>{t('editModalUser.title')}</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input

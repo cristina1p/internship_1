@@ -79,7 +79,7 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
           &times;
         </button>
 
-        <h2>{t('editModal.title')}</h2>
+        <h2>{t('editModalPost.title')}</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input

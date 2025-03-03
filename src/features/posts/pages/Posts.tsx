@@ -59,7 +59,7 @@ export const Posts = () => {
   return (
     <div className={styles.postsContainer}>
       <div className={styles.postsHeader}>
-        <h1 className={styles.pageTitle}>Posts</h1>
+        <h1 className={styles.pageTitle}>{t('posts.pageTitle')}</h1>
         <button
           className="buttonPrimary"
           onClick={() => navigate(paths.createPost)}

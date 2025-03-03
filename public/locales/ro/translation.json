@@ -37,6 +37,9 @@
   "language.english": "Engleză",
   "language.romanian": "Română",
 
+  "users.pageTitle": "Utilizatori",
+  "posts.pageTitle": "Postări",
+
   "table.image": "Imagine",
   "table.title": "Titlu",
   "table.description": "Descriere",
@@ -70,7 +73,8 @@
   "gender.Female": "Feminin",
   "gender.Prefer Not to Say": "Prefer să nu spun",
 
-  "editModal.title": "Editează Postarea",
+  "editModalPost.title": "Editează Postarea",
+  "editModalUser.title": "Editează Utilizatorul",
   "editModal.titleInputLabel": "Titlu",
   "editModal.statusInputLabel": "Stare",
   "editModal.descriptionInputLabel": "Descriere",

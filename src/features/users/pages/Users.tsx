@@ -52,7 +52,7 @@ export const Users = () => {
   return (
     <div className={styles.usersContainer}>
       <div className={styles.usersHeader}>
-        <h1 className={styles.pageTitle}>Users</h1>
+        <h1 className={styles.pageTitle}>{t('users.pageTitle')}</h1>
       </div>
       <div className={styles.filtersContainer}>
         <input

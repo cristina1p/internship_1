@@ -37,6 +37,9 @@
   "language.english": "English",
   "language.romanian": "Romanian",
 
+  "users.pageTitle": "Users",
+  "posts.pageTitle": "Posts",
+
   "table.image": "Image",
   "table.title": "Title",
   "table.description": "Description",
@@ -71,7 +74,8 @@
   "gender.Female": "Female",
   "gender.Prefer Not to Say": "Prefer Not to Say",
 
-  "editModal.title": "Edit Post",
+  "editModalPost.title": "Edit Post",
+  "editModalUser.title": "Edit User",
   "editModal.titleInputLabel": "Title",
   "editModal.statusInputLabel": "Status",
   "editModal.descriptionInputLabel": "Description",
