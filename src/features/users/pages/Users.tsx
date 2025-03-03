@@ -3,8 +3,8 @@ import { Dropdown } from '@components/Dropdown'
 import { useDebounce } from '@helper/useDebounce'
 import { useQuery } from '@tanstack/react-query'
 import { UsersTable } from '@users/components'
-import { t } from 'i18next'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import styles from './Users.module.scss'
 
@@ -23,6 +23,7 @@ export const Users = () => {
     pageIndex: 0,
     pageSize: 10,
   })
+  const { t } = useTranslation()
 
   // Reset the page to 1 on any of these filters or search change
   useEffect(() => {
