@@ -1,3 +1,7 @@
 export * from './UsersTable'
 export * from './UsersTable.module.scss'
 export * from './UserActions'
+export * from './AddUserForm'
+export * from './AddUserForm.module.scss'
+export * from './AddUser'
+export * from './AddUser.module.scss'

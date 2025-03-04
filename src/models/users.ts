@@ -23,6 +23,8 @@ export const RoleOptions: ['Admin', 'Moderator', 'User'] = [
   'User',
 ]
 
+export const Sort: ['asc', 'desc'] = ['asc', 'desc']
+
 export interface GetUsersResponse {
   users: User[]
   total: number

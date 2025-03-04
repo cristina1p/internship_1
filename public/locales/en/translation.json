@@ -38,7 +38,10 @@
   "language.romanian": "Romanian",
 
   "users.pageTitle": "Users",
+  "users.addButton": "Add User",
+
   "posts.pageTitle": "Posts",
+  "posts.createPost": "Create Post",
 
   "table.image": "Image",
   "table.title": "Title",
@@ -70,6 +73,7 @@
   "role.Moderator": "Moderator",
   "role.Admin": "Admin",
 
+  "gender.all": "All genders",
   "gender.Male": "Male",
   "gender.Female": "Female",
   "gender.Prefer Not to Say": "Prefer Not to Say",
@@ -93,8 +97,13 @@
   "createPostForm.imageUrl": "Image URL",
   "createPostForm.button": "Create Post",
 
+  "addUserForm.confirmPasswordLabel": "Confirm Password",
+  "addUserForm.roleLabel": "Role",
+  "addUserForm.button": "Add User",
+
   "dashboard": "Dashboard",
   "breadcrumb.newPost": "Create Post",
+  "breadcrumb.newUser": "Add User",
 
   "pagination.page": "Page",
   "pagination.of": "of",

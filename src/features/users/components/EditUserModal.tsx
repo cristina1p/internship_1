@@ -9,15 +9,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { User } from '@models/users'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import styles from '@users/components/EditUserModal.module.scss'
+import { genderOptions } from '@users/helper'
 import { t } from 'i18next'
 import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-
-const genderOptions = [
-  { key: 'Male', labelKey: 'gender.Male' },
-  { key: 'Female', labelKey: 'gender.Female' },
-  { key: 'Prefer Not to Say', labelKey: 'gender.Prefer Not to Say' },
-]
 
 interface EditUserModalProps {
   user: User
@@ -109,7 +104,9 @@ export const EditUserModal = ({ user, onClose }: EditUserModalProps) => {
                   id="gender"
                   options={genderOptions}
                   onOptionClick={field.onChange}
-                  menuTrigger={`gender.${field.value}`}
+                  menuTrigger={
+                    field.value ? `gender.${field.value}` : 'gender.all'
+                  }
                   className={styles.dropdown}
                   menuClassName={styles.dropdownMenu}
                 />

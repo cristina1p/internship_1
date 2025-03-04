@@ -38,7 +38,10 @@
   "language.romanian": "Română",
 
   "users.pageTitle": "Utilizatori",
+  "users.addButton": "Adaugă utilizator",
+
   "posts.pageTitle": "Postări",
+  "posts.createPost": "Creează postare",
 
   "table.image": "Imagine",
   "table.title": "Titlu",
@@ -69,6 +72,7 @@
   "role.Moderator": "Moderator",
   "role.Admin": "Administrator",
 
+  "gender.all": "Toate genurile",
   "gender.Male": "Masculin",
   "gender.Female": "Feminin",
   "gender.Prefer Not to Say": "Prefer să nu spun",
@@ -92,8 +96,13 @@
   "createPostForm.imageUrl": "URL Imagine",
   "createPostForm.button": "Creează Postare",
 
+  "addUserForm.confirmPasswordLabel": "Confirmă Parola",
+  "addUserForm.roleLabel": "Rol",
+  "addUserForm.button": "Adaugă utilizator",
+
   "dashboard": "Tablou de bord",
   "breadcrumb.newPost": "Creează postare",
+  "breadcrumb.newUser": "Adaugă utilizator",
 
   "pagination.page": "Pagina",
   "pagination.of": "din",

@@ -8,9 +8,14 @@
 
   .usersHeader {
     display: flex;
+    justify-content: space-between;
 
     .pageTitle {
       text-align: left;
+    }
+
+    button {
+      align-self: center;
     }
   }
 

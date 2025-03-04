@@ -6,6 +6,7 @@ export const paths = {
   posts: '/posts',
   createPost: '/posts/create',
   users: '/users',
+  addUser: '/users/add',
   settings: '/settings',
   notFound: '*',
 }

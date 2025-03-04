@@ -35,10 +35,10 @@
     },
     {
       "id": 6,
-      "firstName": "Daniela",
+      "firstName": "Daniela1",
       "lastName": "Anderson",
       "email": "daniela@gmail.com",
-      "gender": "Female",
+      "gender": "Prefer Not to Say",
       "role": "User",
       "password": "$2a$10$IboB.35evnSheFYbrXvMCutkHrlbAsNOtp1ThqILnlbmIA78kIrSK",
       "createdAt": "2025-01-09T08:15:53.971Z",
@@ -164,6 +164,105 @@
       "password": "$2a$10$xyz12345hashedpassword",
       "createdAt": "2025-01-14T08:40:00.000Z",
       "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 16,
+      "firstName": "Elena",
+      "lastName": "Elena",
+      "email": "elena@gmail.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$3s5wizdWvedueSy3Icj9iOHxlBjty9LAQUrrH4tNJTDe4bRtgOKvS",
+      "createdAt": "2025-03-03T14:23:51.175Z",
+      "profileImage": ""
+    },
+    {
+      "id": 17,
+      "firstName": "Ana",
+      "lastName": "Maria",
+      "email": "ana@gmail.com",
+      "gender": "Prefer Not to Say",
+      "role": "Admin",
+      "password": "$2a$10$/oWygjRecZ6rlbr84vQos.7uZ4bsVCKY4.n0LNSVvKzMTU.ZNI.Xy",
+      "createdAt": "2025-03-03T14:32:45.054Z",
+      "profileImage": ""
+    },
+    {
+      "id": 18,
+      "firstName": "Test",
+      "lastName": "Test",
+      "email": "test@gmail.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$Zeb5G6WJ.qn5Wvzewrvd4.ad4vxdQ.bBoj3PoSRwzp1tq8WFRvLiG",
+      "createdAt": "2025-03-03T14:50:38.806Z",
+      "profileImage": ""
+    },
+    {
+      "id": 19,
+      "firstName": "Ion",
+      "lastName": "Ion",
+      "email": "ion@gmail.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$vgXIR1AdQfQo.yhAT6ky4ezEAu4QCG6mGJN19Wc8e8PvEDwhgLSh2",
+      "createdAt": "2025-03-03T15:00:50.472Z",
+      "profileImage": ""
+    },
+    {
+      "id": 20,
+      "firstName": "John",
+      "lastName": "Johm",
+      "email": "john@gmail.com",
+      "gender": "Female",
+      "role": "Admin",
+      "password": "$2a$10$9ot2OgO9FXBWXwy/R71FheyKL6uQM7Y9S2Pj67SbjZx6uoVpAno/y",
+      "createdAt": "2025-03-03T15:12:52.700Z",
+      "profileImage": ""
+    },
+    {
+      "id": 21,
+      "firstName": "Alisa",
+      "lastName": "Alisa",
+      "email": "alisa@gmail.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$zoprZcExt3HYfZJpX8SdKO8ogHJtSLdsIsiKFn1PfIMXqkW0taZvG",
+      "createdAt": "2025-03-03T15:16:14.582Z",
+      "profileImage": ""
+    },
+    {
+      "id": 22,
+      "firstName": "hello",
+      "lastName": "hello",
+      "email": "hello@gmail.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$dXvkcDRFZkNowqabI6ShIuDBM2T8SIc1NdDCIDVHuf6N/EHwkhHZm",
+      "createdAt": "2025-03-03T15:18:47.314Z",
+      "profileImage": ""
+    },
+    {
+      "id": 23,
+      "firstName": "Emily",
+      "lastName": "Emily",
+      "email": "emily@gmail.com.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$1OOVsocwBpsuE.x3J6xw7uEyWjN8x/TZovUX63Qh73N5vtDoGwdUy",
+      "createdAt": "2025-03-03T15:33:52.545Z",
+      "profileImage": ""
+    },
+    {
+      "id": 24,
+      "firstName": "William",
+      "lastName": "William",
+      "email": "william@gmail.com",
+      "gender": "Female",
+      "role": "Moderator",
+      "password": "$2a$10$/kM8zpzvnVoIHwFs8cnDE.FrsTih9fc4fZ1xeVvEHJSs0gsFWv6Ju",
+      "createdAt": "2025-03-03T15:53:23.105Z",
+      "profileImage": ""
     }
   ],
   "posts": [
@@ -433,7 +532,7 @@
       "status": "Published"
     },
     {
-      "title": "title133",
+      "title": "title1334",
       "description": "description",
       "image": "https://www.google.com/imgres?q=dashboard%20image&imgurl=https%3A%2F%2Fwww.geckoboard.com%2Fuploads%2FDigital-dashboard-example.png&imgrefurl=https%3A%2F%2Fwww.geckoboard.com%2Fdashboard-examples%2Fexecutive%2Fdigital-dashboard%2F&docid=cc8VHdKymbMu0M&tbnid=CF8zhM1D0ZQmDM&vet=12ahUKEwic9YCPm9SLAxVEwAIHHTspCVEQM3oECFAQAA..i&w=5120&h=2880&hcb=2&ved=2ahUKEwic9YCPm9SLAxVEwAIHHTspCVEQM3oECFAQAA",
       "id": 20,
@@ -441,7 +540,7 @@
       "date": "2025-02-25T07:19:54.568Z",
       "viewCounter": 0,
       "comments": [],
-      "status": "Published"
+      "status": "Draft"
     }
   ]
 }

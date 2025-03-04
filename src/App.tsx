@@ -12,6 +12,7 @@ import { Layout } from '@layouts/dashboard'
 import { CreatePost } from '@posts/components'
 import { Posts } from '@posts/pages/Posts'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { AddUser } from '@users/components'
 import { Users } from '@users/pages/Users'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
@@ -44,6 +45,8 @@ export function App() {
                   <Route path={paths.posts} element={<Posts />} />
                   <Route path={paths.createPost} element={<CreatePost />} />
                   <Route path={paths.users} element={<Users />} />
+                  <Route path={paths.addUser} element={<AddUser />} />
+
                   <Route
                     path={paths.dashboard}
                     element={<div>Dashboard Page</div>}

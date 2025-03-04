@@ -77,6 +77,7 @@ export const getUsers =
 
         return matchesEnd && matchesStart && matchesSearch && matchesRole // All criteria must match
       })
+      .sortBy((user) => -new Date(user.createdAt))
       .value()
 
     // Calculate paginated and total count

@@ -64,7 +64,7 @@ export const Posts = () => {
           className="buttonPrimary"
           onClick={() => navigate(paths.createPost)}
         >
-          Create Post
+          {t('posts.createPost')}
         </button>
       </div>
 
