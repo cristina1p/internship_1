@@ -4,6 +4,7 @@ import { Register } from '@auth/pages/Register'
 import { NotFound } from '@components/NotFound'
 import { TokenContextProvider } from '@contexts/TokenContextProvider'
 import { UserDetailsContextProvider } from '@contexts/UserDetailsContextProvider'
+import { AdminRoleRequired } from '@guards/AdminRoleRequired'
 import { AuthRequired } from '@guards/AuthRequired'
 import { LoggedOutRequired } from '@guards/LoggedOutRequired'
 import { paths } from '@helper/paths'
@@ -44,8 +45,11 @@ export function App() {
                 <Route element={<Layout />}>
                   <Route path={paths.posts} element={<Posts />} />
                   <Route path={paths.createPost} element={<CreatePost />} />
-                  <Route path={paths.users} element={<Users />} />
-                  <Route path={paths.addUser} element={<AddUser />} />
+
+                  <Route element={<AdminRoleRequired />}>
+                    <Route path={paths.users} element={<Users />} />
+                    <Route path={paths.addUser} element={<AddUser />} />
+                  </Route>
 
                   <Route
                     path={paths.dashboard}
