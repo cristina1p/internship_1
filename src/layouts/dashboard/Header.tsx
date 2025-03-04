@@ -48,6 +48,7 @@ const HeaderLoggedInArea = () => {
   const { setToken } = useContext(TokenContext) // Acces token and setToken to clear it
 
   const { firstName, lastName, profileImage } = userDetails!
+  const placeholderImage = '/images/placeholderProfileImage.webp'
   const userDropdownOptions = [
     { key: 'logout', labelKey: 'header.logout_button' },
   ]
@@ -69,7 +70,7 @@ const HeaderLoggedInArea = () => {
         onOptionClick={(key) => actions[key]?.()}
         menuTrigger={
           <img
-            src={profileImage}
+            src={profileImage || placeholderImage}
             alt="Profile"
             className={styles.profileImage}
           />
