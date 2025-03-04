@@ -23,7 +23,7 @@ export const RegisterRequestBodySchema = z
       message: 'You must agree to the terms and conditions',
     }),
   })
-  .refine((data) => data.password == data.confirmPassword, {
+  .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
     path: ['confirmPassword'], // Error will be attached to confirmPassword
   })

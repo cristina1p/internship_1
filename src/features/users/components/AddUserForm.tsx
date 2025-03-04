@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom'
 
 import styles from './AddUserForm.module.scss'
 
-
 export const AddUserForm = () => {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
@@ -76,7 +75,7 @@ export const AddUserForm = () => {
         id="confirmPassword"
         label={t('addUserForm.confirmPasswordLabel')}
         type="password"
-        error={errors.password?.message}
+        error={errors.confirmPassword?.message}
         extraInputProps={() => register('confirmPassword')}
       />
 

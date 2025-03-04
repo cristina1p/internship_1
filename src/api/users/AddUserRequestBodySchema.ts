@@ -11,3 +11,7 @@ export const AddUserRequestBodySchema = RegisterRequestBodySchema._def.schema
   .extend({
     role: z.enum(RoleOptions),
   })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ['confirmPassword'],
+  })
