@@ -16,20 +16,7 @@ export const addUser = (
       return respondWithError(res, 400, 'Validation failed', errors)
     }
 
-    const {
-      firstName,
-      lastName,
-      email,
-      gender,
-      password,
-      confirmPassword,
-      role,
-    } = result.data
-
-    // Check if passwords match (though Zod already validates this)
-    if (password !== confirmPassword) {
-      return respondWithError(res, 400, "Passwords don't match")
-    }
+    const { firstName, lastName, email, gender, password, role } = result.data
 
     // Check if user already exists
     const dbUsers = router.db.get('users').value()

@@ -5,6 +5,8 @@ import { Input } from '@components/Input'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { genderOptions, getRoleOptions } from '@users/helper'
+import axios from 'axios'
+import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -14,6 +16,7 @@ import styles from './AddUserForm.module.scss'
 export const AddUserForm = () => {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useState('')
   const { t } = useTranslation()
 
   const { mutate, isPending } = useMutation({
@@ -21,6 +24,14 @@ export const AddUserForm = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] })
       navigate('/users')
+    },
+    onError: (error) => {
+      if (axios.isAxiosError(error)) {
+        setErrorMessage(error.response?.data?.message || 'Register failed')
+      } else {
+        // Handle non-Axios errors
+        setErrorMessage('An unexpected error occurred')
+      }
     },
   })
   // Initialize react hook form
@@ -33,12 +44,16 @@ export const AddUserForm = () => {
     resolver: zodResolver(AddUserRequestBodySchema),
   })
 
-  const onSubmit = (addUserFormValues: AddUserFormValues) => {
+  const onSubmit = async (addUserFormValues: AddUserFormValues) => {
+    setErrorMessage('')
     mutate(addUserFormValues)
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.addUserForm}>
+      {errorMessage && (
+        <span className={styles.errorMessage}>{errorMessage}</span>
+      )}
       <Input
         id="firstName"
         label={t('editModal.firstNameInputLabel')}
@@ -89,7 +104,11 @@ export const AddUserForm = () => {
               id="gender"
               options={genderOptions}
               onOptionClick={field.onChange}
-              menuTrigger={field.value ? `gender.${field.value}` : 'gender.all'}
+              menuTrigger={
+                field.value
+                  ? `gender.${field.value}`
+                  : 'gender.Prefer Not to Say'
+              }
               className={styles.dropdown}
               menuClassName={styles.dropdownMenu}
             />
@@ -107,7 +126,7 @@ export const AddUserForm = () => {
               id="role"
               options={getRoleOptions}
               onOptionClick={field.onChange}
-              menuTrigger={field.value ? `role.${field.value}` : 'role.all'}
+              menuTrigger={field.value ? `role.${field.value}` : 'role.User'}
               className={styles.dropdown}
               menuClassName={styles.dropdownMenu}
             />
