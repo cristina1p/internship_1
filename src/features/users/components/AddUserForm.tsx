@@ -4,7 +4,7 @@ import { Dropdown } from '@components/Dropdown'
 import { Input } from '@components/Input'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { genderOptions, getRoleOptions } from '@users/helper'
+import { genderOptions, roleOptions } from '@users/helper'
 import axios from 'axios'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -124,7 +124,7 @@ export const AddUserForm = () => {
           render={({ field }) => (
             <Dropdown
               id="role"
-              options={getRoleOptions}
+              options={roleOptions}
               onOptionClick={field.onChange}
               menuTrigger={field.value ? `role.${field.value}` : 'role.User'}
               className={styles.dropdown}

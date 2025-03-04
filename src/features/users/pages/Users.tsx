@@ -4,7 +4,7 @@ import { paths } from '@helper/paths'
 import { useDebounce } from '@helper/useDebounce'
 import { useQuery } from '@tanstack/react-query'
 import { UsersTable } from '@users/components'
-import { getRoleOptions } from '@users/helper'
+import { roleOptions as baseRoleOptions } from '@users/helper'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -21,6 +21,7 @@ export const Users = () => {
     pageSize: 10,
   })
   const { t } = useTranslation()
+  const roleOptions = [{ key: '', labelKey: 'role.all' }, ...baseRoleOptions]
 
   // Reset the page to 1 on any of these filters or search change
   useEffect(() => {
@@ -67,9 +68,9 @@ export const Users = () => {
         />
 
         <Dropdown
-          options={getRoleOptions}
+          options={roleOptions}
           onOptionClick={setRole}
-          menuTrigger={role ? `role.${role}` : 'role.User'}
+          menuTrigger={role ? `role.${role}` : 'role.all'}
           className={styles.dropdown}
         />
       </div>
