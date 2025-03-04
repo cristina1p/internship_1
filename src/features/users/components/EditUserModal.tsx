@@ -105,7 +105,9 @@ export const EditUserModal = ({ user, onClose }: EditUserModalProps) => {
                   options={genderOptions}
                   onOptionClick={field.onChange}
                   menuTrigger={
-                    field.value ? `gender.${field.value}` : 'gender.all'
+                    field.value
+                      ? `gender.${field.value}`
+                      : 'gender.Prefer Not to Say'
                   }
                   className={styles.dropdown}
                   menuClassName={styles.dropdownMenu}

@@ -69,7 +69,7 @@ export const Users = () => {
         <Dropdown
           options={getRoleOptions}
           onOptionClick={setRole}
-          menuTrigger={role ? `role.${role}` : 'role.all'}
+          menuTrigger={role ? `role.${role}` : 'role.User'}
           className={styles.dropdown}
         />
       </div>
