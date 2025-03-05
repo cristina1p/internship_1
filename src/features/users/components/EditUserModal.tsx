@@ -1,35 +1,32 @@
-import { UpdatePostFormValues, UpdatePostRequestBodySchema } from '@api/posts'
-import { updatePost } from '@api/posts'
+import {
+  UpdateUserByIdRequestBodySchema,
+  UpdateUserFormValues,
+  updateUser,
+} from '@api/users'
 import { Dropdown } from '@components/Dropdown'
 import { Input } from '@components/Input'
-import { Textarea } from '@components/Textarea'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Post, Status } from '@models/posts'
-import styles from '@posts/components/EditPostModal.module.scss'
+import { User } from '@models/users'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import styles from '@users/components/EditUserModal.module.scss'
+import { genderOptions } from '@users/helper'
+import { t } from 'i18next'
 import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { useTranslation } from 'react-i18next'
 
-const statusOptions = [
-  { key: 'Published', labelKey: 'status.Published' },
-  { key: 'Draft', labelKey: 'status.Draft' },
-]
-
-interface EditPostModalProps {
-  post: Post
+interface EditUserModalProps {
+  user: User
   onClose: () => void
 }
 
-export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
-  const { t } = useTranslation()
+export const EditUserModal = ({ user, onClose }: EditUserModalProps) => {
   const queryClient = useQueryClient()
 
   const { mutate, isPending } = useMutation({
-    mutationFn: updatePost,
+    mutationFn: updateUser,
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['users'] })
       onClose()
-      queryClient.invalidateQueries({ queryKey: ['posts'] })
     },
   })
 
@@ -39,18 +36,18 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<UpdatePostFormValues>({
-    resolver: zodResolver(UpdatePostRequestBodySchema),
+  } = useForm<UpdateUserFormValues>({
+    resolver: zodResolver(UpdateUserByIdRequestBodySchema),
     defaultValues: {
-      title: post.title,
-      description: post.description,
-      image: post.image,
-      status: post.status as Status | undefined,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      gender: user.gender,
+      role: user.role,
     },
   })
 
-  const onSubmit = (postFormValues: UpdatePostFormValues) => {
-    mutate({ id: post.id, ...postFormValues })
+  const onSubmit = (userFormValues: UpdateUserFormValues) => {
+    mutate({ id: user.id, ...userFormValues })
   }
 
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -79,50 +76,45 @@ export const EditPostModal = ({ post, onClose }: EditPostModalProps) => {
           &times;
         </button>
 
-        <h2>{t('editModalPost.title')}</h2>
+        <h2>{t('editModalUser.title')}</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
-            id="title"
-            label={t('editModal.titleInputLabel')}
+            id="firstName"
+            label={t('editModal.firstNameInputLabel')}
             type="text"
-            error={errors.title?.message}
-            extraInputProps={() => register('title')}
+            error={errors.firstName?.message}
+            extraInputProps={() => register('firstName')}
+          />
+          <Input
+            id="lastName"
+            label={t('editModal.lastNameInputLabel')}
+            type="text"
+            error={errors.lastName?.message}
+            extraInputProps={() => register('lastName')}
           />
 
           <div className={styles.dropdownContainer}>
-            <label htmlFor="status">{t('editModal.statusInputLabel')} </label>
+            <label htmlFor="gender">{t('editModal.genderInputLabel')} </label>
             <Controller
-              name="status"
+              name="gender"
               control={control}
               render={({ field }) => (
                 <Dropdown
-                  id="status"
-                  options={statusOptions}
+                  id="gender"
+                  options={genderOptions}
                   onOptionClick={field.onChange}
-                  menuTrigger={`status.${field.value}`}
+                  menuTrigger={
+                    field.value
+                      ? `gender.${field.value}`
+                      : 'gender.Prefer Not to Say'
+                  }
                   className={styles.dropdown}
                   menuClassName={styles.dropdownMenu}
                 />
               )}
             />
           </div>
-
-          <Textarea
-            id="description"
-            label={t('editModal.descriptionInputLabel')}
-            {...register('description')}
-            error={errors.description?.message}
-            extraTextareaProps={() => register('description')}
-          />
-
-          <Input
-            id="image"
-            label={t('editModal.imageUrlInputLabel')}
-            type="url"
-            error={errors.image?.message}
-            extraInputProps={() => register('image')}
-          />
 
           <button type="submit" className="buttonPrimary" disabled={isPending}>
             {isPending

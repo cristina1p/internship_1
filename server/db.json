@@ -1,55 +1,33 @@
 {
   "users": [
     {
-      "id": 1,
-      "createdAt": "2025-01-05T16:05:45.222Z",
-      "firstName": "Ana",
-      "lastName": "B",
-      "email": "ana@gmail.com",
-      "gender": "Female",
-      "role": "Admin",
-      "password": "$2a$10$3gP.lB1hesTRVD2shNylNe.w0xDJb0Un/wB6TYApB6VZbiF67pJ8y",
-      "profileImage": "https://st2.depositphotos.com/41960954/42058/i/450/depositphotos_420585092-stock-photo-beautiful-woman-portrait-digital-illustration.jpg"
-    },
-    {
       "id": 2,
       "createdAt": "2024-11-05T16:15:11.021Z",
       "firstName": "Mike",
       "lastName": "Kloe",
       "email": "mikekloe@example.com",
-      "gender": "Male",
-      "role": "Moderator",
+      "gender": "Prefer Not to Say",
+      "role": "Admin",
       "password": "$2a$10$Fc0lp1Ih0stYadukBJT8LulpzHkDbHBfEQE49sYIRGxeio6kO6BS.",
       "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
       "id": 3,
       "createdAt": "2024-09-05T17:21:19.268Z",
-      "firstName": "Luke",
+      "firstName": "Adam",
       "lastName": "Adam",
       "email": "lukeadam@example.com",
-      "gender": "Male",
-      "role": "User",
+      "gender": "Prefer Not to Say",
+      "role": "Moderator",
       "password": "$2a$10$tzg22H.YtAd3XeRZDFdtc.HpskmVqQ8O0Fm/lkDekX7JpSmehgHkS",
-      "profileImage": "/images/placeholderProfileImage.webp"
-    },
-    {
-      "id": 4,
-      "createdAt": "2024-07-05T17:31:44.876Z",
-      "firstName": "John",
-      "lastName": "Adam",
-      "email": "johnadam@example.com",
-      "gender": "Male",
-      "role": "User",
-      "password": "$2a$10$Oso2eKgp54Cm7er3Z6KKM.DJAXKQWrCkWX0ABZ853EJrVxZTyeEUK",
       "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
       "id": 5,
       "firstName": "Lucian",
-      "lastName": "M",
+      "lastName": "Lucian",
       "email": "lucian@gmail.com",
-      "gender": "Male",
+      "gender": "Prefer Not to Say",
       "role": "User",
       "password": "$2a$10$oaDcohMz0CS/isf3bA1Uy.Mhavq.UMotX7NbssPiiCLlomfDZh5/m",
       "createdAt": "2025-01-09T08:14:45.099Z",
@@ -57,47 +35,234 @@
     },
     {
       "id": 6,
-      "firstName": "Daniela",
-      "lastName": "P",
+      "firstName": "Daniela1",
+      "lastName": "Anderson",
       "email": "daniela@gmail.com",
-      "gender": "Female",
+      "gender": "Prefer Not to Say",
       "role": "User",
       "password": "$2a$10$IboB.35evnSheFYbrXvMCutkHrlbAsNOtp1ThqILnlbmIA78kIrSK",
       "createdAt": "2025-01-09T08:15:53.971Z",
       "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
-      "id": 7,
-      "firstName": "Mihaela",
-      "lastName": "G",
-      "email": "mihaela@gmail.com",
-      "gender": "Female",
-      "role": "User",
-      "password": "$2a$10$sSH1M1GTcTU2ddSJlahPYeiiAJTSSgEFNLw5vEX8kCucAnCueg0.G",
-      "createdAt": "2025-01-09T08:21:23.345Z",
-      "profileImage": "/images/placeholderProfileImage.webp"
-    },
-    {
-      "id": 8,
-      "firstName": "Max",
-      "lastName": "L",
-      "email": "max@gmail.com",
-      "gender": "Male",
-      "role": "User",
-      "password": "$2a$10$GWlUJwWKUMGvxGIQ96RG9uaqSKEMgs77.VvJYO/xyqS7MAgDP.X5G",
-      "createdAt": "2025-01-09T09:12:33.267Z",
-      "profileImage": "/images/placeholderProfileImage.webp"
-    },
-    {
       "id": 9,
       "firstName": "Iv",
-      "lastName": "C",
+      "lastName": "Ceban",
       "email": "iv@gmail.com",
       "gender": "Male",
       "role": "User",
       "password": "$2a$10$M9WIR1CygcvX4lm45LStlOPA.gimwQM8gbKpFm05awLtF2Xlde0Im",
       "createdAt": "2025-01-09T09:15:44.369Z",
       "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 10,
+      "firstName": "Robert",
+      "lastName": "Toma",
+      "email": "elena@example.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-10T10:30:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 11,
+      "firstName": "Robert",
+      "lastName": "Filip",
+      "email": "robert@example.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-10T11:15:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 12,
+      "firstName": "Sophia",
+      "lastName": "Radu",
+      "email": "sophia@example.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-10T12:45:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 13,
+      "firstName": "David",
+      "lastName": "Neagu",
+      "email": "david@example.com",
+      "gender": "Male",
+      "role": "Moderator",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-11T09:30:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 14,
+      "firstName": "Emma",
+      "lastName": "Stan",
+      "email": "emma@example.com",
+      "gender": "Female",
+      "role": "Admin",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-11T14:20:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 15,
+      "firstName": "Oliver",
+      "lastName": "Popescu",
+      "email": "oliver@example.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-12T08:10:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 16,
+      "firstName": "Ava",
+      "lastName": "Mihai",
+      "email": "ava@example.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-12T09:50:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 17,
+      "firstName": "Lucas",
+      "lastName": "Gheorghe",
+      "email": "lucas@example.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-13T07:30:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 18,
+      "firstName": "Isabella",
+      "lastName": "Dumitru",
+      "email": "isabella@example.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-13T11:00:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 19,
+      "firstName": "Ethan",
+      "lastName": "Haiduc",
+      "email": "ethan@example.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$xyz12345hashedpassword",
+      "createdAt": "2025-01-14T08:40:00.000Z",
+      "profileImage": "/images/placeholderProfileImage.webp"
+    },
+    {
+      "id": 16,
+      "firstName": "Elena",
+      "lastName": "Elena",
+      "email": "elena@gmail.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$3s5wizdWvedueSy3Icj9iOHxlBjty9LAQUrrH4tNJTDe4bRtgOKvS",
+      "createdAt": "2025-03-03T14:23:51.175Z",
+      "profileImage": ""
+    },
+    {
+      "id": 17,
+      "firstName": "Ana",
+      "lastName": "Maria",
+      "email": "ana@gmail.com",
+      "gender": "Prefer Not to Say",
+      "role": "Admin",
+      "password": "$2a$10$/oWygjRecZ6rlbr84vQos.7uZ4bsVCKY4.n0LNSVvKzMTU.ZNI.Xy",
+      "createdAt": "2025-03-03T14:32:45.054Z",
+      "profileImage": ""
+    },
+    {
+      "id": 18,
+      "firstName": "Test",
+      "lastName": "Test",
+      "email": "test@gmail.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$Zeb5G6WJ.qn5Wvzewrvd4.ad4vxdQ.bBoj3PoSRwzp1tq8WFRvLiG",
+      "createdAt": "2025-03-03T14:50:38.806Z",
+      "profileImage": ""
+    },
+    {
+      "id": 19,
+      "firstName": "Ion",
+      "lastName": "Ion",
+      "email": "ion@gmail.com",
+      "gender": "Male",
+      "role": "User",
+      "password": "$2a$10$vgXIR1AdQfQo.yhAT6ky4ezEAu4QCG6mGJN19Wc8e8PvEDwhgLSh2",
+      "createdAt": "2025-03-03T15:00:50.472Z",
+      "profileImage": ""
+    },
+    {
+      "id": 20,
+      "firstName": "John",
+      "lastName": "Johm",
+      "email": "john@gmail.com",
+      "gender": "Female",
+      "role": "Admin",
+      "password": "$2a$10$9ot2OgO9FXBWXwy/R71FheyKL6uQM7Y9S2Pj67SbjZx6uoVpAno/y",
+      "createdAt": "2025-03-03T15:12:52.700Z",
+      "profileImage": ""
+    },
+    {
+      "id": 21,
+      "firstName": "Alisa",
+      "lastName": "Alisa",
+      "email": "alisa@gmail.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$zoprZcExt3HYfZJpX8SdKO8ogHJtSLdsIsiKFn1PfIMXqkW0taZvG",
+      "createdAt": "2025-03-03T15:16:14.582Z",
+      "profileImage": ""
+    },
+    {
+      "id": 22,
+      "firstName": "hello",
+      "lastName": "hello",
+      "email": "hello@gmail.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$dXvkcDRFZkNowqabI6ShIuDBM2T8SIc1NdDCIDVHuf6N/EHwkhHZm",
+      "createdAt": "2025-03-03T15:18:47.314Z",
+      "profileImage": ""
+    },
+    {
+      "id": 23,
+      "firstName": "Emily",
+      "lastName": "Emily",
+      "email": "emily@gmail.com.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$1OOVsocwBpsuE.x3J6xw7uEyWjN8x/TZovUX63Qh73N5vtDoGwdUy",
+      "createdAt": "2025-03-03T15:33:52.545Z",
+      "profileImage": ""
+    },
+    {
+      "id": 24,
+      "firstName": "William",
+      "lastName": "William",
+      "email": "william@gmail.com",
+      "gender": "Female",
+      "role": "Moderator",
+      "password": "$2a$10$/kM8zpzvnVoIHwFs8cnDE.FrsTih9fc4fZ1xeVvEHJSs0gsFWv6Ju",
+      "createdAt": "2025-03-03T15:53:23.105Z",
+      "profileImage": ""
     }
   ],
   "posts": [
@@ -365,6 +530,17 @@
         "Way better than Vuex."
       ],
       "status": "Published"
+    },
+    {
+      "title": "title1334",
+      "description": "description",
+      "image": "https://www.google.com/imgres?q=dashboard%20image&imgurl=https%3A%2F%2Fwww.geckoboard.com%2Fuploads%2FDigital-dashboard-example.png&imgrefurl=https%3A%2F%2Fwww.geckoboard.com%2Fdashboard-examples%2Fexecutive%2Fdigital-dashboard%2F&docid=cc8VHdKymbMu0M&tbnid=CF8zhM1D0ZQmDM&vet=12ahUKEwic9YCPm9SLAxVEwAIHHTspCVEQM3oECFAQAA..i&w=5120&h=2880&hcb=2&ved=2ahUKEwic9YCPm9SLAxVEwAIHHTspCVEQM3oECFAQAA",
+      "id": 20,
+      "userId": 1,
+      "date": "2025-02-25T07:19:54.568Z",
+      "viewCounter": 0,
+      "comments": [],
+      "status": "Draft"
     }
   ]
 }

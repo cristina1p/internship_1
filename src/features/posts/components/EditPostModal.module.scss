@@ -1,76 +1,9 @@
-@use '/src/styles/variables.scss' as *;
+@use '/src/styles/modal.scss' as *;
 
 .modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-
-  .modal {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    padding: 20px;
-    background-color: $white-color;
-
-    h2 {
-      text-align: center;
-    }
-
-    .closeButton {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 28px;
-      border: none;
-      color: $text-color;
-      cursor: pointer;
-
-      &:hover {
-        color: $primary-color;
-      }
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-
-      textarea {
-        height: 100px;
-      }
-
-      .dropdownContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-
-        .dropdown {
-          .dropdownMenu {
-            width: 100%;
-          }
-          button {
-            width: 100%;
-          }
-        }
-      }
-    }
-
-    @media (min-width: 500px) {
-      width: 500px;
-      height: auto;
-      border-radius: 6px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  form {
+    textarea {
+      height: 100px;
     }
   }
 }

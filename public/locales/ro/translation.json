@@ -37,6 +37,12 @@
   "language.english": "Engleză",
   "language.romanian": "Română",
 
+  "users.pageTitle": "Utilizatori",
+  "users.addButton": "Adaugă utilizator",
+
+  "posts.pageTitle": "Postări",
+  "posts.createPost": "Creează postare",
+
   "table.image": "Imagine",
   "table.title": "Titlu",
   "table.description": "Descriere",
@@ -46,10 +52,10 @@
   "table.status": "Stare",
   "table.actions": "Acțiuni",
   "table.noPosts": "Nu s-au găsit postări în acest interval de date.",
-  "table.search": "Căutați după titlu sau descriere...",
+  "table.noUsers": "No users found",
+  "table.search": "Căutați...",
   "table.deleteSuccess": "Element șters cu succes",
   "table.confirmDelete": "Sigur doriți să ștergeți acest element?",
-
   "options.Edit": "Editează",
   "options.Delete": "Șterge",
 
@@ -61,7 +67,18 @@
   "status.Draft": "Schiță",
   "status.Deleted": "Șters",
 
-  "editModal.title": "Editează Postarea",
+  "role.all": "Toate rolurile",
+  "role.User": "Utilizator",
+  "role.Moderator": "Moderator",
+  "role.Admin": "Administrator",
+
+  "gender.all": "Toate genurile",
+  "gender.Male": "Masculin",
+  "gender.Female": "Feminin",
+  "gender.Prefer Not to Say": "Prefer să nu spun",
+
+  "editModalPost.title": "Editează Postarea",
+  "editModalUser.title": "Editează Utilizatorul",
   "editModal.titleInputLabel": "Titlu",
   "editModal.statusInputLabel": "Stare",
   "editModal.descriptionInputLabel": "Descriere",
@@ -70,13 +87,22 @@
   "editModal.savingButton": "Se Salvează...",
   "editModal.errorMessage": "A apărut o eroare",
 
+  "editModal.firstNameInputLabel": "Prenume",
+  "editModal.lastNameInputLabel": "Nume",
+  "editModal.genderInputLabel": "Gen",
+
   "createPostForm.title": "Titlu",
   "createPostForm.description": "Descriere",
   "createPostForm.imageUrl": "URL Imagine",
   "createPostForm.button": "Creează Postare",
 
+  "addUserForm.confirmPasswordLabel": "Confirmă Parola",
+  "addUserForm.roleLabel": "Rol",
+  "addUserForm.button": "Adaugă utilizator",
+
   "dashboard": "Tablou de bord",
   "breadcrumb.newPost": "Creează postare",
+  "breadcrumb.newUser": "Adaugă utilizator",
 
   "pagination.page": "Pagina",
   "pagination.of": "din",

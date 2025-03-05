@@ -1,8 +1,6 @@
-import { deletePost } from '@api/posts'
+import { deleteUser } from '@api/users/deleteUser'
 import { PaginationControls } from '@components/PaginationControls'
-import { Post } from '@models/posts'
-import { EditPostModal } from '@posts/components/EditPostModal'
-import styles from '@posts/components/PostsTable.module.scss'
+import { User } from '@models/users'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import {
   createColumnHelper,
@@ -12,14 +10,16 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from '@tanstack/react-table'
+import { UserActions } from '@users/components/UserActions'
+import styles from '@users/components/UsersTable.module.scss'
+import { t } from 'i18next'
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
 
-import { PostActions } from './PostActions'
+import { EditUserModal } from './EditUserModal'
 
-export interface PostsTableProps {
-  posts: Post[]
+export interface UsersTableProps {
+  users: User[]
   total: number
   pagination: { pageIndex: number; pageSize: number }
   setPagination: React.Dispatch<
@@ -27,91 +27,89 @@ export interface PostsTableProps {
   >
 }
 
-export const PostsTable = ({
-  posts,
+export const UsersTable = ({
+  users,
   pagination,
   setPagination,
   total,
-}: PostsTableProps) => {
-  const { t } = useTranslation()
+}: UsersTableProps) => {
   const queryClient = useQueryClient()
 
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [selectedPost, setSelectedPost] = useState<Post | null>(null)
+  const [selectedUser, setSelectedUser] = useState<User | null>(null)
 
   // Delete mutation
   const deleteMutation = useMutation({
-    mutationFn: deletePost,
+    mutationFn: deleteUser,
     onSuccess: () => {
       toast.success(t('table.deleteSuccess'))
-      queryClient.invalidateQueries({ queryKey: ['posts'] })
+      queryClient.invalidateQueries({ queryKey: ['users'] })
     },
     onError: (error: Error) => {
       toast.error(t('table.deleteError', { error: error.message }))
     },
   })
 
-  // Handle delete action
-  const handleDelete = (postId: string) => {
+  // Handle delete
+  const handleDelete = (userId: string) => {
     if (window.confirm(t('table.confirmDelete'))) {
-      deleteMutation.mutate(postId)
+      deleteMutation.mutate(userId)
     }
   }
 
-  const actions: Record<string, (postIndex: number) => void> = {
-    edit: (postIndex) => {
-      setSelectedPost(posts[postIndex])
+  const actions: Record<string, (userId: number) => void> = {
+    edit: (userIndex) => {
+      setSelectedUser(users[userIndex])
       setIsModalOpen(true)
     },
-    delete: (postIndex) => {
-      handleDelete(posts[postIndex].id.toString())
+    delete: (userIndex) => {
+      handleDelete(users[userIndex].id.toString())
     },
   }
 
-  const columnHelper = createColumnHelper<Post>()
+  const columnHelper = createColumnHelper<User>()
 
-  // Define table columns
   const columns = [
-    columnHelper.accessor('image', {
-      header: () => t('table.image'),
-      cell: (info) => (
-        <img
-          src={info.getValue()}
-          alt="Post Image"
-          style={{
-            width: '50px',
-            height: '50px',
-            objectFit: 'cover',
-            borderRadius: '5px',
-          }}
-        />
-      ),
+    columnHelper.accessor('id', {
+      header: 'ID',
+      footer: (info) => info.column.id,
     }),
-    columnHelper.accessor('title', { header: () => t('table.title') }),
-    columnHelper.accessor('description', {
-      header: () => t('table.description'),
+    columnHelper.accessor((row) => row.firstName, {
+      id: 'firstName',
+      cell: (info) => info.getValue(),
+      header: () => <span>First Name</span>,
+      footer: (info) => info.column.id,
+    }),
+    columnHelper.accessor((row) => row.lastName, {
+      id: 'lastName',
       cell: (info) => <i>{info.getValue()}</i>,
-    }),
-    columnHelper.accessor('date', {
-      header: () => t('table.date'),
+      header: () => <span>Last Name</span>,
+      footer: (info) => info.column.id,
     }),
 
-    columnHelper.accessor('viewCounter', {
-      header: () => t('table.viewCount'),
+    columnHelper.accessor('email', {
+      header: 'Email',
+      footer: (info) => info.column.id,
     }),
-    columnHelper.accessor('userId', { header: () => t('table.userId') }),
-    columnHelper.accessor('status', { header: () => t('table.status') }),
+    columnHelper.accessor('gender', {
+      header: 'Gender',
+      footer: (info) => info.column.id,
+    }),
+    columnHelper.accessor('role', {
+      header: 'Role',
+      footer: (info) => info.column.id,
+    }),
     columnHelper.display({
       id: 'actions',
       header: () => t('table.actions'),
       cell: (info) => (
-        <PostActions onOptionClick={(key) => actions[key]?.(info.row.index)} />
+        <UserActions onOptionClick={(key) => actions[key]?.(info.row.index)} />
       ),
     }),
   ]
 
   const table = useReactTable({
-    data: posts,
+    data: users,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -122,6 +120,15 @@ export const PostsTable = ({
       pagination,
     },
     onPaginationChange: setPagination,
+    globalFilterFn: (row, _columnIds, filterValue) => {
+      return ['title', 'description'].some((columnId) =>
+        row
+          .getValue(columnId)
+          ?.toString()
+          .toLowerCase()
+          .includes(filterValue.toLowerCase()),
+      )
+    },
   })
 
   return (
@@ -160,7 +167,7 @@ export const PostsTable = ({
               ))
             ) : (
               <tr>
-                <td colSpan={columns.length}>{t('table.noPosts')}</td>
+                <td colSpan={columns.length}>{t('table.noUsers')}</td>
               </tr>
             )}
           </tbody>
@@ -169,9 +176,9 @@ export const PostsTable = ({
 
       {total > pagination.pageSize && <PaginationControls table={table} />}
 
-      {isModalOpen && selectedPost && (
-        <EditPostModal
-          post={selectedPost}
+      {isModalOpen && selectedUser && (
+        <EditUserModal
+          user={selectedUser}
           onClose={() => setIsModalOpen(false)}
         />
       )}

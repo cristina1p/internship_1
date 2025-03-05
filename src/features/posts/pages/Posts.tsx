@@ -1,6 +1,7 @@
 import { getPosts } from '@api/posts'
 import { Dropdown } from '@components/Dropdown'
 import { paths } from '@helper/paths'
+import { useDebounce } from '@helper/useDebounce'
 import { SortOrder } from '@models/posts'
 import { SortDropdown } from '@posts/components'
 import { PostsTable } from '@posts/components/PostsTable'
@@ -20,7 +21,6 @@ const getStatusOptions = [
 export const Posts = () => {
   const [statusKey, setStatusFilter] = useState('')
   const [search, setSearch] = useState('')
-  const [debouncedSearch, setDebouncedSearch] = useState('')
   const [start, setStartDateFilter] = useState('')
   const [end, setEndDateFilter] = useState('')
   const [pagination, setPagination] = useState({
@@ -29,20 +29,14 @@ export const Posts = () => {
   })
   const [sort, setSort] = useState<SortOrder>('desc')
   const navigate = useNavigate()
+  const debouncedSearch = useDebounce(search)
+
   const { t } = useTranslation()
 
   // Reset the page to 1 on any of these filters or search change
   useEffect(() => {
     setPagination((prev) => ({ ...prev, pageIndex: 0 }))
   }, [search, statusKey, start, end, sort])
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setDebouncedSearch(search)
-    }, 500)
-
-    return () => clearTimeout(timeoutId)
-  }, [search])
 
   const { data, isLoading, error } = useQuery({
     queryKey: [
@@ -65,12 +59,12 @@ export const Posts = () => {
   return (
     <div className={styles.postsContainer}>
       <div className={styles.postsHeader}>
-        <h1 className={styles.pageTitle}>Posts</h1>
+        <h1 className={styles.pageTitle}>{t('posts.pageTitle')}</h1>
         <button
           className="buttonPrimary"
           onClick={() => navigate(paths.createPost)}
         >
-          Create Post
+          {t('posts.createPost')}
         </button>
       </div>
 

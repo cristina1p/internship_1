@@ -37,6 +37,12 @@
   "language.english": "English",
   "language.romanian": "Romanian",
 
+  "users.pageTitle": "Users",
+  "users.addButton": "Add User",
+
+  "posts.pageTitle": "Posts",
+  "posts.createPost": "Create Post",
+
   "table.image": "Image",
   "table.title": "Title",
   "table.description": "Description",
@@ -46,7 +52,8 @@
   "table.status": "Status",
   "table.actions": "Actions",
   "table.noPosts": "No posts found within this date range.",
-  "table.search": "Search by Title or Description...",
+  "table.noUsers": "No users found",
+  "table.search": "Search...",
   "table.deleteSuccess": "Item deleted successfully",
   "table.confirmDelete": "Are you sure you want to delete this item?",
 
@@ -61,7 +68,18 @@
   "status.Draft": "Draft",
   "status.Deleted": "Deleted",
 
-  "editModal.title": "Edit Post",
+  "role.all": "All Roles",
+  "role.User": "User",
+  "role.Moderator": "Moderator",
+  "role.Admin": "Admin",
+
+  "gender.all": "All genders",
+  "gender.Male": "Male",
+  "gender.Female": "Female",
+  "gender.Prefer Not to Say": "Prefer Not to Say",
+
+  "editModalPost.title": "Edit Post",
+  "editModalUser.title": "Edit User",
   "editModal.titleInputLabel": "Title",
   "editModal.statusInputLabel": "Status",
   "editModal.descriptionInputLabel": "Description",
@@ -70,13 +88,22 @@
   "editModal.savingButton": "Saving...",
   "editModal.errorMessage": "An error occurred",
 
+  "editModal.firstNameInputLabel": "First Name",
+  "editModal.lastNameInputLabel": "Last Name",
+  "editModal.genderInputLabel": "Gender",
+
   "createPostForm.title": "Title",
   "createPostForm.description": "Description",
   "createPostForm.imageUrl": "Image URL",
   "createPostForm.button": "Create Post",
 
+  "addUserForm.confirmPasswordLabel": "Confirm Password",
+  "addUserForm.roleLabel": "Role",
+  "addUserForm.button": "Add User",
+
   "dashboard": "Dashboard",
   "breadcrumb.newPost": "Create Post",
+  "breadcrumb.newUser": "Add User",
 
   "pagination.page": "Page",
   "pagination.of": "of",

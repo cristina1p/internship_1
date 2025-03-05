@@ -14,6 +14,7 @@ import {
   updatePost,
   getPosts,
   getPostById,
+  addUser,
 } from '@server/route-handlers'
 import jsonServer from 'json-server'
 import { dirname } from 'path'
@@ -44,6 +45,7 @@ server.get('/api/account', authenticateJwt, getAccount(router))
 
 server.get('/api/users', authenticateJwt, getUsers(router))
 server.get('/api/users/:id', authenticateJwt, getUserById(router))
+server.post('/api/users', authenticateJwt, addUser(router))
 server.put('/api/users/:id', authenticateJwt, updateUserById(router))
 server.delete('/api/users/:id', authenticateJwt, deleteUserById(router))
 

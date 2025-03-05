@@ -1,10 +1,6 @@
-import { RoleOptions } from '@models/users'
+import { GetUsersResponse, RoleOptions, User } from '@models/users'
 import { respondWithError } from '@server/helper'
-import {
-  DatabaseSchema,
-  convertDbUserToUser,
-  searchableUserFields,
-} from '@server/models'
+import { DatabaseSchema, searchableUserFields } from '@server/models'
 import { RequestWithUser } from '@server/route-handlers'
 import { Request, Response } from 'express'
 import jsonServer from 'json-server'
@@ -32,6 +28,16 @@ const GetUsersQuerySchema = z.object({
       message: 'Invalid end date (must be in ISO 8601 format)',
     })
     .optional(),
+  page: z
+    .string()
+    .optional()
+    .transform((val) => Number(val) || 0)
+    .pipe(z.number().int().min(0)),
+  limit: z
+    .string()
+    .optional()
+    .transform((val) => Number(val) || 10)
+    .pipe(z.number().int().min(1)),
 })
 
 export const getUsers =
@@ -50,7 +56,7 @@ export const getUsers =
       return respondWithError(res, 400, 'Validation failed', errors)
     }
 
-    const { search, role, start, end } = result.data
+    const { search, role, start, end, page, limit } = result.data
 
     const filteredUsers = router.db
       .get('users')
@@ -71,7 +77,15 @@ export const getUsers =
 
         return matchesEnd && matchesStart && matchesSearch && matchesRole // All criteria must match
       })
+      .sortBy((user) => -new Date(user.createdAt))
       .value()
 
-    res.status(200).json({ users: filteredUsers.map(convertDbUserToUser) })
+    // Calculate paginated and total count
+    const offset = page * limit
+    const paginatedUsers = filteredUsers.slice(offset, offset + limit)
+
+    res.status(200).json({
+      users: paginatedUsers as User[],
+      total: filteredUsers.length,
+    } as GetUsersResponse)
   }
