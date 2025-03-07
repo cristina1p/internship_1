@@ -12,6 +12,7 @@ import { AuthLayout } from '@layouts/auth'
 import { Layout } from '@layouts/dashboard'
 import { CreatePost } from '@posts/components'
 import { Posts } from '@posts/pages/Posts'
+import { Settings } from '@settings/pages'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AddUser } from '@users/components'
 import { Users } from '@users/pages/Users'
@@ -55,10 +56,7 @@ export function App() {
                     path={paths.dashboard}
                     element={<div>Dashboard Page</div>}
                   />
-                  <Route
-                    path={paths.settings}
-                    element={<div>Settings Page</div>}
-                  />
+                  <Route path={paths.settings} element={<Settings />} />
                 </Route>
 
                 <Route path={paths.notFound} element={<NotFound />} />

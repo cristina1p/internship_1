@@ -67,17 +67,6 @@
       "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
-      "id": 11,
-      "firstName": "Robert",
-      "lastName": "Filip",
-      "email": "robert@example.com",
-      "gender": "Female",
-      "role": "User",
-      "password": "$2a$10$xyz12345hashedpassword",
-      "createdAt": "2025-01-10T11:15:00.000Z",
-      "profileImage": "/images/placeholderProfileImage.webp"
-    },
-    {
       "id": 12,
       "firstName": "Sophia",
       "lastName": "Radu",
@@ -133,17 +122,6 @@
       "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
-      "id": 17,
-      "firstName": "Lucas",
-      "lastName": "Gheorghe",
-      "email": "lucas@example.com",
-      "gender": "Male",
-      "role": "User",
-      "password": "$2a$10$xyz12345hashedpassword",
-      "createdAt": "2025-01-13T07:30:00.000Z",
-      "profileImage": "/images/placeholderProfileImage.webp"
-    },
-    {
       "id": 18,
       "firstName": "Isabella",
       "lastName": "Dumitru",
@@ -183,7 +161,7 @@
       "email": "ana@gmail.com",
       "gender": "Prefer Not to Say",
       "role": "Admin",
-      "password": "$2a$10$/oWygjRecZ6rlbr84vQos.7uZ4bsVCKY4.n0LNSVvKzMTU.ZNI.Xy",
+      "password": "$2a$10$zNuyePYnOg1YmB/HNDmd9OJgSt/8/Xf1VbuPNRefvrIYk7T2zf0AG",
       "createdAt": "2025-03-03T14:32:45.054Z",
       "profileImage": ""
     },
@@ -534,7 +512,7 @@
     {
       "title": "title1334",
       "description": "description",
-      "image": "https://www.google.com/imgres?q=dashboard%20image&imgurl=https%3A%2F%2Fwww.geckoboard.com%2Fuploads%2FDigital-dashboard-example.png&imgrefurl=https%3A%2F%2Fwww.geckoboard.com%2Fdashboard-examples%2Fexecutive%2Fdigital-dashboard%2F&docid=cc8VHdKymbMu0M&tbnid=CF8zhM1D0ZQmDM&vet=12ahUKEwic9YCPm9SLAxVEwAIHHTspCVEQM3oECFAQAA..i&w=5120&h=2880&hcb=2&ved=2ahUKEwic9YCPm9SLAxVEwAIHHTspCVEQM3oECFAQAA",
+      "image": "https://siwi.org/wp-content/uploads/2021/09/colorful-water-drop-splash-e1635164525186.jpg",
       "id": 20,
       "userId": 1,
       "date": "2025-02-25T07:19:54.568Z",
