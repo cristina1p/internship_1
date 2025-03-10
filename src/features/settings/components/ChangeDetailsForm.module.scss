@@ -1,0 +1,36 @@
+@use '/src/styles/variables.scss' as *;
+
+.settingsForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+
+  .fieldsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .dropdownContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      .dropdown {
+        .dropdownMenu {
+          width: 100%;
+        }
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .buttonsContainer {
+    grid-column: span 2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+}

@@ -19,6 +19,11 @@ export interface ErrorResponse {
   code: number
 }
 
-export interface ChangePasswordRespone {
+export interface ChangePasswordResponse {
   message: string
+}
+
+export interface UpdateAccoutDetailsResponse {
+  message: string
+  userDetails: User
 }

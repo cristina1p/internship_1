@@ -107,10 +107,13 @@
   "settingsPage.newPasswordPlaceholder": "Introduceți parola nouă",
   "settingsPage.confirmPasswordPlaceholder": "Confirmați parola",
   "settingsPage.saveButton": "Actualizează Profilul",
+  "settingsPage.savePasswordButton": "Schimbă parola",
   "settingsPage.cancelButton": "Anulează",
   "settingsPage.oldPasswordLabel": "Parola Veche",
   "settingsPage.newPasswordLabel": "Parola Nouă",
   "settingsPage.confirmPasswordLabel": "Confirmă Parola",
+  "settings.updateSuccess": "Profilul a fost actualizat cu succes",
+  "settings.changePasswordSuccess": "Parola a fost schimbată cu succes",
 
   "dashboard": "Tablou de bord",
   "breadcrumb.newPost": "Creează postare",

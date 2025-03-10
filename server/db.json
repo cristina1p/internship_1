@@ -23,17 +23,6 @@
       "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
-      "id": 5,
-      "firstName": "Lucian",
-      "lastName": "Lucian",
-      "email": "lucian@gmail.com",
-      "gender": "Prefer Not to Say",
-      "role": "User",
-      "password": "$2a$10$oaDcohMz0CS/isf3bA1Uy.Mhavq.UMotX7NbssPiiCLlomfDZh5/m",
-      "createdAt": "2025-01-09T08:14:45.099Z",
-      "profileImage": "/images/placeholderProfileImage.webp"
-    },
-    {
       "id": 6,
       "firstName": "Daniela1",
       "lastName": "Anderson",
@@ -155,17 +144,6 @@
       "profileImage": ""
     },
     {
-      "id": 17,
-      "firstName": "Ana",
-      "lastName": "Maria",
-      "email": "ana@gmail.com",
-      "gender": "Prefer Not to Say",
-      "role": "Admin",
-      "password": "$2a$10$zNuyePYnOg1YmB/HNDmd9OJgSt/8/Xf1VbuPNRefvrIYk7T2zf0AG",
-      "createdAt": "2025-03-03T14:32:45.054Z",
-      "profileImage": ""
-    },
-    {
       "id": 18,
       "firstName": "Test",
       "lastName": "Test",
@@ -199,17 +177,6 @@
       "profileImage": ""
     },
     {
-      "id": 21,
-      "firstName": "Alisa",
-      "lastName": "Alisa",
-      "email": "alisa@gmail.com",
-      "gender": "Female",
-      "role": "User",
-      "password": "$2a$10$zoprZcExt3HYfZJpX8SdKO8ogHJtSLdsIsiKFn1PfIMXqkW0taZvG",
-      "createdAt": "2025-03-03T15:16:14.582Z",
-      "profileImage": ""
-    },
-    {
       "id": 22,
       "firstName": "hello",
       "lastName": "hello",
@@ -240,6 +207,17 @@
       "role": "Moderator",
       "password": "$2a$10$/kM8zpzvnVoIHwFs8cnDE.FrsTih9fc4fZ1xeVvEHJSs0gsFWv6Ju",
       "createdAt": "2025-03-03T15:53:23.105Z",
+      "profileImage": ""
+    },
+    {
+      "id": 21,
+      "firstName": "ana ana",
+      "lastName": "maria ion ion",
+      "email": "ana@gmail.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$DdW1xTllWRSd/6LG4ENNs.KBznntW/DSmd4HhPC1AFsHyOMIPj.uq",
+      "createdAt": "2025-03-10T15:38:33.633Z",
       "profileImage": ""
     }
   ],

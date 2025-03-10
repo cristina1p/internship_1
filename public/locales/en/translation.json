@@ -108,10 +108,13 @@
   "settingsPage.newPasswordPlaceholder": "Enter new password",
   "settingsPage.confirmPasswordPlaceholder": "Confirm password",
   "settingsPage.saveButton": "Update Profile",
+  "settingsPage.savePasswordButton": "Change Password",
   "settingsPage.cancelButton": "Cancel",
   "settingsPage.oldPasswordLabel": "Old Password",
   "settingsPage.newPasswordLabel": "New Password",
   "settingsPage.confirmPasswordLabel": "Confirm Password",
+  "settings.updateSuccess": "Profile updated successfully",
+  "settings.changePasswordSuccess": "Password changed successfully",
 
   "dashboard": "Dashboard",
   "breadcrumb.newPost": "Create Post",

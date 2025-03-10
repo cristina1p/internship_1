@@ -2,7 +2,7 @@ import {
   ChangePasswordFormValues,
   ChangePasswordRequestBodySchema,
 } from '@api/settings'
-import { changePassword } from '@api/settings/settings'
+import { changePassword } from '@api/settings/changePassword'
 import { Input } from '@components/Input'
 import { paths } from '@helper/paths'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,17 +12,21 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
-import styles from './SettingsPasswordForm.module.scss'
+import styles from './ChangePasswordForm.module.scss'
 
-export const SettingsPasswordForm = () => {
+export const ChangePasswordForm = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
 
   const { mutate } = useMutation({
     mutationFn: changePassword,
-    onSuccess: () => navigate(paths.dashboard),
+    onSuccess: () => {
+      toast.success(t('settings.changePasswordSuccess'))
+      navigate(paths.dashboard)
+    },
     onError: (error) => {
       if (axios.isAxiosError(error)) {
         setErrorMessage(
@@ -94,7 +98,7 @@ export const SettingsPasswordForm = () => {
           {t('settingsPage.cancelButton')}
         </button>
         <button className="buttonPrimary" type="submit">
-          {t('settingsPage.saveButton')}
+          {t('settingsPage.savePasswordButton')}
         </button>
       </div>
     </form>
