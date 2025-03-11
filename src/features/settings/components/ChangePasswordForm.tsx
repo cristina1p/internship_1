@@ -24,7 +24,7 @@ export const ChangePasswordForm = () => {
   const { mutate } = useMutation({
     mutationFn: changePassword,
     onSuccess: () => {
-      toast.success(t('settings.changePasswordSuccess'))
+      toast.success(t('changePassword.form.changePasswordSuccess'))
       navigate(paths.dashboard)
     },
     onError: (error) => {
@@ -63,27 +63,27 @@ export const ChangePasswordForm = () => {
       <div className={styles.fieldsContainer}>
         <Input
           id="oldPassword"
-          label={t('settingsPage.oldPasswordLabel')}
+          label={t('changePassword.form.oldPasswordLabel')}
           type="password"
-          placeholder={t('settingsPage.oldPasswordPlaceholder')}
+          placeholder={t('changePassword.form.oldPasswordPlaceholder')}
           error={errors.oldPassword?.message}
           extraInputProps={() => register('oldPassword')}
         />
 
         <Input
           id="newPassword"
-          label={t('settingsPage.newPasswordLabel')}
+          label={t('changePassword.form.newPasswordLabel')}
           type="password"
-          placeholder={t('settingsPage.newPasswordPlaceholder')}
+          placeholder={t('changePassword.form.newPasswordPlaceholder')}
           error={errors.newPassword?.message}
           extraInputProps={() => register('newPassword')}
         />
 
         <Input
           id="confirmPassword"
-          label={t('settingsPage.confirmPasswordLabel')}
+          label={t('changePassword.form.confirmPasswordLabel')}
           type="password"
-          placeholder={t('settingsPage.confirmPasswordPlaceholder')}
+          placeholder={t('changePassword.form.confirmPasswordPlaceholder')}
           error={errors.confirmPassword?.message}
           extraInputProps={() => register('confirmPassword')}
         />
@@ -95,10 +95,10 @@ export const ChangePasswordForm = () => {
           type="button"
           onClick={() => navigate(paths.dashboard)}
         >
-          {t('settingsPage.cancelButton')}
+          {t('changePassword.form.cancelButton')}
         </button>
         <button className="buttonPrimary" type="submit">
-          {t('settingsPage.savePasswordButton')}
+          {t('changePassword.form.savePasswordButton')}
         </button>
       </div>
     </form>

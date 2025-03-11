@@ -27,7 +27,7 @@ export const ChangeDetailsForm = () => {
   const { mutate } = useMutation({
     mutationFn: updateAccountDetails,
     onSuccess: () => {
-      toast.success(t('settings.updateSuccess'))
+      toast.success(t('changeDetails.form.updateSuccess'))
 
       navigate(paths.dashboard)
     },
@@ -117,10 +117,10 @@ export const ChangeDetailsForm = () => {
           type="button"
           onClick={() => navigate(paths.dashboard)}
         >
-          {t('settingsPage.cancelButton')}
+          {t('changePassword.form.cancelButton')}
         </button>
         <button className="buttonPrimary" type="submit">
-          {t('settingsPage.saveButton')}
+          {t('changePassword.form.saveButton')}
         </button>
       </div>
     </form>
