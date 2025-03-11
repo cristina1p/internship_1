@@ -1,14 +1,12 @@
 import { paths } from '@helper/paths'
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 
 import styles from './Settings.module.scss'
 
 export const Settings = () => {
   const { t } = useTranslation()
-
-  const [activeTab, setActiveTab] = useState<'password' | 'details'>('details')
+  const location = useLocation()
 
   return (
     <div className={styles.settingsContainer}>
@@ -17,16 +15,14 @@ export const Settings = () => {
       <div className={styles.tabs}>
         <Link
           to={paths.changeDetails}
-          className={activeTab === 'details' ? 'active' : ''}
-          onClick={() => setActiveTab('details')}
+          className={`${location.pathname === paths.changeDetails ? styles.active : ''}`}
         >
           {t('settingsPage.changeDetails')}
         </Link>
 
         <Link
           to={paths.changePassword}
-          className={activeTab === 'password' ? 'active' : ''}
-          onClick={() => setActiveTab('password')}
+          className={`${location.pathname === paths.changePassword ? styles.active : ''}`}
         >
           {t('settingsPage.changePassword')}
         </Link>
