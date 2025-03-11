@@ -8,7 +8,7 @@ import { Input } from '@components/Input'
 import { UserDetailsContext } from '@contexts/UserDetailsContext'
 import { paths } from '@helper/paths'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { genderOptions } from '@users/helper'
 import axios from 'axios'
 import { useContext, useState } from 'react'
@@ -24,10 +24,13 @@ export const ChangeDetailsForm = () => {
   const { userDetails } = useContext(UserDetailsContext)
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
+  const queryClient = useQueryClient()
+
   const { mutate } = useMutation({
     mutationFn: updateAccountDetails,
     onSuccess: () => {
       toast.success(t('changeDetails.form.updateSuccess'))
+      queryClient.invalidateQueries({ queryKey: ['account'] })
 
       navigate(paths.dashboard)
     },
