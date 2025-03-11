@@ -32,15 +32,13 @@ export const changePassword =
     const dbUser = userQuery.value()
 
     if (!dbUser) {
-      respondWithError(res, 400, 'User not found')
-      return
+      return respondWithError(res, 400, 'User not found')
     }
 
     // Verify the password
     const passwordIsValid = bcrypt.compareSync(oldPassword, dbUser.password)
     if (!passwordIsValid) {
-      respondWithError(res, 401, 'Incorrect password. Please try again.')
-      return
+      return respondWithError(res, 401, 'Incorrect password. Please try again.')
     }
 
     // Hash the password
