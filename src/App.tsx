@@ -58,11 +58,11 @@ export function App() {
                     path={paths.dashboard}
                     element={<div>Dashboard Page</div>}
                   />
+                  <Route
+                    index
+                    element={<Navigate to={paths.changeDetails} replace />}
+                  />
                   <Route path={paths.settings} element={<Settings />}>
-                    <Route
-                      index
-                      element={<Navigate to="/settings/details" replace />}
-                    />
                     <Route
                       path={paths.changeDetails}
                       element={<SettingsChangeDetails />}
