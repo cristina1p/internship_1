@@ -59,7 +59,10 @@ export function App() {
                     element={<div>Dashboard Page</div>}
                   />
                   <Route path={paths.settings} element={<Settings />}>
-                    <Route index element={<SettingsChangeDetails />} />
+                    <Route
+                      index
+                      element={<Navigate to="/settings/details" replace />}
+                    />
                     <Route
                       path={paths.changeDetails}
                       element={<SettingsChangeDetails />}

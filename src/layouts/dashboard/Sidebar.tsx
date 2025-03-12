@@ -33,7 +33,7 @@ const baseRoutes: NavigationOptions[] = [
     icon: <FaFileAlt size={20} />,
   },
   {
-    path: paths.settings,
+    path: paths.changeDetails,
     labelKey: 'sidebar.settings',
     icon: <FaCog size={20} />,
   },
