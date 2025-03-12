@@ -1,15 +1,21 @@
 @use '/src/styles/variables.scss' as *;
 
 .settingsForm {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  gap: 2rem;
 
   .fieldsContainer {
     display: flex;
     flex-direction: column;
+    max-width: 100%;
+    width: 100%;
     gap: 2rem;
+
+    @media (min-width: 600px) {
+      max-width: 500px;
+    }
 
     .dropdownContainer {
       display: flex;
@@ -28,9 +34,8 @@
   }
 
   .buttonsContainer {
-    grid-column: span 2;
     display: flex;
-    justify-content: flex-end;
+    align-self: flex-end;
     gap: 1rem;
   }
 }

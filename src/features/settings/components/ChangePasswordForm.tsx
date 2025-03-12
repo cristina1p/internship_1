@@ -56,10 +56,6 @@ export const ChangePasswordForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.settingsForm}>
-      {errorMessage && (
-        <span className={styles.errorMessage}>{errorMessage}</span>
-      )}
-
       <div className={styles.fieldsContainer}>
         <Input
           id="oldPassword"
@@ -101,6 +97,10 @@ export const ChangePasswordForm = () => {
           {t('changePassword.form.savePasswordButton')}
         </button>
       </div>
+
+      {errorMessage && (
+        <span className={styles.errorMessage}>{errorMessage}</span>
+      )}
     </form>
   )
 }
