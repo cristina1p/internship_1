@@ -12,6 +12,7 @@ interface NavigationOptions {
   path: string
   labelKey: string
   icon: JSX.Element
+  active?: string[]
 }
 
 type RoleBasedRoutes = Record<Role, NavigationOptions[]>
@@ -33,9 +34,10 @@ const baseRoutes: NavigationOptions[] = [
     icon: <FaFileAlt size={20} />,
   },
   {
-    path: paths.settings,
+    path: paths.changeDetails,
     labelKey: 'sidebar.settings',
     icon: <FaCog size={20} />,
+    active: [paths.changeDetails, paths.changePassword],
   },
 ]
 
@@ -75,7 +77,9 @@ export const Sidebar = ({ isSidebarOpen, toggleSidebar }: SidebarProps) => {
         <div className={styles.logo}>{isSidebarOpen ? 'Logo' : 'L'}</div>
         <ul>
           {routes.map((route) => {
-            const isActive = location.pathname === route.path
+            const isActive = route.active
+              ? route.active.includes(location.pathname)
+              : location.pathname === route.path
 
             return (
               <li key={route.path} className={isActive ? styles.active : ''}>

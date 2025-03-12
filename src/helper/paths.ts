@@ -8,5 +8,7 @@ export const paths = {
   users: '/users',
   addUser: '/users/add',
   settings: '/settings',
+  changeDetails: '/settings/details',
+  changePassword: '/settings/change-password',
   notFound: '*',
 }

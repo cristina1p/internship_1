@@ -15,6 +15,8 @@ import {
   getPosts,
   getPostById,
   addUser,
+  changePassword,
+  updateAccountDetails,
 } from '@server/route-handlers'
 import jsonServer from 'json-server'
 import { dirname } from 'path'
@@ -42,6 +44,17 @@ server.post('/api/login', login(router))
 
 // Protected routes
 server.get('/api/account', authenticateJwt, getAccount(router))
+server.put(
+  '/api/account/settings/changePassword',
+  authenticateJwt,
+  changePassword(router),
+)
+
+server.put(
+  '/api/account/settings/changeDetails',
+  authenticateJwt,
+  updateAccountDetails(router),
+)
 
 server.get('/api/users', authenticateJwt, getUsers(router))
 server.get('/api/users/:id', authenticateJwt, getUserById(router))

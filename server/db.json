@@ -23,17 +23,6 @@
       "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
-      "id": 5,
-      "firstName": "Lucian",
-      "lastName": "Lucian",
-      "email": "lucian@gmail.com",
-      "gender": "Prefer Not to Say",
-      "role": "User",
-      "password": "$2a$10$oaDcohMz0CS/isf3bA1Uy.Mhavq.UMotX7NbssPiiCLlomfDZh5/m",
-      "createdAt": "2025-01-09T08:14:45.099Z",
-      "profileImage": "/images/placeholderProfileImage.webp"
-    },
-    {
       "id": 6,
       "firstName": "Daniela1",
       "lastName": "Anderson",
@@ -64,17 +53,6 @@
       "role": "User",
       "password": "$2a$10$xyz12345hashedpassword",
       "createdAt": "2025-01-10T10:30:00.000Z",
-      "profileImage": "/images/placeholderProfileImage.webp"
-    },
-    {
-      "id": 11,
-      "firstName": "Robert",
-      "lastName": "Filip",
-      "email": "robert@example.com",
-      "gender": "Female",
-      "role": "User",
-      "password": "$2a$10$xyz12345hashedpassword",
-      "createdAt": "2025-01-10T11:15:00.000Z",
       "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
@@ -133,17 +111,6 @@
       "profileImage": "/images/placeholderProfileImage.webp"
     },
     {
-      "id": 17,
-      "firstName": "Lucas",
-      "lastName": "Gheorghe",
-      "email": "lucas@example.com",
-      "gender": "Male",
-      "role": "User",
-      "password": "$2a$10$xyz12345hashedpassword",
-      "createdAt": "2025-01-13T07:30:00.000Z",
-      "profileImage": "/images/placeholderProfileImage.webp"
-    },
-    {
       "id": 18,
       "firstName": "Isabella",
       "lastName": "Dumitru",
@@ -174,17 +141,6 @@
       "role": "User",
       "password": "$2a$10$3s5wizdWvedueSy3Icj9iOHxlBjty9LAQUrrH4tNJTDe4bRtgOKvS",
       "createdAt": "2025-03-03T14:23:51.175Z",
-      "profileImage": ""
-    },
-    {
-      "id": 17,
-      "firstName": "Ana",
-      "lastName": "Maria",
-      "email": "ana@gmail.com",
-      "gender": "Prefer Not to Say",
-      "role": "Admin",
-      "password": "$2a$10$/oWygjRecZ6rlbr84vQos.7uZ4bsVCKY4.n0LNSVvKzMTU.ZNI.Xy",
-      "createdAt": "2025-03-03T14:32:45.054Z",
       "profileImage": ""
     },
     {
@@ -221,17 +177,6 @@
       "profileImage": ""
     },
     {
-      "id": 21,
-      "firstName": "Alisa",
-      "lastName": "Alisa",
-      "email": "alisa@gmail.com",
-      "gender": "Female",
-      "role": "User",
-      "password": "$2a$10$zoprZcExt3HYfZJpX8SdKO8ogHJtSLdsIsiKFn1PfIMXqkW0taZvG",
-      "createdAt": "2025-03-03T15:16:14.582Z",
-      "profileImage": ""
-    },
-    {
       "id": 22,
       "firstName": "hello",
       "lastName": "hello",
@@ -262,6 +207,17 @@
       "role": "Moderator",
       "password": "$2a$10$/kM8zpzvnVoIHwFs8cnDE.FrsTih9fc4fZ1xeVvEHJSs0gsFWv6Ju",
       "createdAt": "2025-03-03T15:53:23.105Z",
+      "profileImage": ""
+    },
+    {
+      "id": 21,
+      "firstName": "ana ana",
+      "lastName": "maria ion ion",
+      "email": "ana@gmail.com",
+      "gender": "Female",
+      "role": "User",
+      "password": "$2a$10$DdW1xTllWRSd/6LG4ENNs.KBznntW/DSmd4HhPC1AFsHyOMIPj.uq",
+      "createdAt": "2025-03-10T15:38:33.633Z",
       "profileImage": ""
     }
   ],
@@ -534,7 +490,7 @@
     {
       "title": "title1334",
       "description": "description",
-      "image": "https://www.google.com/imgres?q=dashboard%20image&imgurl=https%3A%2F%2Fwww.geckoboard.com%2Fuploads%2FDigital-dashboard-example.png&imgrefurl=https%3A%2F%2Fwww.geckoboard.com%2Fdashboard-examples%2Fexecutive%2Fdigital-dashboard%2F&docid=cc8VHdKymbMu0M&tbnid=CF8zhM1D0ZQmDM&vet=12ahUKEwic9YCPm9SLAxVEwAIHHTspCVEQM3oECFAQAA..i&w=5120&h=2880&hcb=2&ved=2ahUKEwic9YCPm9SLAxVEwAIHHTspCVEQM3oECFAQAA",
+      "image": "https://siwi.org/wp-content/uploads/2021/09/colorful-water-drop-splash-e1635164525186.jpg",
       "id": 20,
       "userId": 1,
       "date": "2025-02-25T07:19:54.568Z",

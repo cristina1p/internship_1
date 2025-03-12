@@ -1,0 +1,42 @@
+@use '/src/styles/variables.scss' as *;
+
+.settingsContainer {
+  .tabs {
+    display: flex;
+    gap: 16px;
+    border-bottom: 2px solid $border-color;
+    padding-bottom: 8px;
+
+    a {
+      background: none;
+      border: none;
+      font-weight: 500;
+      color: $text-color;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $primary-color;
+      }
+
+      &:focus {
+        background: none;
+      }
+
+      &.active {
+        color: $primary-color;
+      }
+    }
+  }
+
+  h5 {
+    margin-bottom: 18px;
+  }
+
+  .settingsSubPageContainer {
+    margin-top: 10px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}

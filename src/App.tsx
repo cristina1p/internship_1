@@ -12,6 +12,9 @@ import { AuthLayout } from '@layouts/auth'
 import { Layout } from '@layouts/dashboard'
 import { CreatePost } from '@posts/components'
 import { Posts } from '@posts/pages/Posts'
+import { Settings } from '@settings/pages'
+import { SettingsChangeDetails } from '@settings/pages/SettingsChangeDetails'
+import { SettingsChangePassword } from '@settings/pages/SettingsChangePassword'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AddUser } from '@users/components'
 import { Users } from '@users/pages/Users'
@@ -56,9 +59,19 @@ export function App() {
                     element={<div>Dashboard Page</div>}
                   />
                   <Route
-                    path={paths.settings}
-                    element={<div>Settings Page</div>}
+                    index
+                    element={<Navigate to={paths.changeDetails} replace />}
                   />
+                  <Route path={paths.settings} element={<Settings />}>
+                    <Route
+                      path={paths.changeDetails}
+                      element={<SettingsChangeDetails />}
+                    />
+                    <Route
+                      path={paths.changePassword}
+                      element={<SettingsChangePassword />}
+                    />
+                  </Route>
                 </Route>
 
                 <Route path={paths.notFound} element={<NotFound />} />

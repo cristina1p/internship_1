@@ -101,6 +101,22 @@
   "addUserForm.roleLabel": "Role",
   "addUserForm.button": "Add User",
 
+  "settingsPage.title": "Settings",
+  "settingsPage.changeDetails": "Change Details",
+  "settingsPage.changePassword": "Change Password",
+  "changePassword.form.oldPasswordPlaceholder": "Enter old password",
+  "changePassword.form.newPasswordPlaceholder": "Enter new password",
+  "changePassword.form.confirmPasswordPlaceholder": "Confirm password",
+  "changePassword.form.saveButton": "Update Profile",
+  "changePassword.form.savePasswordButton": "Change Password",
+  "changePassword.form.cancelButton": "Cancel",
+  "changePassword.form.oldPasswordLabel": "Old Password",
+  "changePassword.form.newPasswordLabel": "New Password",
+  "changePassword.form.confirmPasswordLabel": "Confirm Password",
+  "changePassword.form.changePasswordSuccess": "Password changed successfully",
+
+  "changeDetails.form.updateSuccess": "Profile updated successfully",
+
   "dashboard": "Dashboard",
   "breadcrumb.newPost": "Create Post",
   "breadcrumb.newUser": "Add User",

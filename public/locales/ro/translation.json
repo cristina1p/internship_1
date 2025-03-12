@@ -100,6 +100,22 @@
   "addUserForm.roleLabel": "Rol",
   "addUserForm.button": "Adaugă utilizator",
 
+  "settingsPage.title": "Setări",
+  "settingsPage.changeDetails": "Schimbă Detalii",
+  "settingsPage.changePassword": "Schimbă Parola",
+  "changePassword.form.oldPasswordPlaceholder": "Introduceți parola veche",
+  "changePassword.form.newPasswordPlaceholder": "Introduceți parola nouă",
+  "changePassword.form.confirmPasswordPlaceholder": "Confirmați parola",
+  "changePassword.form.saveButton": "Actualizează Profilul",
+  "changePassword.form.savePasswordButton": "Schimbă parola",
+  "changePassword.form.cancelButton": "Anulează",
+  "changePassword.form.oldPasswordLabel": "Parola Veche",
+  "changePassword.form.newPasswordLabel": "Parola Nouă",
+  "changePassword.form.confirmPasswordLabel": "Confirmă Parola",
+  "changePassword.form.changePasswordSuccess": "Parola a fost schimbată cu succes",
+
+  "changeDetails.form.updateSuccess": "Profilul a fost actualizat cu succes",
+
   "dashboard": "Tablou de bord",
   "breadcrumb.newPost": "Creează postare",
   "breadcrumb.newUser": "Adaugă utilizator",

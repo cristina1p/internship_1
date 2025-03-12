@@ -13,6 +13,7 @@ export default defineConfig({
       '@auth': '/src/features/auth',
       '@posts': '/src/features/posts',
       '@users': '/src/features/users',
+      '@settings': '/src/features/settings',
       '@contexts': '/src/contexts',
       '@guards': '/src/guards',
       '@layouts': '/src/layouts',

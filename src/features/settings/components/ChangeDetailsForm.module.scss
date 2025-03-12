@@ -1,0 +1,41 @@
+@use '/src/styles/variables.scss' as *;
+
+.settingsForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  gap: 2rem;
+
+  .fieldsContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 100%;
+    gap: 2rem;
+
+    @media (min-width: 600px) {
+      max-width: 500px;
+    }
+
+    .dropdownContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      .dropdown {
+        .dropdownMenu {
+          width: 100%;
+        }
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .buttonsContainer {
+    display: flex;
+    align-self: flex-end;
+    gap: 1rem;
+  }
+}
