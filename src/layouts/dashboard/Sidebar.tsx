@@ -24,11 +24,6 @@ interface SidebarProps {
 
 const baseRoutes: NavigationOptions[] = [
   {
-    path: paths.dashboard,
-    labelKey: 'sidebar.dashboard',
-    icon: <FaHome size={20} />,
-  },
-  {
     path: paths.posts,
     labelKey: 'sidebar.posts',
     icon: <FaFileAlt size={20} />,
@@ -43,6 +38,11 @@ const baseRoutes: NavigationOptions[] = [
 
 const roleBasedRoutes: RoleBasedRoutes = {
   Admin: [
+    {
+      path: paths.dashboard,
+      labelKey: 'sidebar.dashboard',
+      icon: <FaHome size={20} />,
+    },
     ...baseRoutes,
     {
       path: paths.users,
@@ -50,7 +50,14 @@ const roleBasedRoutes: RoleBasedRoutes = {
       icon: <FaUser size={20} />,
     },
   ],
-  Moderator: baseRoutes,
+  Moderator: [
+    {
+      path: paths.dashboard,
+      labelKey: 'sidebar.dashboard',
+      icon: <FaHome size={20} />,
+    },
+    ...baseRoutes,
+  ],
   User: baseRoutes,
 }
 

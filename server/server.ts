@@ -17,6 +17,7 @@ import {
   addUser,
   changePassword,
   updateAccountDetails,
+  getUsersAnalytics,
 } from '@server/route-handlers'
 import jsonServer from 'json-server'
 import { dirname } from 'path'
@@ -49,7 +50,6 @@ server.put(
   authenticateJwt,
   changePassword(router),
 )
-
 server.put(
   '/api/account/settings/changeDetails',
   authenticateJwt,
@@ -57,6 +57,7 @@ server.put(
 )
 
 server.get('/api/users', authenticateJwt, getUsers(router))
+server.get('/api/users/analytics', authenticateJwt, getUsersAnalytics(router))
 server.get('/api/users/:id', authenticateJwt, getUserById(router))
 server.post('/api/users', authenticateJwt, addUser(router))
 server.put('/api/users/:id', authenticateJwt, updateUserById(router))

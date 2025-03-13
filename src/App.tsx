@@ -4,6 +4,8 @@ import { Register } from '@auth/pages/Register'
 import { NotFound } from '@components/NotFound'
 import { TokenContextProvider } from '@contexts/TokenContextProvider'
 import { UserDetailsContextProvider } from '@contexts/UserDetailsContextProvider'
+import { Dashboard } from '@dashboard/pages'
+import { AdminOrModeratorRoleRequired } from '@guards/AdminOrModeratorRoleRequired'
 import { AdminRoleRequired } from '@guards/AdminRoleRequired'
 import { AuthRequired } from '@guards/AuthRequired'
 import { LoggedOutRequired } from '@guards/LoggedOutRequired'
@@ -54,15 +56,15 @@ export function App() {
                     <Route path={paths.addUser} element={<AddUser />} />
                   </Route>
 
-                  <Route
-                    path={paths.dashboard}
-                    element={<div>Dashboard Page</div>}
-                  />
-                  <Route
-                    index
-                    element={<Navigate to={paths.changeDetails} replace />}
-                  />
+                  <Route element={<AdminOrModeratorRoleRequired />}>
+                    <Route path={paths.dashboard} element={<Dashboard />} />
+                  </Route>
+
                   <Route path={paths.settings} element={<Settings />}>
+                    <Route
+                      index
+                      element={<Navigate to={paths.changeDetails} replace />}
+                    />
                     <Route
                       path={paths.changeDetails}
                       element={<SettingsChangeDetails />}

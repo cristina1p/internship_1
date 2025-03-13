@@ -212,11 +212,10 @@
     {
       "id": 21,
       "firstName": "ana ana",
-      "lastName": "maria ion ion",
+      "lastName": "Maria",
       "email": "ana@gmail.com",
-      "gender": "Female",
       "role": "User",
-      "password": "$2a$10$DdW1xTllWRSd/6LG4ENNs.KBznntW/DSmd4HhPC1AFsHyOMIPj.uq",
+      "password": "$2a$10$JdjTicBgpQ.HJV12bulPXeTAkvEfHejY21KFE/BLEoVUKsKnGHZPy",
       "createdAt": "2025-03-10T15:38:33.633Z",
       "profileImage": ""
     }
@@ -230,10 +229,7 @@
       "date": "2025-01-01",
       "userId": 1,
       "viewCounter": 250,
-      "comments": [
-        "Great tips, thanks!",
-        "This really helped me!"
-      ],
+      "comments": ["Great tips, thanks!", "This really helped me!"],
       "status": "Published"
     },
     {
@@ -244,10 +240,7 @@
       "date": "2025-01-13",
       "userId": 2,
       "viewCounter": 150,
-      "comments": [
-        "Very informative.",
-        "Loved the examples provided."
-      ],
+      "comments": ["Very informative.", "Loved the examples provided."],
       "status": "Draft"
     },
     {
@@ -271,10 +264,7 @@
       "date": "2025-01-15",
       "userId": 4,
       "viewCounter": 180,
-      "comments": [
-        "Super helpful!",
-        "Finally understand useEffect."
-      ],
+      "comments": ["Super helpful!", "Finally understand useEffect."],
       "status": "Published"
     },
     {
@@ -285,10 +275,7 @@
       "date": "2025-01-17",
       "userId": 5,
       "viewCounter": 220,
-      "comments": [
-        "Great insights!",
-        "Any tips for large images?"
-      ],
+      "comments": ["Great insights!", "Any tips for large images?"],
       "status": "Published"
     },
     {
@@ -299,10 +286,7 @@
       "date": "2025-01-19",
       "userId": 6,
       "viewCounter": 130,
-      "comments": [
-        "Clear and concise!",
-        "I prefer Grid for layouts."
-      ],
+      "comments": ["Clear and concise!", "I prefer Grid for layouts."],
       "status": "Draft"
     },
     {
@@ -313,10 +297,7 @@
       "date": "2025-01-21",
       "userId": 7,
       "viewCounter": 170,
-      "comments": [
-        "Super useful!",
-        "What about logging strategies?"
-      ],
+      "comments": ["Super useful!", "What about logging strategies?"],
       "status": "Published"
     },
     {
@@ -327,10 +308,7 @@
       "date": "2025-01-23",
       "userId": 8,
       "viewCounter": 90,
-      "comments": [
-        "Finally, a simple guide!",
-        "Is it better than SQL?"
-      ],
+      "comments": ["Finally, a simple guide!", "Is it better than SQL?"],
       "status": "Draft"
     },
     {
@@ -341,10 +319,7 @@
       "date": "2025-01-25",
       "userId": 9,
       "viewCounter": 300,
-      "comments": [
-        "React is still my favorite!",
-        "Svelte is underrated."
-      ],
+      "comments": ["React is still my favorite!", "Svelte is underrated."],
       "status": "Published"
     },
     {
@@ -355,10 +330,7 @@
       "date": "2025-01-27",
       "userId": 1,
       "viewCounter": 140,
-      "comments": [
-        "Very well explained!",
-        "This helped me a lot!"
-      ],
+      "comments": ["Very well explained!", "This helped me a lot!"],
       "status": "Published"
     },
     {
@@ -369,10 +341,7 @@
       "date": "2025-01-28",
       "userId": 2,
       "viewCounter": 110,
-      "comments": [
-        "Great article!",
-        "Custom hooks make life easier."
-      ],
+      "comments": ["Great article!", "Custom hooks make life easier."],
       "status": "Draft"
     },
     {
@@ -383,10 +352,7 @@
       "date": "2025-01-29",
       "userId": 3,
       "viewCounter": 200,
-      "comments": [
-        "Exactly what I was looking for!",
-        "Super clear guide."
-      ],
+      "comments": ["Exactly what I was looking for!", "Super clear guide."],
       "status": "Published"
     },
     {
@@ -397,10 +363,7 @@
       "date": "2025-01-30",
       "userId": 4,
       "viewCounter": 160,
-      "comments": [
-        "This was a bit tricky at first.",
-        "Generics are powerful!"
-      ],
+      "comments": ["This was a bit tricky at first.", "Generics are powerful!"],
       "status": "Published"
     },
     {
@@ -411,10 +374,7 @@
       "date": "2025-02-01",
       "userId": 5,
       "viewCounter": 120,
-      "comments": [
-        "Is this better than Redux?",
-        "Simple and effective!"
-      ],
+      "comments": ["Is this better than Redux?", "Simple and effective!"],
       "status": "Draft"
     },
     {
@@ -425,10 +385,7 @@
       "date": "2025-02-02",
       "userId": 6,
       "viewCounter": 210,
-      "comments": [
-        "Very useful!",
-        "Just what I needed."
-      ],
+      "comments": ["Very useful!", "Just what I needed."],
       "status": "Published"
     },
     {
@@ -439,10 +396,7 @@
       "date": "2025-02-03",
       "userId": 7,
       "viewCounter": 180,
-      "comments": [
-        "Security is so important!",
-        "Nice list of tips."
-      ],
+      "comments": ["Security is so important!", "Nice list of tips."],
       "status": "Published"
     },
     {
@@ -453,10 +407,7 @@
       "date": "2025-02-04",
       "userId": 8,
       "viewCounter": 95,
-      "comments": [
-        "SSR is a game-changer!",
-        "Love Next.js!"
-      ],
+      "comments": ["SSR is a game-changer!", "Love Next.js!"],
       "status": "Draft"
     },
     {
@@ -467,10 +418,7 @@
       "date": "2025-02-05",
       "userId": 9,
       "viewCounter": 250,
-      "comments": [
-        "GraphQL is amazing!",
-        "REST is still relevant."
-      ],
+      "comments": ["GraphQL is amazing!", "REST is still relevant."],
       "status": "Published"
     },
     {
@@ -481,10 +429,7 @@
       "date": "2025-02-06",
       "userId": 1,
       "viewCounter": 130,
-      "comments": [
-        "Pinia is great!",
-        "Way better than Vuex."
-      ],
+      "comments": ["Pinia is great!", "Way better than Vuex."],
       "status": "Published"
     },
     {

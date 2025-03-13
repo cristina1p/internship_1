@@ -14,6 +14,7 @@ export default defineConfig({
       '@posts': '/src/features/posts',
       '@users': '/src/features/users',
       '@settings': '/src/features/settings',
+      '@dashboard': '/src/features/dashboard',
       '@contexts': '/src/contexts',
       '@guards': '/src/guards',
       '@layouts': '/src/layouts',
