@@ -59,7 +59,7 @@ export const PostsAnalytics = () => {
                 />
               </Pie>
               <Tooltip />
-              <Legend />
+              <Legend iconType="circle" />
             </PieChart>
           </ResponsiveContainer>
         ) : (

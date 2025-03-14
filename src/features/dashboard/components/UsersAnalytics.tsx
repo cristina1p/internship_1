@@ -58,7 +58,7 @@ export const UsersAnalytics = () => {
                 />
               </Pie>
               <Tooltip />
-              <Legend />
+              <Legend iconType="circle" />
             </PieChart>
           </ResponsiveContainer>
         ) : (
