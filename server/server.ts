@@ -18,6 +18,7 @@ import {
   changePassword,
   updateAccountDetails,
   getUsersAnalytics,
+  getPostsAnalytics,
 } from '@server/route-handlers'
 import jsonServer from 'json-server'
 import { dirname } from 'path'
@@ -64,6 +65,7 @@ server.put('/api/users/:id', authenticateJwt, updateUserById(router))
 server.delete('/api/users/:id', authenticateJwt, deleteUserById(router))
 
 server.get('/api/posts', authenticateJwt, getPosts(router))
+server.get('/api/posts/analytics', authenticateJwt, getPostsAnalytics(router))
 server.get('/api/posts/:id', authenticateJwt, getPostById(router))
 server.post('/api/posts', authenticateJwt, createPost(router))
 server.put('/api/posts/:id', authenticateJwt, updatePost(router))

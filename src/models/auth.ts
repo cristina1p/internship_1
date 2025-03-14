@@ -1,3 +1,4 @@
+import { Status } from '@models/posts'
 import { Role } from '@models/users'
 
 import { User } from './users'
@@ -33,4 +34,12 @@ export interface UpdateAccoutDetailsResponse {
 export interface UserAnalyticsResponse {
   totalUsers: number
   roles: { role: Role; count: number }[]
+}
+
+export interface PostAnalyticsResponse {
+  totalPosts: number
+  statuses: {
+    status: Status
+    count: number
+  }[]
 }
