@@ -10,16 +10,16 @@ export const Dashboard = () => {
   return (
     <div className={styles.dashboard}>
       <h1>Analytics</h1>
-      <div
-        className={
-          userDetails?.role === 'Admin'
-            ? styles['analyticsContainer']
-            : styles['singleAnalytics']
-        }
-      >
-        {userDetails?.role === 'Admin' && <UsersAnalytics />}
-        <PostsAnalytics />
-      </div>
+      {userDetails?.role === 'Admin' ? (
+        <div className={styles.analyticsContainer}>
+          <UsersAnalytics />
+          <PostsAnalytics />
+        </div>
+      ) : (
+        <div className={styles.singleAnalytics}>
+          <PostsAnalytics />
+        </div>
+      )}
     </div>
   )
 }
