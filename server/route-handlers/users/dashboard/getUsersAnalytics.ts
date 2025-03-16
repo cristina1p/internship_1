@@ -21,6 +21,15 @@ export const getUsersAnalytics =
 
     const users = router.db.get('users').value() || []
 
+    // Get the date for 7 days ago
+    const sevenDaysAgo = new Date()
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7)
+
+    // Count users before 7 days ago
+    const previousTotalUsers = users.filter(
+      (user) => new Date(user.createdAt) < sevenDaysAgo,
+    ).length
+
     const countByRole: Record<Role, number> = {
       Admin: 0,
       Moderator: 0,
@@ -38,8 +47,10 @@ export const getUsersAnalytics =
       count,
     }))
 
+    // Construct the response
     const response: UserAnalyticsResponse = {
       totalUsers: users.length,
+      previousTotalUsers,
       roles: roles.length > 0 ? roles : [],
     }
 

@@ -21,6 +21,15 @@ export const getPostsAnalytics =
 
     const posts = router.db.get('posts').value() || []
 
+    // Get the date for 7 days ago
+    const sevenDaysAgo = new Date()
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7)
+
+    // Count posts before 7 days ago
+    const previousTotalPosts = posts.filter(
+      (post) => new Date(post.createdAt) < sevenDaysAgo,
+    ).length
+
     const countByStatus: Record<Status, number> = {
       Draft: 0,
       Published: 0,
@@ -41,6 +50,7 @@ export const getPostsAnalytics =
     const response: PostAnalyticsResponse = {
       totalPosts: posts.length,
       statuses: statuses.length > 0 ? statuses : [],
+      previousTotalPosts,
     }
 
     res.status(200).json(response)

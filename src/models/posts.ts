@@ -3,7 +3,7 @@ export interface Post {
   title: string
   description: string
   image: string
-  date: string
+  createdAt: string
   userId: number
   viewCounter?: number
   comments?: string[]

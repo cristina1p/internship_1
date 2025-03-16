@@ -34,6 +34,7 @@ export interface UpdateAccoutDetailsResponse {
 export interface UserAnalyticsResponse {
   totalUsers: number
   roles: { role: Role; count: number }[]
+  previousTotalUsers: number
 }
 
 export interface PostAnalyticsResponse {
@@ -42,4 +43,5 @@ export interface PostAnalyticsResponse {
     status: Status
     count: number
   }[]
+  previousTotalPosts: number
 }

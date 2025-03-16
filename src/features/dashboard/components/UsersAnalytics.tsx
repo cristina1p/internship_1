@@ -1,4 +1,5 @@
 import { getUsersAnalytics } from '@api/users'
+import { calculateGrowth } from '@helper/calculateGrowth'
 import { useQuery } from '@tanstack/react-query'
 import {
   PieChart,
@@ -7,10 +8,9 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  Label,
 } from 'recharts'
 
-import styles from './UsersAnalytics.module.scss'
+import styles from './AnalyicsContainer.module.scss'
 
 const COLORS = ['#1F5C85', '#3498DB', '#add7f5', '#9BBDD4']
 
@@ -23,10 +23,24 @@ export const UsersAnalytics = () => {
   if (isLoading) return <p>Loading...</p>
 
   if (!data?.totalUsers) return <p>No users available</p>
+
+  // Calculate growth percentage
+  const previousTotal = data.previousTotalUsers
+  const { growth, isPositive } = calculateGrowth(data.totalUsers, previousTotal)
+
   return (
-    <div className={styles.usersAnalyticsContainer}>
-      <h3>Users Analytics</h3>
-      <div className={styles.usersAnalytics}>
+    <div className={styles.analyticsContainer}>
+      <div className={styles.growthCard}>
+        <h4>Total Users</h4>
+        <p>
+          {data.totalUsers}{' '}
+          <span className={isPositive ? styles.positive : styles.negative}>
+            {isPositive ? '⬆️' : '⬇️'} {growth.toFixed(2)}%
+          </span>
+        </p>
+      </div>
+
+      <div className={styles.analytics}>
         {data.totalUsers > 0 ? (
           <ResponsiveContainer
             className={styles.rechartsResponsiveContainer}
@@ -49,13 +63,6 @@ export const UsersAnalytics = () => {
                     fill={COLORS[index % COLORS.length]}
                   />
                 ))}
-                <Label
-                  value={`Total: ${data.totalUsers}`}
-                  position={{ x: 200, y: 200 }}
-                  fill="#fff"
-                  fontSize={18}
-                  fontWeight="bold"
-                />
               </Pie>
               <Tooltip />
               <Legend iconType="circle" />

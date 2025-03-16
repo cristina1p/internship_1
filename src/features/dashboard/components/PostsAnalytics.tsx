@@ -1,4 +1,5 @@
 import { getPostsAnalytics } from '@api/posts'
+import { calculateGrowth } from '@helper/calculateGrowth'
 import { PostAnalyticsResponse } from '@models/auth'
 import { useQuery } from '@tanstack/react-query'
 import {
@@ -8,10 +9,9 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  Label,
 } from 'recharts'
 
-import styles from './PostsAnalytics.module.scss'
+import styles from './AnalyicsContainer.module.scss'
 
 const COLORS = ['#1F5C85', '#3498DB', '#add7f5', '#9BBDD4']
 
@@ -22,12 +22,26 @@ export const PostsAnalytics = () => {
   })
 
   if (isLoading) return <p>Loading...</p>
+
   if (!data?.totalPosts) return <p>No posts available</p>
 
+  // Growth calculation
+  const previousTotal = data.previousTotalPosts
+  const { growth, isPositive } = calculateGrowth(data.totalPosts, previousTotal)
+
   return (
-    <div className={styles.postsAnalyticsContainer}>
-      <h3>Posts Analytics</h3>
-      <div className={styles.postsAnalytics}>
+    <div className={styles.analyticsContainer}>
+      <div className={styles.growthCard}>
+        <h4>Total Posts</h4>
+        <p>
+          {data.totalPosts}{' '}
+          <span className={isPositive ? styles.positive : styles.negative}>
+            {isPositive ? '⬆️' : '⬇️'} {growth.toFixed(2)}%
+          </span>
+        </p>
+      </div>
+
+      <div className={styles.analytics}>
         {data.totalPosts > 0 ? (
           <ResponsiveContainer
             className={styles.rechartsResponsiveContainer}
@@ -50,13 +64,6 @@ export const PostsAnalytics = () => {
                     fill={COLORS[index % COLORS.length]}
                   />
                 ))}
-                <Label
-                  value={`Total: ${data.totalPosts}`}
-                  position={{ x: 200, y: 200 }}
-                  fill="#fff"
-                  fontSize={18}
-                  fontWeight="bold"
-                />
               </Pie>
               <Tooltip />
               <Legend iconType="circle" />
