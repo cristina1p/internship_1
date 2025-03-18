@@ -1,16 +1,25 @@
 @use 'sass:color';
 
 // _variables.scss
+$primary-700: #1f5c85;
+$primary-600: #2576ab;
+$primmary-500: #2c87c3;
+$primary-450: #1e6693;
 $primary-color: #3498db;
+$primary-350: #5caeea;
 $primary-400: #5caeea;
 $primary-300: #85c3f0;
 $primary-200: #add7f5;
-$secondary-color: hsl(145, 63%, 49%);
+$primary-100: #9bbdd4;
+
+$secondary-color: #2fbf5e;
+$growth-color: #28a745;
 $error-color: #e74c3c;
 $background-dark-color: #282c34;
 $text-color: #333;
 $label-color: #555;
 $form-border-color: #a4a5ad;
+$form-border-color-light: #ccc;
 $breadcrumb-color: #777;
 $border-color: #e7e7e7;
 $background-color: #f4f4f4;

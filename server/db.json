@@ -4,7 +4,7 @@
       "id": 2,
       "createdAt": "2024-11-05T16:15:11.021Z",
       "firstName": "Mike",
-      "lastName": "Kloe",
+      "lastName": "Admin",
       "email": "mikekloe@example.com",
       "gender": "Prefer Not to Say",
       "role": "Admin",
@@ -14,8 +14,8 @@
     {
       "id": 3,
       "createdAt": "2024-09-05T17:21:19.268Z",
-      "firstName": "Adam",
-      "lastName": "Adam",
+      "firstName": "Luke",
+      "lastName": "Moderator",
       "email": "lukeadam@example.com",
       "gender": "Prefer Not to Say",
       "role": "Moderator",
@@ -166,17 +166,6 @@
       "profileImage": ""
     },
     {
-      "id": 20,
-      "firstName": "John",
-      "lastName": "Johm",
-      "email": "john@gmail.com",
-      "gender": "Female",
-      "role": "Admin",
-      "password": "$2a$10$9ot2OgO9FXBWXwy/R71FheyKL6uQM7Y9S2Pj67SbjZx6uoVpAno/y",
-      "createdAt": "2025-03-03T15:12:52.700Z",
-      "profileImage": ""
-    },
-    {
       "id": 22,
       "firstName": "hello",
       "lastName": "hello",
@@ -210,14 +199,14 @@
       "profileImage": ""
     },
     {
-      "id": 21,
-      "firstName": "ana ana",
-      "lastName": "maria ion ion",
-      "email": "ana@gmail.com",
+      "id": 20,
+      "firstName": "Admin",
+      "lastName": "Admin",
+      "email": "admin@gmail.com",
       "gender": "Female",
-      "role": "User",
-      "password": "$2a$10$DdW1xTllWRSd/6LG4ENNs.KBznntW/DSmd4HhPC1AFsHyOMIPj.uq",
-      "createdAt": "2025-03-10T15:38:33.633Z",
+      "role": "Admin",
+      "password": "$2a$10$T.LHX0NFDWf2uiPA9aRSJecbPgWI9GeohSfMJbMSNAvpFxJ91iiUS",
+      "createdAt": "2025-03-14T14:25:37.891Z",
       "profileImage": ""
     }
   ],

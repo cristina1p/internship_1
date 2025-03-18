@@ -1,0 +1,51 @@
+@use '/src/styles/variables.scss' as *;
+
+.analyticsContainer {
+  h3 {
+    text-align: center;
+    color: $label-color;
+  }
+
+  .analytics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 20px;
+    border: 1px solid $form-border-color-light;
+    border-radius: 8px;
+    background: $white-color;
+
+    .rechartsResponsiveContainer {
+      min-height: 500px;
+    }
+
+    @media (max-width: 600px) {
+      padding: 0;
+    }
+  }
+
+  .growthCard {
+    background: $white-color;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 16px;
+
+    h4 {
+      color: $text-color;
+    }
+
+    p {
+      font-weight: bold;
+
+      .positive {
+        color: $growth-color;
+      }
+
+      .negative {
+        color: $error-color;
+      }
+    }
+  }
+}

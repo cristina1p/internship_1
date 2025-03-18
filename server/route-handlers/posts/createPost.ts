@@ -25,7 +25,7 @@ export const createPost = (
       ...result.data,
       id: existingPosts.value().length + 1,
       userId, // Attach the userId of the authenticated user,
-      date: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
       viewCounter: 0,
       comments: [],
       status: 'Published',

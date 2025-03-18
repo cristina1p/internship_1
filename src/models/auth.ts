@@ -1,3 +1,6 @@
+import { Status } from '@models/posts'
+import { Role } from '@models/users'
+
 import { User } from './users'
 
 export interface LoginResponse {
@@ -26,4 +29,19 @@ export interface ChangePasswordResponse {
 export interface UpdateAccoutDetailsResponse {
   message: string
   userDetails: User
+}
+
+export interface UserAnalyticsResponse {
+  totalUsers: number
+  roles: { role: Role; count: number }[]
+  previousTotalUsers: number
+}
+
+export interface PostAnalyticsResponse {
+  totalPosts: number
+  statuses: {
+    status: Status
+    count: number
+  }[]
+  previousTotalPosts: number
 }

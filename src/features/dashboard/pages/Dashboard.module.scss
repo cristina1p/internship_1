@@ -1,0 +1,32 @@
+@use '/src/styles/variables.scss' as *;
+
+.dashboard {
+  .analyticsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    & > div {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+      align-items: center;
+
+      & > div {
+        width: 100%;
+      }
+    }
+  }
+
+  .singleAnalytics {
+    display: flex;
+    justify-content: center;
+
+    & > div {
+      width: 100%;
+    }
+  }
+}

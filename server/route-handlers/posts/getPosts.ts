@@ -69,9 +69,10 @@ export const getPosts =
       .filter((post) => {
         // Role-based filtering
         const matchesRole = isAuthorized(role, userId, post.userId)
-        const matchesStart = !start || new Date(post.date) >= new Date(start)
+        const matchesStart =
+          !start || new Date(post.createdAt) >= new Date(start)
 
-        const matchesEnd = !end || new Date(post.date) <= new Date(end)
+        const matchesEnd = !end || new Date(post.createdAt) <= new Date(end)
 
         // Search filtering
         const matchesSearch =
@@ -91,7 +92,7 @@ export const getPosts =
           matchesStatus
         )
       })
-      .sortBy((post) => new Date(post.date))
+      .sortBy((post) => new Date(post.createdAt))
       .thru((posts) => (sort === 'desc' ? posts.reverse() : posts))
       .value()
 
