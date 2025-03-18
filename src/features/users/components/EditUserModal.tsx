@@ -9,7 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { User } from '@models/users'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import styles from '@users/components/EditUserModal.module.scss'
-import { genderOptions } from '@users/helper'
+import { genderOptions, roleOptions } from '@users/helper'
 import { t } from 'i18next'
 import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -108,6 +108,26 @@ export const EditUserModal = ({ user, onClose }: EditUserModalProps) => {
                     field.value
                       ? `gender.${field.value}`
                       : 'gender.Prefer Not to Say'
+                  }
+                  className={styles.dropdown}
+                  menuClassName={styles.dropdownMenu}
+                />
+              )}
+            />
+          </div>
+
+          <div className={styles.dropdownContainer}>
+            <label htmlFor="role">{t('addUserForm.roleLabel')}</label>
+            <Controller
+              name="role"
+              control={control}
+              render={({ field }) => (
+                <Dropdown
+                  id="role"
+                  options={roleOptions}
+                  onOptionClick={field.onChange}
+                  menuTrigger={
+                    field.value ? `role.${field.value}` : 'role.User'
                   }
                   className={styles.dropdown}
                   menuClassName={styles.dropdownMenu}
